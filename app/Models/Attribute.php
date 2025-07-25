@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Attribute extends Model
+{
+    use HasFactory;
+    protected $fillable = ['name'];
+
+    /**
+     * Get the parent attributeable model (modal or submodal).
+     */
+
+    public function advertisings()
+    {
+        return $this->belongsToMany(Advertising::class, 'advertisin_atribute')
+            ->withPivot('value')
+            ->withTimestamps();
+    }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class)
+
+            ->withTimestamps();
+    }
+}
+
+
+// $category = Category::find(1);
+// $attributeId = 7;
+
+// $category->attributes()->attach($attributeId, [
+//     'is_custom' => true
+// ]);
+
+
+// $customAttributes = $category->attributes()->wherePivot('is_custom', true)->get();
