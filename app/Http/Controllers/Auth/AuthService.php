@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\Loginrequest as AuthLoginrequest;
-use App\Http\Requests\Forgetpasswordrequest;
+use App\Http\Requests\Auth\Forgetpasswordrequest;
 use App\Mail\Forgetpassword;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
@@ -161,13 +161,19 @@ class AuthService extends Controller
 
         $user = User::where('email', $email)->first();
         if (!$user) {
-            return $this->response(false, 404, 'User not found.',);;
+            return $this->response(false, 404, 'User not found.',);
         }
+
+        // if ($user->tokens) {
+        //      return $this->response(false, 404, 'User logged in ',);
+        // }
 
         $tmpPassword = Str::random(10);
         cache()->put('tmp_password_' . $user->id, $tmpPassword, 30);
         Mail::to($user->email)->send(new Forgetpassword($tmpPassword));
-        return $this->response(true, 200, ' New Password  Sent Successfully.',);
+        // $user->password = Hash::make($tmpPassword);
+        // $user->save();
+        return $this->response(true, 200, ' New Password  Sent  to Your Email.',);
     }
 
 
@@ -230,6 +236,8 @@ class AuthService extends Controller
         }
     }
 
+    
+
     public function Logout(Request $request)
     {
 
@@ -263,20 +271,10 @@ class AuthService extends Controller
     public function handleGoogleCallback(Request $request)
     {
         try {
-
-
-            // $googleUser = Socialite::driver('google')->stateless()->user();
-            /** @var GoogleProvider $provider */
-            $provider = Socialite::driver('google');
-
-            $googleUser = $provider->stateless()->user();
-
+            $googleUser = Socialite::driver('google')->stateless()->user();
 
             if (!$googleUser || !$googleUser->getEmail()) {
-                return response()->json(['message' => 'Invalid Google user data'], 422);
-            }
-
-
+                return response()->json(['message' => 'Invalid Google user data'], 422);         }
             $user = User::where('email', $googleUser->getEmail())->first();
 
             if ($user && !$user->provider) {

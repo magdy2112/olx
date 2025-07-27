@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Category;
 
-use App\Models\User;
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class Forgetpasswordrequest extends FormRequest
+
+class Addcategoryrequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-
-
-        return true;
+     
+  return Auth::check() && Auth::user()->role === 'admin';     
     }
 
     /**
@@ -25,8 +26,7 @@ class Forgetpasswordrequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'email' => 'required|email|exists:users,email',
-            'email' => 'required|email',
+            'name' => 'required|string'
         ];
     }
 }

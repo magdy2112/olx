@@ -9,3 +9,5 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 require __DIR__ . '/categoryroutes.php';
+require __DIR__ . '/Auth.php';
+

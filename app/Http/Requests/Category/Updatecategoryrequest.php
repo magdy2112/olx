@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class Loginrequest extends FormRequest
+class Updatecategoryrequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::check() ? false : true;
+        return Auth::check() && Auth::user()->role === 'admin';
     }
 
     /**
@@ -23,9 +23,8 @@ class Loginrequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', 'exists:users,email'],
-            'password' => 'required', // Ensure the user is not deleted
-            //  'tmp_password' => 'string',
+            // 'id' => 'required|exists:categories,id',
+            'name' => 'required|string'
         ];
     }
 }
