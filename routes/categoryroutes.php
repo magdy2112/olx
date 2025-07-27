@@ -10,5 +10,6 @@ Route::controller( CategoryController::class)->prefix('category')
       Route::get('/', 'allcategory');
       Route::post('addcategory', 'addcategory')->middleware('auth:sanctum');
       Route::patch('updatecategory/{id}', 'updatecategory')->middleware('auth:sanctum');
+      Route::delete('deletecategory/{id}', 'destroy')->middleware('auth:sanctum');
 });
       

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-class advertising extends Model
+class Advertising extends Model
 {
     use HasFactory;
 
@@ -39,7 +39,7 @@ class advertising extends Model
 
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class, 'advertising_attribute')
+        return $this->belongsToMany(CustomAttribute::class, 'advertising_attribute')
             ->withPivot('value')
 
             ->withTimestamps();
