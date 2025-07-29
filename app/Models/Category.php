@@ -42,10 +42,14 @@ class Category extends Model
     /**
      * Get the attributes for the category.
      */
+    // public function attributes()
+    // {
+    //     return $this->belongsToMany(CustomAttribute::class,'attribute_category')
+
+    //         ->withTimestamps();
+    // }
     public function attributes()
     {
-        return $this->belongsToMany(CustomAttribute::class,'attribute_category')
-
-            ->withTimestamps();
+        return $this->hasMany(CustomAttribute::class);
     }
 }

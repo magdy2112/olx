@@ -24,246 +24,194 @@ class DatabaseSeeder extends Seeder
 
 
 
-        //     // 1. Categories
-        //     $categoriesData = ['Cars', 'Real Estate', 'Electronics'];
 
-        //     foreach ($categoriesData as $name) {
-        //         Category::firstOrCreate(
-        //             ['slug' => Str::slug($name)],
-        //             ['name' => $name, 'slug' => Str::slug($name)]
-        //         );
-        //     }
+        DB::table('attributes')->truncate();
+        DB::table('categories')->truncate();
+        DB::table('sub_categories')->truncate();
 
-        //     $categories = Category::all()->keyBy('slug');
 
-        //     // 2. SubCategories
-        //     $subCategoriesData = [
-        //         ['name' => 'Mercedes', 'category_slug' => 'cars'],
-        //         ['name' => 'BMW', 'category_slug' => 'cars'],
-        //         ['name' => 'Toyota', 'category_slug' => 'cars'],
-        //         ['name' => 'Apartments', 'category_slug' => 'real-estate'],
-        //         ['name' => 'Laptops', 'category_slug' => 'electronics'],
-        //         ['name' => 'Smartphones', 'category_slug' => 'electronics'],
-        //         ['name' => 'Watches', 'category_slug' => 'electronics'],
-        //         ['name' => 'Villa', 'category_slug' => 'real-estate'],
-        //         ['name' => 'Cameras', 'category_slug' => 'electronics'],
-        //         ['name' => 'Appliances', 'category_slug' => 'electronics'],
-        //     ];
+        // 1) Categories
+        $categories = [
+            ['id' => 1, 'name' => 'vehicles'],
+            ['id' => 2, 'name' => 'Real Estate'],
 
-        //     foreach ($subCategoriesData as $data) {
-        //         $slug = Str::slug($data['name']);
-        //         if (isset($categories[$data['category_slug']])) {
-        //             SubCategory::firstOrCreate(
-        //                 ['slug' => $slug],
-        //                 [
-        //                     'name' => $data['name'],
-        //                     'slug' => $slug,
-        //                     'category_id' => $categories[$data['category_slug']]->id,
-        //                 ]
-        //             );
-        //         }
-        //     }
+            ['id' => 3, 'name' => 'Electronics',],
+        ];
 
-        //     $subCategories = SubCategory::all()->keyBy('slug');
+        DB::table('categories')->insert($categories);
 
-        //     // 3. Modals
-        //     $modalsData = [
-        //         ['name' => 'Toyota Camry', 'sub_category_slug' => 'toyota'],
-        //         ['name' => 'S500', 'sub_category_slug' => 'mercedes'],
-        //         ['name' => 'Modern Apartment', 'sub_category_slug' => 'apartments'],
-        //         ['name' => 'Luxury Villa', 'sub_category_slug' => 'villa'],
-        //         ['name' => 'Dell', 'sub_category_slug' => 'laptops'],
-        //         ['name' => 'Apple', 'sub_category_slug' => 'laptops'],
-        //         ['name' => 'HP', 'sub_category_slug' => 'laptops'],
-        //         ['name' => 'Samsung', 'sub_category_slug' => 'smartphones'],
-        //         ['name' => 'iPhone 14', 'sub_category_slug' => 'smartphones'],
-        //         ['name' => 'LG', 'sub_category_slug' => 'appliances'],
-        //         ['name' => 'Apple Watch', 'sub_category_slug' => 'watches'],
-        //         ['name' => 'Canon', 'sub_category_slug' => 'cameras'],
-        //     ];
+        // 2) Attributes for each category
+$attributes = [
+    // Cars
+    ['id' => 1, 'name' => 'Price', 'sub_category_id' => 1],
+    ['id' => 2, 'name' => 'Year', 'sub_category_id' => 1],
+    ['id' => 3, 'name' => 'Mileage', 'sub_category_id' => 1],
+    ['id' => 4, 'name' => 'Color', 'sub_category_id' => 1],
+    ['id' => 5, 'name' => 'Fuel Type', 'sub_category_id' => 1],
+    ['id' => 6, 'name' => 'Transmission', 'sub_category_id' => 1],
+    ['id' => 7, 'name' => 'Body Type', 'sub_category_id' => 1],
+    ['id' => 8, 'name' => 'Engine Capacity (CC)', 'sub_category_id' => 1],
+    ['id' => 9, 'name' => 'Horsepower (HP)', 'sub_category_id' => 1],
+    ['id' => 10, 'name' => 'Drive Type', 'sub_category_id' => 1],
+    ['id' => 11, 'name' => 'Doors', 'sub_category_id' => 1],
+    ['id' => 12, 'name' => 'Seats', 'sub_category_id' => 1],
+    ['id' => 13, 'name' => 'Condition', 'sub_category_id' => 1],
+    ['id' => 14, 'name' => 'Warranty', 'sub_category_id' => 1],
+    ['id' => 15, 'name' => 'Insurance', 'sub_category_id' => 1],
 
-        //     foreach ($modalsData as $data) {
-        //         $slug = Str::slug($data['name']);
-        //         if (isset($subCategories[$data['sub_category_slug']])) {
-        //             Modal::firstOrCreate(
-        //                 ['slug' => $slug],
-        //                 [
-        //                     'name' => $data['name'],
-        //                     'slug' => $slug,
-        //                     'sub_category_id' => $subCategories[$data['sub_category_slug']]->id,
-        //                 ]
-        //             );
-        //         }
-        //     }
+    // Motorcycles
+    ['id' => 16, 'name' => 'Price', 'sub_category_id' => 2],
+    ['id' => 17, 'name' => 'Year', 'sub_category_id' => 2],
+    ['id' => 18, 'name' => 'Engine Capacity (CC)', 'sub_category_id' => 2],
+    ['id' => 19, 'name' => 'Mileage', 'sub_category_id' => 2],
+    ['id' => 20, 'name' => 'Color', 'sub_category_id' => 2],
+    ['id' => 21, 'name' => 'Condition', 'sub_category_id' => 2],
+    ['id' => 22, 'name' => 'Fuel Type', 'sub_category_id' => 2],
+    ['id' => 23, 'name' => 'Transmission', 'sub_category_id' => 2],
+    ['id' => 24, 'name' => 'Type', 'sub_category_id' => 2],
 
-        //     $modals = Modal::all()->keyBy('slug');
+    // Mobiles
+    ['id' => 25, 'name' => 'Price', 'sub_category_id' => 3],
+    ['id' => 26, 'name' => 'Storage Capacity', 'sub_category_id' => 3],
+    ['id' => 27, 'name' => 'RAM', 'sub_category_id' => 3],
+    ['id' => 28, 'name' => 'Screen Size', 'sub_category_id' => 3],
+    ['id' => 29, 'name' => 'Camera Resolution', 'sub_category_id' => 3],
+    ['id' => 30, 'name' => 'Battery Capacity', 'sub_category_id' => 3],
+    ['id' => 31, 'name' => 'OS', 'sub_category_id' => 3],
+    ['id' => 32, 'name' => 'Condition', 'sub_category_id' => 3],
+    ['id' => 33, 'name' => 'Warranty', 'sub_category_id' => 3],
 
-        //     // 4. Submodals
-        //     $submodalsData = [
-        //         ['name' => 'S24 Ultra', 'modal_slug' => 'samsung'],
-        //         ['name' => 'Lenovo C50', 'modal_slug' => 'dell'],
-        //         ['name' => 'Dell XPS 13', 'modal_slug' => 'dell'],
-        //         ['name' => 'iPhone 14 Pro', 'modal_slug' => 'iphone-14'],
-        //         ['name' => 'Samsung Galaxy Tab', 'modal_slug' => 'samsung'],
-        //         ['name' => 'Apple Watch Series 8', 'modal_slug' => 'apple-watch'],
-        //         ['name' => 'Canon EOS R5', 'modal_slug' => 'canon'],
-        //         ['name' => 'LG Refrigerator', 'modal_slug' => 'lg'],
-        //         ['name' => 'Sony Bravia', 'modal_slug' => 'hp'],
-        //     ];
+    // Laptops
+    ['id' => 34, 'name' => 'Price', 'sub_category_id' => 4],
+    ['id' => 35, 'name' => 'CPU', 'sub_category_id' => 4],
+    ['id' => 36, 'name' => 'RAM', 'sub_category_id' => 4],
+    ['id' => 37, 'name' => 'Storage Capacity', 'sub_category_id' => 4],
+    ['id' => 38, 'name' => 'GPU', 'sub_category_id' => 4],
+    ['id' => 39, 'name' => 'Screen Size', 'sub_category_id' => 4],
+    ['id' => 40, 'name' => 'Battery Condition', 'sub_category_id' => 4],
+    ['id' => 41, 'name' => 'OS', 'sub_category_id' => 4],
+    ['id' => 42, 'name' => 'Condition', 'sub_category_id' => 4],
 
-        //     foreach ($submodalsData as $data) {
-        //         $slug = Str::slug($data['name']);
-        //         if (isset($modals[$data['modal_slug']])) {
-        //             Submodal::firstOrCreate(
-        //                 ['slug' => $slug],
-        //                 [
-        //                     'name' => $data['name'],
-        //                     'slug' => $slug,
-        //                     'modal_id' => $modals[$data['modal_slug']]->id,
-        //                 ]
-        //             );
-        //         }
-        //     }
+    // Computers
+    ['id' => 43, 'name' => 'Price', 'sub_category_id' => 5],
+    ['id' => 44, 'name' => 'CPU', 'sub_category_id' => 5],
+    ['id' => 45, 'name' => 'RAM', 'sub_category_id' => 5],
+    ['id' => 46, 'name' => 'Storage Capacity', 'sub_category_id' => 5],
+    ['id' => 47, 'name' => 'GPU', 'sub_category_id' => 5],
+    ['id' => 48, 'name' => 'Condition', 'sub_category_id' => 5],
+    ['id' => 49, 'name' => 'OS', 'sub_category_id' => 5],
 
-        //     // 5. Attributes
-        //     $attributesList = [
-        //         'Price',
-        //         'Color',
-        //         'Year',
-        //         'Description',
-        //         'Model',
-        //         'Size',
-        //         'Condition',
-        //         'Location',
-        //         'Brand',
-        //         'Warranty',
-        //         'Features',
-        //         'Fuel Type',
-        //         'Transmission',
-        //         'Mileage',
-        //         'Engine Size',
-        //         'Bedrooms',
-        //         'Bathrooms',
-        //         'Area',
-        //         'Screen Size',
-        //         'Storage',
-        //         'RAM',
-        //         'Processor',
-        //         'Graphics Card',
-        //         'Battery Life',
-        //         'Network',
-        //         'Camera',
-        //         'Audio',
-        //         'Accessories',
-        //         'Availability',
-        //         'Seller Type',
-        //         'Payment Method',
-        //         'Delivery Options',
-        //         'Return Policy',
-        //         'Shipping Cost',
-        //         'Warranty Period',
-        //         'Installation Service',
-        //         'User Manual',
-        //         'Support',
-        //         'Energy Efficiency',
-        //         'Safety Features',
-        //         'Performance',
-        //         'Compatibility',
-        //         'Reviews',
-        //         'Ratings',
-        //         'Discount',
-        //         'Special Offers',
-        //         'Loyalty Points',
-        //         'Gift Options',
-        //         'Customization',
-        //         'Subscription Plans',
-        //         'Trial Period',
-        //         'Referral Program',
-        //     ];
+    // TVs
+    ['id' => 50, 'name' => 'Price', 'sub_category_id' => 6],
+    ['id' => 51, 'name' => 'Screen Size', 'sub_category_id' => 6],
+    ['id' => 52, 'name' => 'Resolution', 'sub_category_id' => 6],
+    ['id' => 53, 'name' => 'Smart TV', 'sub_category_id' => 6],
+    ['id' => 54, 'name' => 'Panel Type', 'sub_category_id' => 6],
+    ['id' => 55, 'name' => 'Condition', 'sub_category_id' => 6],
+    ['id' => 56, 'name' => 'Warranty', 'sub_category_id' => 6],
 
-        //     foreach ($attributesList as $name) {
-        //         Attribute::firstOrCreate(
-        //             ['slug' => Str::slug($name)],
-        //             ['name' => $name, 'slug' => Str::slug($name)]
-        //         );
-        //     }
+    // Commercial Properties
+    ['id' => 57, 'name' => 'Price', 'sub_category_id' => 7],
+    ['id' => 58, 'name' => 'Property Type', 'sub_category_id' => 7],
+    ['id' => 59, 'name' => 'Area (sqm)', 'sub_category_id' => 7],
+    ['id' => 60, 'name' => 'Location', 'sub_category_id' => 7],
+    ['id' => 61, 'name' => 'Floors', 'sub_category_id' => 7],
+    ['id' => 62, 'name' => 'Condition', 'sub_category_id' => 7],
+    ['id' => 63, 'name' => 'Furnished', 'sub_category_id' => 7],
+    ['id' => 64, 'name' => 'Finishing Type', 'sub_category_id' => 7],
+    ['id' => 65, 'name' => 'Purpose', 'sub_category_id' => 7],
 
-        //     $attributes = Attribute::all()->keyBy('slug');
+    // Residential Properties
+    ['id' => 66, 'name' => 'Price', 'sub_category_id' => 8],
+    ['id' => 67, 'name' => 'Property Type', 'sub_category_id' => 8],
+    ['id' => 68, 'name' => 'Area (sqm)', 'sub_category_id' => 8],
+    ['id' => 69, 'name' => 'Bedrooms', 'sub_category_id' => 8],
+    ['id' => 70, 'name' => 'Bathrooms', 'sub_category_id' => 8],
+    ['id' => 71, 'name' => 'Balconies', 'sub_category_id' => 8],
+    ['id' => 72, 'name' => 'Furnished', 'sub_category_id' => 8],
+    ['id' => 73, 'name' => 'Finishing Type', 'sub_category_id' => 8],
+    ['id' => 74, 'name' => 'Floor Number', 'sub_category_id' => 8],
+    ['id' => 75, 'name' => 'Building Age', 'sub_category_id' => 8],
+    ['id' => 76, 'name' => 'Purpose', 'sub_category_id' => 8],
 
-        //     // 6. attribute_category
-        //     $attributeCategoryData = [
-        //         // Cars
-        //         ['category_slug' => 'cars', 'attribute_slug' => 'price'],
-        //         ['category_slug' => 'cars', 'attribute_slug' => 'color'],
-        //         ['category_slug' => 'cars', 'attribute_slug' => 'year'],
-        //         ['category_slug' => 'cars', 'attribute_slug' => 'description'],
+    // Lands
+    ['id' => 77, 'name' => 'Price', 'sub_category_id' => 9],
+    ['id' => 78, 'name' => 'Land Area (sqm)', 'sub_category_id' => 9],
+    ['id' => 79, 'name' => 'Land Type', 'sub_category_id' => 9],
+    ['id' => 80, 'name' => 'Number of Streets', 'sub_category_id' => 9],
+    ['id' => 81, 'name' => 'Land Nature', 'sub_category_id' => 9],
+    ['id' => 82, 'name' => 'Licensing Status', 'sub_category_id' => 9],
+    ['id' => 83, 'name' => 'Purpose', 'sub_category_id' => 9],
+];
 
-        //         // Real Estate
-        //         ['category_slug' => 'real-estate', 'attribute_slug' => 'price'],
-        //         ['category_slug' => 'real-estate', 'attribute_slug' => 'description'],
 
-        //         // Electronics
-        //         ['category_slug' => 'electronics', 'attribute_slug' => 'price'],
-        //         ['category_slug' => 'electronics', 'attribute_slug' => 'color'],
-        //         ['category_slug' => 'electronics', 'attribute_slug' => 'description'],
-        //     ];
 
-        //     foreach ($attributeCategoryData as $data) {
-        //         if (isset($categories[$data['category_slug']]) && isset($attributes[$data['attribute_slug']])) {
-        //             DB::table('attribute_category')->updateOrInsert(
-        //                 [
-        //                     'category_id' => $categories[$data['category_slug']]->id,
-        //                     'attribute_id' => $attributes[$data['attribute_slug']]->id,
-        //                 ],
-        //                 [
+        DB::table('attributes')->insert($attributes);
 
-        //                     'created_at' => now(),
-        //                     'updated_at' => now(),
-        //                 ]
-        //             );
-        //         }
-        //     }
 
-        //     // 7. chains
-        //     Chain::insert([
-        //         [
-        //             'category' => 'Cars',
-        //             'subcategory' => 1,
-        //             'modal' => 1,
-        //             'submodal' => 0,
-        //         ],
-        //         [
-        //             'category' => 'Real Estate',
-        //             'subcategory' => 1,
-        //             'modal' => 1,
-        //             'submodal' => 0,
-        //         ],
-        //         [
-        //             'category' => 'Electronics',
-        //             'subcategory' => 1,
-        //             'modal' => 1,
-        //             'submodal' => 1,
-        //         ]
-        //     ]);
-        // }
+        $subcategories = [
+            ['id' => 1, 'name' => 'cars', 'category_id' => 1,  'created_at' => '2025-07-29 12:01:13', 'updated_at' => '2025-07-29 15:10:47'],
+            ['id' => 2, 'name' => 'motorcycle', 'category_id' => 1,  'created_at' => '2025-07-29 12:02:25', 'updated_at' => '2025-07-29 12:02:25'],
+            ['id' => 3, 'name' => 'mobiles', 'category_id' => 3,  'created_at' => '2025-07-29 12:03:06', 'updated_at' => '2025-07-29 12:03:06'],
+            ['id' => 4, 'name' => 'laptops', 'category_id' => 3, 'created_at' => '2025-07-29 12:03:25', 'updated_at' => '2025-07-29 12:03:25'],
+            ['id' => 5, 'name' => 'computers', 'category_id' => 3, 'created_at' => '2025-07-29 12:07:14', 'updated_at' => '2025-07-29 12:07:14'],
+            ['id' => 6, 'name' => 'tv', 'category_id' => 3,  'created_at' => '2025-07-29 14:57:12', 'updated_at' => '2025-07-29 14:57:12'],
+            ['id' => 7, 'name' => 'commercial property', 'category_id' => 2,  'created_at' => '2025-07-29 15:00:45', 'updated_at' => '2025-07-29 15:00:45'],
+            ['id' => 8, 'name' => 'residential property', 'category_id' => 2, 'created_at' => '2025-07-29 15:01:08', 'updated_at' => '2025-07-29 15:01:08'],
+            ['id' => 9, 'name' => 'lands', 'category_id' => 2, 'created_at' => '2025-07-29 15:01:36', 'updated_at' => '2025-07-29 15:01:36'],
+        ];
 
-        // جدول رئيسي
-        // \App\Models\User::factory(100)->create();
-        // \App\Models\Category::factory(50)->create();
-        // \App\Models\Attribute::factory(200)->create();
+        DB::table('sub_categories')->insert($subcategories);
 
-        // \App\Models\SubCategory::factory(200)->create();
-        // \App\Models\Modal::factory(500)->create();
-        // \App\Models\Submodal::factory(800)->create();
+        $modals = [
+            [ 'name' => 'Toyota', 'sub_category_id' => '1'],
+            [ 'name' => 'Nissan', 'sub_category_id' => '1'],
+            [ 'name' => 'Mitsubishi', 'sub_category_id' => '1'],
+            [ 'name' => 'Volkswagen', 'sub_category_id' => '1'],
+            [ 'name' => 'Kia', 'sub_category_id' => '1'],
+            [ 'name' => 'Fiat', 'sub_category_id' => '1'],
+            [ 'name' => 'Mercedes-Benz', 'sub_category_id' => '1'],
+            [ 'name' => 'BMW', 'sub_category_id' => '1'],
+            [ 'name' => 'Honda ', 'sub_category_id' => '2'],
+            [ 'name' => 'Yamaha ', 'sub_category_id' => '2'],
+            [ 'name' => 'Kawasaki ', 'sub_category_id' => '2'],
+            [ 'name' => 'Suzuki ', 'sub_category_id' => '2'],
+            [ 'name' => 'Harley-Davidson ', 'sub_category_id' => '2'],
+            [ 'name' => 'Apple ', 'sub_category_id' => '3'],
+            [ 'name' => 'Samsung ', 'sub_category_id' => '3'],
+            [ 'name' => 'Xiaomi ', 'sub_category_id' => '3'],
+            [ 'name' => 'Oppo ', 'sub_category_id' => '3'],
+            [ 'name' => 'Apple ', 'sub_category_id' => '4'],
+            [ 'name' => 'Dell ', 'sub_category_id' => '4'],
+            [ 'name' => 'HP ', 'sub_category_id' => '4'],
+            [ 'name' => 'Lenovo ', 'sub_category_id' => '4'],
+            [ 'name' => 'Acer ', 'sub_category_id' => '4'],
+            [ 'name' => 'Apple', 'sub_category_id' => '5'],
+            [ 'name' => 'Dell', 'sub_category_id' => '5'],
+            [ 'name' => 'HP', 'sub_category_id' => '5'],
+            [ 'name' => 'Lenovo', 'sub_category_id' => '5'],
+            [ 'name' => 'Samsung ', 'sub_category_id' => '6'],
+            [ 'name' => 'LG ', 'sub_category_id' => '6'],
+            [ 'name' => 'Sony ', 'sub_category_id' => '6'],
+            [ 'name' => 'TCL ', 'sub_category_id' => '6'],
+            [ 'name' => 'Hisense ', 'sub_category_id' => '6'],
+            [ 'name' => 'apartment', 'sub_category_id' => '7'],
+            [ 'name' => 'factory', 'sub_category_id' => '7'],
+            [ 'name' => 'apartment', 'sub_category_id' => '8'],
+            [ 'name' => 'villa', 'sub_category_id' => '8'],
+            [ 'name' => 'studio', 'sub_category_id' => '8'],
+            [ 'name' => 'dublex', 'sub_category_id' => '8'],
+            
+        ];
 
-        // \App\Models\Advertising::factory(300)->create()->each(function ($ad) {
-        //     $attributes = \App\Models\Attribute::inRandomOrder()->take(rand(3, 10))->get();
-        //     foreach ($attributes as $att) {
-        //         $ad->attributes()->attach($att->id, [
-        //             'value' => fake()->word()
-        //         ]);
-        //     }
-        // });
-        // }
+        // 1	c
+        // 2	motorcy
+        // 3	mobi
+        // 4	laptops
+        // 5	computers
+        // 6	tv
+        // 7	commercial property
+        // 8	residential property
+        // 9	lands
     }
 }

@@ -7,12 +7,12 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Exception;
+
 
 
 
@@ -35,7 +35,6 @@ class Deletecategory implements ShouldQueue
     {
         $this->categoryId = $categoryId;
         $this->userId = $userId;
-            
     }
 
 
@@ -47,10 +46,10 @@ class Deletecategory implements ShouldQueue
      */
     public function handle(): void
     {
+        $pathsToDelete = [];
 
-
-         try {
-            DB::transaction(function () {
+        try {
+            DB::transaction(function () use (&$pathsToDelete) {
                 $category = Category::find($this->categoryId);
 
                 if (!$category) {
@@ -63,7 +62,13 @@ class Deletecategory implements ShouldQueue
                 }
 
                 Advertising::where('category_id', $category->id)
-                    ->chunkById(500, function ($ads) {
+                    ->chunkById(500, function ($ads) use (&$pathsToDelete) {
+                        foreach ($ads as $ad) {
+                            foreach ($ad->images as $image) {
+                                $pathsToDelete[] = $image->path;
+                            }
+                        }
+
                         foreach ($ads as $ad) {
                             $ad->images()->delete();
                             $ad->delete();
@@ -75,6 +80,18 @@ class Deletecategory implements ShouldQueue
                 $category->attributes()->detach();
                 $category->delete();
             });
+
+            foreach ($pathsToDelete as $path) {
+                Storage::disk('public')->delete($path);
+            }
+
+            // إشعار نجاح بالإيميل
+            if ($user = User::find($this->userId)) {
+                Mail::raw(
+                    "تم حذف التصنيف {$this->categoryId} بنجاح مع جميع الإعلانات والصور.",
+                    fn($message) => $message->to($user->email)->subject('تم حذف التصنيف بنجاح')
+                );
+            }
         } catch (\Throwable $e) {
             Log::error('DeleteCategory job error: ' . $e->getMessage());
             throw $e; // لتمرير الخطأ ل failed()
@@ -83,18 +100,18 @@ class Deletecategory implements ShouldQueue
         }
     }
 
- 
 
-public function failed(\Throwable $exception)
-{
-    Cache::forget('destroy_category');
 
-    $user = User::find($this->userId);
-    if ($user) {
-        Mail::raw("حدث خطأ أثناء حذف التصنيف {$this->categoryId}. رسالة الخطأ: " . $exception->getMessage(), function ($message) use ($user) {
-            $message->to($user->email)
+    public function failed(\Throwable $exception)
+    {
+        Cache::forget('destroy_category');
+
+        $user = User::find($this->userId);
+        if ($user) {
+            Mail::raw("حدث خطأ أثناء حذف التصنيف {$this->categoryId}. راجع عمليه الحذف : " . $exception->getMessage(), function ($message) use ($user) {
+                $message->to($user->email)
                     ->subject('فشل حذف التصنيف');
-        });
+            });
+        }
     }
-}
 }

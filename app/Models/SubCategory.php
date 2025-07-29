@@ -12,15 +12,15 @@ class SubCategory extends Model
 {
     use HasFactory;
 
-    // protected function isfinal(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn() => is_null($this->category_id) ? 'final' : 'not_final',
-    //         set: fn($value) => $value
-    //     );
-    // }
-    protected $fillable = ['name', 'slug', 'category_id'];
-
+    protected $fillable = ['name', 'isfinal', 'category_id'];
+  
+   protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value),
+        );
+    }
 
     public function updateFinalStatus()
     {
@@ -50,9 +50,12 @@ class SubCategory extends Model
      */
     public function submodals()
     {
-        return $this->hasMany(Submodal::class);
+        return $this->hasManyThrough(Submodal::class, Modal::class);
     }
-    /**
-     * Get the attributes for the subcategory.
-     */
+
+    public function advertisings()
+    {
+        return $this->hasMany(Advertising::class);
+    }
+   
 }

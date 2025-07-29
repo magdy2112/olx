@@ -21,11 +21,10 @@ class CustomAttribute extends Model
             ->withPivot('value')
             ->withTimestamps();
     }
-    public function categories()
+    
+    public function category()
     {
-        return $this->belongsToMany(Category::class)
-
-            ->withTimestamps();
+        return $this->belongsTo(Category::class);
     }
 }
 

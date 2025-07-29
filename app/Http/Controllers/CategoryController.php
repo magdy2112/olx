@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Category\Addcategoryrequest;
 use App\Http\Requests\Category\Updatecategoryrequest;
 use App\Jobs\Deletecategory;
-use App\Models\advertising;
+
 use App\Models\Category;
 
 use App\Traits\Httpresponse;
@@ -82,26 +82,25 @@ class CategoryController extends Controller
             return $this->response(false, 401, 'Unauthorized');
         }
 
-
-           $lock = Cache::get('destroy_category');
-            if ($lock) {
-            return $this->response(false, 429, 'Another delete operation is in progress.');
+         if (Cache::has('destroy_subcategory') || Cache::has('destroy_category')) {
+                return $this->response(false, 429, 'Another delete operation is in progress.');
             }
-             $category = Category::find($id);
-            if (!$category) {
+
+
+    
+        $category = Category::find($id);
+        if (!$category) {
             return $this->response(false, 404, 'Category not found');
-            }
+        }
 
-               if (!Gate::allows('admin')) {
-            return $this->response(false, 401, 'Unauthorized');
-            }
+    
 
         try {
-         
+
             Cache::put('destroy_category', 'delete_category', now()->addHours(1));
-           
+
             Deletecategory::dispatch($id, Auth::id());
-            return $this->response(true, 200, 'Category deleted successfully');
+           return $this->response(true, 200, 'Delete job dispatched successfully. It will be processed in background.');
         } catch (\Throwable $e) {
             return $this->response(false, 500, $e->getMessage());
         }

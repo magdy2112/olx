@@ -1,14 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Broadcast;
+
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\MessageController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
-use Laravel\Socialite\Facades\Socialite;
+
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('/register', 'Register')->middleware(['guest']);
