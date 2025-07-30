@@ -93,6 +93,7 @@ class SubCategoryController extends Controller
                 'category_id' => $data['category_id'],
                 'name' => $data['name'],
             ]);
+            $subcategory->updateFinalStatus();
             return $this->response(true, 200, 'success', $subcategory);
         } catch (\Throwable $th) {
             return  $this->response(false, 500, $th->getMessage());

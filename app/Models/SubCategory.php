@@ -28,6 +28,8 @@ class SubCategory extends Model
         $this->save();
     }
 
+ 
+
     /**
      * Get the category that owns the subcategory.
      */

@@ -16,6 +16,8 @@ class Submodal extends Model
         $this->save();
     }
 
+
+
   
         protected function name(): Attribute
     {

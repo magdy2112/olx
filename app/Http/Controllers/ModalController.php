@@ -88,6 +88,7 @@ class ModalController extends Controller
                     'sub_category_id' => $data['sub_category_id']
                ]);
 
+               $modal->updateFinalStatus();
                return $this->response(true, 200, 'success', $modal);
           } catch (\Exception $e) {
                return $this->response(false, 500, $e->getMessage(), null);
@@ -116,6 +117,7 @@ class ModalController extends Controller
                'name' => $data['name'],
                'sub_category_id' => $data['sub_category_id']
           ]);
+          $modal->updateFinalStatus();
           return $this->response(true, 200, 'success', $modal);
            } catch (\Throwable $th) {
               return $this->response(false, 500, $th->getMessage());
@@ -136,7 +138,7 @@ class ModalController extends Controller
                     return $this->response(false, 404, 'Modal not found', null);
                }
 
-               if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'))) {
+               if (Cache::has('destroy_subcategory') || Cache::has('destroy_category')|| Cache::has('destroy_modal'))) {
                 return $this->response(false, 429, 'Another delete operation is in progress.');
             }
 
@@ -149,4 +151,6 @@ class ModalController extends Controller
                return $this->response(false, 500, $e->getMessage(), null);
           }
      }
+
+ 
 }
