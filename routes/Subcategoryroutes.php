@@ -10,5 +10,6 @@ Route::controller( SubCategoryController::class)->prefix('subcategory')
       Route::get('/',  'allsubcategory');
       Route::post('addsubcategory', 'addsubcategory');
       Route::patch('updatesubcategory/{id}', 'updatesubcategory');
+      Route::get('subcategorybycategory/{categoryid}', 'allsubcategorybycategory');
       Route::delete('deletesubcategory/{id}', 'destroy');
 });

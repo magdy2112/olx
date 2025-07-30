@@ -25,7 +25,9 @@ class CategoryController extends Controller
     {
         try {
             $allcategory = Category::all();
-            return $this->response(true, 200, 'success', $allcategory);
+            $data = Category::with('subcategories')->get();
+
+            return $this->response(true, 200, 'success', ['allcategory'=>$allcategory, 'allcategorywithsubcategory' => $data]);
         } catch (\Throwable $e) {
             return $this->response(false, 500, $e->getMessage());
         }
@@ -58,6 +60,8 @@ class CategoryController extends Controller
 
         $data = $request->validated();
         try {
+
+           
             $category = Category::find($id);
 
             if (!$category) {
@@ -82,10 +86,9 @@ class CategoryController extends Controller
             return $this->response(false, 401, 'Unauthorized');
         }
 
-         if (Cache::has('destroy_subcategory') || Cache::has('destroy_category')) {
+         if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'))) {
                 return $this->response(false, 429, 'Another delete operation is in progress.');
             }
-
 
     
         $category = Category::find($id);

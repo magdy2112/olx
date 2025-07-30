@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Category;
-
-use Illuminate\Foundation\Http\FormRequest;
+namespace App\Http\Requests\Modal;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
-class Updatecategoryrequest extends FormRequest
+class Addmodalrequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::check() && Auth::user()->role === 'admin';
+         return Auth::check() && Auth::user()->role === 'admin'; 
     }
 
     /**
@@ -23,8 +22,8 @@ class Updatecategoryrequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'id' => 'required|exists:categories,id',
-            'name' => 'required|string|unique:categories,name,' ,
+            'sub_category_id' => 'required|exists:sub_categories,id',
+            'name' => 'required|string'
         ];
     }
 }

@@ -203,6 +203,7 @@ $attributes = [
             [ 'name' => 'dublex', 'sub_category_id' => '8'],
             
         ];
+        DB::table('modals')->insert($modals);
 
         // 1	c
         // 2	motorcy

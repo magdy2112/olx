@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+  use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Submodal extends Model
 {
@@ -15,6 +16,14 @@ class Submodal extends Model
         $this->save();
     }
 
+  
+        protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value),
+        );
+    }
     /**
      * Get the subcategory that owns the submodal.
      */
