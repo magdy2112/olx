@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\Addcategoryrequest;
 use App\Http\Requests\Category\Updatecategoryrequest;
+use App\Jobs\Allsubmodal;
 use App\Jobs\Deletecategory;
 
 use App\Models\Category;
@@ -38,6 +39,7 @@ class CategoryController extends Controller
 
 
         $data = $request->validated();
+     
         try {
 
 
@@ -45,7 +47,8 @@ class CategoryController extends Controller
                 'name' => $data['name']
             ]);
             if ($category) {
-
+                cache::forget('allsubmodal_cache');
+            
                 return $this->response(true, 200, 'success', $category);
             } else {
                 return $this->response(false, 401, 'Unauthorized');
@@ -58,7 +61,9 @@ class CategoryController extends Controller
     public function updatecategory(Updatecategoryrequest $request, int $id)
     {
 
+
         $data = $request->validated();
+
         try {
 
            
@@ -71,6 +76,7 @@ class CategoryController extends Controller
                 $category->update([
                     'name' => $data['name'],
                 ]);
+                 cache::forget('allsubmodal_cache');
                 return $this->response(true, 200, 'success', $category);
             } else {
                 return $this->response(false, 401, 'Unauthorized');
@@ -86,7 +92,7 @@ class CategoryController extends Controller
             return $this->response(false, 401, 'Unauthorized');
         }
 
-         if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'))) {
+        if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'|| Cache::has('destroy_submodal')))) {
                 return $this->response(false, 429, 'Another delete operation is in progress.');
             }
 
@@ -103,6 +109,8 @@ class CategoryController extends Controller
             Cache::put('destroy_category', 'delete_category', now()->addHours(1));
 
             Deletecategory::dispatch($id, Auth::id());
+            
+             cache::forget('allsubmodal_cache');
            return $this->response(true, 200, 'Delete job dispatched successfully. It will be processed in background.');
         } catch (\Throwable $e) {
             return $this->response(false, 500, $e->getMessage());
