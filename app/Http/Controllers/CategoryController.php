@@ -108,4 +108,6 @@ class CategoryController extends Controller
             return $this->response(false, 500, $e->getMessage());
         }
     }
+
+     
 }

@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class SubmodalController extends Controller
 {
-    //
+    public function allsubmodal()
+    {
+        
+    }
 }

@@ -10,5 +10,6 @@ Route::controller(ModalController::class)
       Route::post('addmodal', 'addmodal');
       Route::patch('updatemodal/{id}', 'updatemodal');
       Route::delete('deletemodal/{id}', 'destroy');
+      Route::get('isfinal', 'isfinal');
 });
 

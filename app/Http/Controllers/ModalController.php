@@ -96,7 +96,8 @@ class ModalController extends Controller
      }
 
 
-     public function updatemodal(Updatemodalrequest $request, int $id){
+     public function updatemodal(Updatemodalrequest $request, int $id)
+     {
           $data = $request->validated();
 
           $modal = Modal::find($id);
@@ -104,7 +105,7 @@ class ModalController extends Controller
                return $this->response(false, 404, 'Modal not found', null);
           }
 
-           $exists = Modal::where('name', $data['name'])
+          $exists = Modal::where('name', $data['name'])
                ->where('sub_category_id', $data['sub_category_id'])
                ->where('id', '!=', $id)
                ->exists();
@@ -112,18 +113,16 @@ class ModalController extends Controller
           if ($exists) {
                return $this->response(false, 422, 'This name already exists for this subcategory.', null);
           }
-           try {
+          try {
                $modal->update([
-               'name' => $data['name'],
-               'sub_category_id' => $data['sub_category_id']
-          ]);
-          $modal->updateFinalStatus();
-          return $this->response(true, 200, 'success', $modal);
-           } catch (\Throwable $th) {
-              return $this->response(false, 500, $th->getMessage());
-           }
-          
-         
+                    'name' => $data['name'],
+                    'sub_category_id' => $data['sub_category_id']
+               ]);
+               $modal->updateFinalStatus();
+               return $this->response(true, 200, 'success', $modal);
+          } catch (\Throwable $th) {
+               return $this->response(false, 500, $th->getMessage());
+          }
      }
 
      public function destroy($id)
@@ -138,9 +137,9 @@ class ModalController extends Controller
                     return $this->response(false, 404, 'Modal not found', null);
                }
 
-               if (Cache::has('destroy_subcategory') || Cache::has('destroy_category')|| Cache::has('destroy_modal'))) {
-                return $this->response(false, 429, 'Another delete operation is in progress.');
-            }
+               if (Cache::has('destroy_subcategory') || Cache::has('destroy_category') || Cache::has('destroy_modal')) {
+                    return $this->response(false, 429, 'Another delete operation is in progress.');
+               }
 
 
 
@@ -152,5 +151,24 @@ class ModalController extends Controller
           }
      }
 
- 
+     public function isfinal()
+     {
+          $modals = Modal::all();
+          foreach ($modals as $modal) {
+               $modal->updateFinalStatus();
+          }
+         
+
+            $subcategorys = subCategory::all();
+          foreach ($subcategorys as $subcategory) {
+              $subcategory->updateFinalStatus();
+          }
+
+
+
+
+
+
+          return $this->response(true, 200, 'success');
+     }
 }
