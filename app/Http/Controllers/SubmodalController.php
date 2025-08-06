@@ -25,7 +25,7 @@ class SubmodalController extends Controller
         }
        if (!Cache::has('allsubmodal_cache')) {
            
-            Allsubmodal::dispatch();
+            Allsubmodal::dispatch(Auth::id());
 
             return response()->json([
                 'success' => false,
@@ -50,7 +50,7 @@ class SubmodalController extends Controller
         if (!$modal) {
             return $this->response(false, 404, 'Modal not found');
         }
-        $submodal = Submodal::where('modal_id', $modalid)->cursor();
+        $submodal = Submodal::where('modal_id', $modalid)->get();
         if ($submodal->isEmpty()) {
             return $this->response(false, 404, 'Submodal not found');
         }
@@ -96,17 +96,18 @@ class SubmodalController extends Controller
             if (!Gate::allows('admin')) {
                 return $this->response(false, 401, 'Unauthorized');
             }
-            if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'|| Cache::has('destroy_submodal')))) {
-                return $this->response(false, 429, 'Another delete operation is in progress.');
-            }
+            if (Cache::has('destroy_subcategory') || Cache::has('destroy_category' || Cache::has('destroy_modal' || Cache::has('destroy_submodal') || Cache::has('destroy_attribute')))) {
+                    return $this->response(false, 429, 'Another delete operation is in progress.');
+               }
+
             
             $submodal = Submodal::find($id);
             if (!$submodal) {
                 return $this->response(false, 404, 'Submodal not found');
             }
-            cache::put('destroy_submodal', 'delete_submodal', now()->addHours(1));
+            Cache::put('destroy_submodal', 'delete_submodal', now()->addHours(1));
             Deletesubmodal::dispatch($id, Auth::id());
-             cache::forget('allsubmodal_cache');
+             Cache::forget('allsubmodal_cache');
            return $this->response(true, 200, 'Delete job dispatched successfully. It will be processed in background.');
            
            
@@ -117,7 +118,8 @@ class SubmodalController extends Controller
 
    public function addsubmodal(Addsubmodalrequest $request)
     {
-
+       
+  try {
          $data = $request->validated();
         $exists = Submodal::where('name', $data['name'])
             ->where('modal_id', $data['modal_id'])
@@ -126,7 +128,7 @@ class SubmodalController extends Controller
                 return $this->response(false, 422, 'This name already exists for this category.', null);
             }
          
-        try {
+      
             $submodal =  Submodal::create([
                 'name' => $data['name'],
                 'modal_id' => $data['modal_id']

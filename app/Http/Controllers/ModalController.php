@@ -8,7 +8,7 @@ use App\Jobs\Deletemodal;
 use App\Models\Category;
 use App\Models\Modal;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
+
 use App\Traits\Httpresponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Cache;
@@ -89,7 +89,7 @@ class ModalController extends Controller
                ]);
 
                $modal->updateFinalStatus();
-                cache::forget('allsubmodal_cache');
+               cache::forget('allsubmodal_cache');
                return $this->response(true, 200, 'success', $modal);
           } catch (\Exception $e) {
                return $this->response(false, 500, $e->getMessage(), null);
@@ -120,7 +120,7 @@ class ModalController extends Controller
                     'sub_category_id' => $data['sub_category_id']
                ]);
                $modal->updateFinalStatus();
-                cache::forget('allsubmodal_cache');
+               cache::forget('allsubmodal_cache');
                return $this->response(true, 200, 'success', $modal);
           } catch (\Throwable $th) {
                return $this->response(false, 500, $th->getMessage());
@@ -138,15 +138,15 @@ class ModalController extends Controller
                if (!$modal) {
                     return $this->response(false, 404, 'Modal not found', null);
                }
- if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'|| Cache::has('destroy_submodal')))) {
-                return $this->response(false, 429, 'Another delete operation is in progress.');
-            }
+               if (Cache::has('destroy_subcategory') || Cache::has('destroy_category' || Cache::has('destroy_modal' || Cache::has('destroy_submodal') || Cache::has('destroy_attribute')))) {
+                    return $this->response(false, 429, 'Another delete operation is in progress.');
+               }
 
 
 
                Cache::put('destroy_modal', 'delete_modal', now()->addHours(1));
                Deletemodal::dispatch($id, Auth::id());
-                cache::forget('allsubmodal_cache');
+               cache::forget('allsubmodal_cache');
                return $this->response(true, 200, 'Delete job dispatched successfully. It will be processed in background.', null);
           } catch (\Exception $e) {
                return $this->response(false, 500, $e->getMessage(), null);
@@ -159,11 +159,11 @@ class ModalController extends Controller
           foreach ($modals as $modal) {
                $modal->updateFinalStatus();
           }
-         
 
-            $subcategorys = subCategory::all();
+
+          $subcategorys = subCategory::all();
           foreach ($subcategorys as $subcategory) {
-              $subcategory->updateFinalStatus();
+               $subcategory->updateFinalStatus();
           }
 
 

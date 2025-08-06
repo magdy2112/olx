@@ -92,9 +92,9 @@ class CategoryController extends Controller
             return $this->response(false, 401, 'Unauthorized');
         }
 
-        if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'|| Cache::has('destroy_submodal')))) {
-                return $this->response(false, 429, 'Another delete operation is in progress.');
-            }
+        if (Cache::has('destroy_subcategory') || Cache::has('destroy_category' || Cache::has('destroy_modal' || Cache::has('destroy_submodal') || Cache::has('destroy_attribute')))) {
+                    return $this->response(false, 429, 'Another delete operation is in progress.');
+               }
 
     
         $category = Category::find($id);

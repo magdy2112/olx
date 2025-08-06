@@ -109,10 +109,10 @@ class SubCategoryController extends Controller
             if (!Gate::allows('admin')) {
                 return $this->response(false, 401, 'Unauthorized');
             }
-            if (Cache::has('destroy_subcategory') || Cache::has('destroy_category'|| Cache::has('destroy_modal'|| Cache::has('destroy_submodal')))) {
-                return $this->response(false, 429, 'Another delete operation is in progress.');
-            }
-            
+            if (Cache::has('destroy_subcategory') || Cache::has('destroy_category' || Cache::has('destroy_modal' || Cache::has('destroy_submodal') || Cache::has('destroy_attribute')))) {
+                    return $this->response(false, 429, 'Another delete operation is in progress.');
+               }
+
             $subcategory = SubCategory::find($id);
             if (!$subcategory) {
                 return $this->response(false, 404, 'SubCategory not found');

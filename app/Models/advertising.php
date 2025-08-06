@@ -45,6 +45,8 @@ class Advertising extends Model
             ->withTimestamps();
     }
 
+    
+
     public function location()
     {
         return $this->morphOne(Location::class, 'locationable');

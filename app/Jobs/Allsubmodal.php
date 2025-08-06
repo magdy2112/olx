@@ -6,7 +6,9 @@ use App\Models\Category;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
 class Allsubmodal implements ShouldQueue
 {
     use Queueable;
@@ -14,9 +16,13 @@ class Allsubmodal implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+ 
+    protected int $userId;
+
+    public function __construct( $userId)
     {
-        //
+     
+        $this->userId = $userId;
     }
 
     /**
@@ -24,11 +30,13 @@ class Allsubmodal implements ShouldQueue
      */
     public function handle(): void
     {
-          $categories = Category::with([
+
+        try {
+           $categories = Category::with([
             'subcategories.modals.submodals:id,name,modal_id', 
             'subcategories.modals:id,name,sub_category_id',
             'subcategories:id,name,category_id'
-        ])->cursor(); 
+        ])->get(); 
 
    
         $formatted = $categories->map(function ($category) {
@@ -58,6 +66,26 @@ class Allsubmodal implements ShouldQueue
 
        
         Cache::forever('allsubmodal_cache', $formatted);
+        } catch (\Throwable $e) {
+             Log::error('DeleteCategory job error: ' . $e->getMessage());
+            throw $e; // لتمرير الخطأ ل failed()
+        }finally{
+            Cache::forget('allsubmodal_cache');
+        }
+         
+    }
+
+    public function failed(\Throwable $exception)
+    {
+        Cache::forget('allsubmodal_cache');
+
+        $user = User::find($this->userId);
+        if ($user) {
+            Mail::raw("حدث خطا اثناء جلب البيانات " . $exception->getMessage(), function ($message) use ($user) {
+                $message->to($user->email)
+                    ->subject('  خطا اثناء عرض submodals  ');
+            });
+        }
     }
     }
 

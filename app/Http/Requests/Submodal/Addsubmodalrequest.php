@@ -22,7 +22,7 @@ class Addsubmodalrequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|unique:sub_modals,name',
+            'name' => 'string|unique:submodals,name',
             'modal_id' => 'exists:modals,id'
         ];
     }

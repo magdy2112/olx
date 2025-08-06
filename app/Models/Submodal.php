@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Submodal extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'slug', 'sub_category_id'];
+    protected $fillable = ['name', 'modal_id'];
     public function updateFinalStatus()
     {
         $this->isfinal = 'final'; // آخر مستوى
