@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class image extends Model
 {
-    protected $fillable = ['name', 'url', 'advertising_id'];
+   protected $fillable = ['name', 'url', 'path', 'advertising_id'];
     public function advertising()
     {
         return $this->belongsTo(Advertising::class);

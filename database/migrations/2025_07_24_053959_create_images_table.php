@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('advertising_id')->constrained('advertisings');
-            $table->string('url');
-
             $table->string('name');
-
-
+            $table->string('url');  // رابط الصورة للعرض
+            $table->string('path'); // المسار الفعلي لحذفها من السيرفر
             $table->timestamps();
         });
     }

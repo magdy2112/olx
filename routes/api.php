@@ -14,6 +14,8 @@ require __DIR__ . '/Subcategoryroutes.php';
 require __DIR__ . '/Modalroutes.php';
 require __DIR__ . '/Submodalroutes.php';
 require __DIR__ . '/Attributeroutes.php';
+require __DIR__ . '/Image.php';
+
 
 
 

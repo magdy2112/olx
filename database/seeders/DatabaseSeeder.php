@@ -822,6 +822,516 @@ class DatabaseSeeder extends Seeder
         DB::table('submodals')->insert($submodals);
 
 
-     
+     $advertisings = [
+            // سيارات (10 إعلانات)
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 1, 'submodal_id' => 1, 'created_at' => now(), 'updated_at' => now()], // تويوتا كورولا
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 1, 'submodal_id' => 2, 'created_at' => now(), 'updated_at' => now()], // تويوتا كامري
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 2, 'submodal_id' => 9, 'created_at' => now(), 'updated_at' => now()], // نيسان صني
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 2, 'submodal_id' => 10, 'created_at' => now(), 'updated_at' => now()], // نيسان التيما
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 3, 'submodal_id' => 17, 'created_at' => now(), 'updated_at' => now()], // ميتسوبيشي لانسر
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 4, 'submodal_id' => 24, 'created_at' => now(), 'updated_at' => now()], // فولكس فاجن جولف
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 5, 'submodal_id' => 31, 'created_at' => now(), 'updated_at' => now()], // كيا بيكانتو
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 7, 'submodal_id' => 57, 'created_at' => now(), 'updated_at' => now()], // مرسيدس E200
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 8, 'submodal_id' => 65, 'created_at' => now(), 'updated_at' => now()], // بي إم دبليو 320i
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 1, 'modal_id' => 8, 'submodal_id' => 70, 'created_at' => now(), 'updated_at' => now()], // بي إم دبليو X5
+
+            // دراجات نارية (5 إعلانات)
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 2, 'modal_id' => 9, 'submodal_id' => 58, 'created_at' => now(), 'updated_at' => now()], // هوندا CBR500R
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 2, 'modal_id' => 10, 'submodal_id' => 68, 'created_at' => now(), 'updated_at' => now()], // ياماها R1
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 2, 'modal_id' => 11, 'submodal_id' => 79, 'created_at' => now(), 'updated_at' => now()], // كاواساكي نينجا
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 2, 'modal_id' => 12, 'submodal_id' => 89, 'created_at' => now(), 'updated_at' => now()], // سوزوكي جي إس إكس آر
+            ['user_id' => 1, 'category_id' => 1, 'sub_category_id' => 2, 'modal_id' => 13, 'submodal_id' => 99, 'created_at' => now(), 'updated_at' => now()], // هارلي ديفيدسون سبورتستر
+
+            // موبايلات (8 إعلانات)
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 14, 'submodal_id' => 106, 'created_at' => now(), 'updated_at' => now()], // آيفون 11
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 14, 'submodal_id' => 110, 'created_at' => now(), 'updated_at' => now()], // آيفون 13
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 15, 'submodal_id' => 118, 'created_at' => now(), 'updated_at' => now()], // سامسونج جالاكسي S20
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 15, 'submodal_id' => 124, 'created_at' => now(), 'updated_at' => now()], // سامسونج جالاكسي S22
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 16, 'submodal_id' => 136, 'created_at' => now(), 'updated_at' => now()], // شاومي ريدمي نوت 10
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 16, 'submodal_id' => 142, 'created_at' => now(), 'updated_at' => now()], // شاومي مي 11
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 17, 'submodal_id' => 148, 'created_at' => now(), 'updated_at' => now()], // أوبو فايند X3
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 3, 'modal_id' => 17, 'submodal_id' => 154, 'created_at' => now(), 'updated_at' => now()], // أوبو رينو 6
+
+            // لابتوبات (7 إعلانات)
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 18, 'submodal_id' => 160, 'created_at' => now(), 'updated_at' => now()], // ماك بوك اير M1
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 18, 'submodal_id' => 164, 'created_at' => now(), 'updated_at' => now()], // ماك بوك برو 13
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 19, 'submodal_id' => 171, 'created_at' => now(), 'updated_at' => now()], // ديل XPS 13
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 20, 'submodal_id' => 188, 'created_at' => now(), 'updated_at' => now()], // HP بافيليون 15
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 21, 'submodal_id' => 198, 'created_at' => now(), 'updated_at' => now()], // لينوفو ثينك باد X1
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 22, 'submodal_id' => 205, 'created_at' => now(), 'updated_at' => now()], // ايسر أسباير
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 4, 'modal_id' => 22, 'submodal_id' => 207, 'created_at' => now(), 'updated_at' => now()], // ايسر نايترو
+
+            // أجهزة كمبيوتر (5 إعلانات)
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 5, 'modal_id' => 23, 'submodal_id' => 213, 'created_at' => now(), 'updated_at' => now()], // آي ماك
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 5, 'modal_id' => 24, 'submodal_id' => 220, 'created_at' => now(), 'updated_at' => now()], // ديل اوبتيبلكس
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 5, 'modal_id' => 25, 'submodal_id' => 234, 'created_at' => now(), 'updated_at' => now()], // HP EliteDesk
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 5, 'modal_id' => 26, 'submodal_id' => 248, 'created_at' => now(), 'updated_at' => now()], // لينوفو ثينك سنتر
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 5, 'modal_id' => 26, 'submodal_id' => 253, 'created_at' => now(), 'updated_at' => now()], // لينوفو ليجيون
+
+            // تلفزيونات (5 إعلانات)
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 6, 'modal_id' => 27, 'submodal_id' => 260, 'created_at' => now(), 'updated_at' => now()], // سامسونج كريستال
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 6, 'modal_id' => 28, 'submodal_id' => 271, 'created_at' => now(), 'updated_at' => now()], // LG UP7550
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 6, 'modal_id' => 29, 'submodal_id' => 281, 'created_at' => now(), 'updated_at' => now()], // سوني برافيا
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 6, 'modal_id' => 30, 'submodal_id' => 291, 'created_at' => now(), 'updated_at' => now()], // TCL P725
+            ['user_id' => 1, 'category_id' => 3, 'sub_category_id' => 6, 'modal_id' => 31, 'submodal_id' => 306, 'created_at' => now(), 'updated_at' => now()], // هايسنس LED
+
+            // عقارات تجارية (5 إعلانات)
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 7, 'modal_id' => 32, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // شقة تجارية
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 7, 'modal_id' => 33, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // مصنع
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 7, 'modal_id' => 32, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // شقة تجارية
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 7, 'modal_id' => 33, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // مصنع
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 7, 'modal_id' => 32, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // شقة تجارية
+
+            // عقارات سكنية (5 إعلانات)
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 8, 'modal_id' => 34, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // شقة سكنية
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 8, 'modal_id' => 35, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // فيلا
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 8, 'modal_id' => 36, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // استوديو
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 8, 'modal_id' => 37, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // دوبلكس
+            ['user_id' => 1, 'category_id' => 2, 'sub_category_id' => 8, 'modal_id' => 34, 'submodal_id' => null, 'created_at' => now(), 'updated_at' => now()], // شقة سكنية
+        ];
+
+        DB::table('advertisings')->insert($advertisings);
+
+
+      
+        $attributesData = [
+            // الإعلان 1 (سيارة تويوتا كورولا)
+            ['advertising_id' => 1, 'attribute_id' => 1, 'value' => '85000'],
+            ['advertising_id' => 1, 'attribute_id' => 2, 'value' => '2018'],
+            ['advertising_id' => 1, 'attribute_id' => 3, 'value' => '45000 كم'],
+            ['advertising_id' => 1, 'attribute_id' => 4, 'value' => 'أبيض'],
+            ['advertising_id' => 1, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 1, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 1, 'attribute_id' => 7, 'value' => 'سيدان'],
+            ['advertising_id' => 1, 'attribute_id' => 8, 'value' => '1600 cc'],
+            ['advertising_id' => 1, 'attribute_id' => 9, 'value' => '120 حصان'],
+            ['advertising_id' => 1, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
+            ['advertising_id' => 1, 'attribute_id' => 11, 'value' => '4'],
+            ['advertising_id' => 1, 'attribute_id' => 12, 'value' => '5'],
+            ['advertising_id' => 1, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 2 (سيارة نيسان صني)
+            ['advertising_id' => 2, 'attribute_id' => 1, 'value' => '65000'],
+            ['advertising_id' => 2, 'attribute_id' => 2, 'value' => '2016'],
+            ['advertising_id' => 2, 'attribute_id' => 3, 'value' => '80000 كم'],
+            ['advertising_id' => 2, 'attribute_id' => 4, 'value' => 'فضي'],
+            ['advertising_id' => 2, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 2, 'attribute_id' => 6, 'value' => 'مانيوال'],
+            ['advertising_id' => 2, 'attribute_id' => 7, 'value' => 'سيدان'],
+            ['advertising_id' => 2, 'attribute_id' => 8, 'value' => '1500 cc'],
+            ['advertising_id' => 2, 'attribute_id' => 9, 'value' => '105 حصان'],
+            ['advertising_id' => 2, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
+            ['advertising_id' => 2, 'attribute_id' => 11, 'value' => '4'],
+            ['advertising_id' => 2, 'attribute_id' => 12, 'value' => '5'],
+            ['advertising_id' => 2, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 3 (سيارة مرسيدس E200)
+            ['advertising_id' => 3, 'attribute_id' => 1, 'value' => '350000'],
+            ['advertising_id' => 3, 'attribute_id' => 2, 'value' => '2020'],
+            ['advertising_id' => 3, 'attribute_id' => 3, 'value' => '25000 كم'],
+            ['advertising_id' => 3, 'attribute_id' => 4, 'value' => 'أسود'],
+            ['advertising_id' => 3, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 3, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 3, 'attribute_id' => 7, 'value' => 'سيدان'],
+            ['advertising_id' => 3, 'attribute_id' => 8, 'value' => '2000 cc'],
+            ['advertising_id' => 3, 'attribute_id' => 9, 'value' => '184 حصان'],
+            ['advertising_id' => 3, 'attribute_id' => 10, 'value' => 'دفع خلفي'],
+            ['advertising_id' => 3, 'attribute_id' => 11, 'value' => '4'],
+            ['advertising_id' => 3, 'attribute_id' => 12, 'value' => '5'],
+            ['advertising_id' => 3, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 4 (دراجة هوندا CBR500R)
+            ['advertising_id' => 4, 'attribute_id' => 16, 'value' => '75000'],
+            ['advertising_id' => 4, 'attribute_id' => 17, 'value' => '2019'],
+            ['advertising_id' => 4, 'attribute_id' => 18, 'value' => '500 cc'],
+            ['advertising_id' => 4, 'attribute_id' => 19, 'value' => '12000 كم'],
+            ['advertising_id' => 4, 'attribute_id' => 20, 'value' => 'أحمر'],
+            ['advertising_id' => 4, 'attribute_id' => 21, 'value' => 'مستعمل'],
+            ['advertising_id' => 4, 'attribute_id' => 22, 'value' => 'بنزين'],
+            ['advertising_id' => 4, 'attribute_id' => 23, 'value' => 'مانيوال'],
+            ['advertising_id' => 4, 'attribute_id' => 24, 'value' => 'سبورت'],
+
+            // الإعلان 5 (دراجة ياماها R1)
+            ['advertising_id' => 5, 'attribute_id' => 16, 'value' => '120000'],
+            ['advertising_id' => 5, 'attribute_id' => 17, 'value' => '2021'],
+            ['advertising_id' => 5, 'attribute_id' => 18, 'value' => '1000 cc'],
+            ['advertising_id' => 5, 'attribute_id' => 19, 'value' => '5000 كم'],
+            ['advertising_id' => 5, 'attribute_id' => 20, 'value' => 'أزرق'],
+            ['advertising_id' => 5, 'attribute_id' => 21, 'value' => 'جديد'],
+            ['advertising_id' => 5, 'attribute_id' => 22, 'value' => 'بنزين'],
+            ['advertising_id' => 5, 'attribute_id' => 23, 'value' => 'مانيوال'],
+            ['advertising_id' => 5, 'attribute_id' => 24, 'value' => 'سبورت'],
+
+            // الإعلان 6 (موبايل آيفون 11)
+            ['advertising_id' => 6, 'attribute_id' => 25, 'value' => '12000'],
+            ['advertising_id' => 6, 'attribute_id' => 26, 'value' => '64 جيجا'],
+            ['advertising_id' => 6, 'attribute_id' => 27, 'value' => '4 جيجا'],
+            ['advertising_id' => 6, 'attribute_id' => 28, 'value' => '6.1 إنش'],
+            ['advertising_id' => 6, 'attribute_id' => 29, 'value' => '12 ميجا بكسل'],
+            ['advertising_id' => 6, 'attribute_id' => 30, 'value' => '3110 مللي أمبير'],
+            ['advertising_id' => 6, 'attribute_id' => 31, 'value' => 'iOS'],
+            ['advertising_id' => 6, 'attribute_id' => 32, 'value' => 'مستعمل'],
+            ['advertising_id' => 6, 'attribute_id' => 33, 'value' => 'نعم'],
+
+            // الإعلان 7 (موبايل سامسونج S20)
+            ['advertising_id' => 7, 'attribute_id' => 25, 'value' => '15000'],
+            ['advertising_id' => 7, 'attribute_id' => 26, 'value' => '128 جيجا'],
+            ['advertising_id' => 7, 'attribute_id' => 27, 'value' => '8 جيجا'],
+            ['advertising_id' => 7, 'attribute_id' => 28, 'value' => '6.2 إنش'],
+            ['advertising_id' => 7, 'attribute_id' => 29, 'value' => '64 ميجا بكسل'],
+            ['advertising_id' => 7, 'attribute_id' => 30, 'value' => '4000 مللي أمبير'],
+            ['advertising_id' => 7, 'attribute_id' => 31, 'value' => 'Android'],
+            ['advertising_id' => 7, 'attribute_id' => 32, 'value' => 'جديد'],
+            ['advertising_id' => 7, 'attribute_id' => 33, 'value' => 'نعم'],
+
+            // الإعلان 8 (لابتوب ماك بوك اير)
+            ['advertising_id' => 8, 'attribute_id' => 34, 'value' => '25000'],
+            ['advertising_id' => 8, 'attribute_id' => 35, 'value' => 'M1'],
+            ['advertising_id' => 8, 'attribute_id' => 36, 'value' => '8 جيجا'],
+            ['advertising_id' => 8, 'attribute_id' => 37, 'value' => '256 جيجا'],
+            ['advertising_id' => 8, 'attribute_id' => 38, 'value' => 'M1 GPU'],
+            ['advertising_id' => 8, 'attribute_id' => 39, 'value' => '13.3 إنش'],
+            ['advertising_id' => 8, 'attribute_id' => 40, 'value' => 'جيدة'],
+            ['advertising_id' => 8, 'attribute_id' => 41, 'value' => 'macOS'],
+            ['advertising_id' => 8, 'attribute_id' => 42, 'value' => 'جديد'],
+
+            // الإعلان 9 (لابتوب ديل XPS)
+            ['advertising_id' => 9, 'attribute_id' => 34, 'value' => '30000'],
+            ['advertising_id' => 9, 'attribute_id' => 35, 'value' => 'i7'],
+            ['advertising_id' => 9, 'attribute_id' => 36, 'value' => '16 جيجا'],
+            ['advertising_id' => 9, 'attribute_id' => 37, 'value' => '512 جيجا'],
+            ['advertising_id' => 9, 'attribute_id' => 38, 'value' => 'NVIDIA'],
+            ['advertising_id' => 9, 'attribute_id' => 39, 'value' => '15.6 إنش'],
+            ['advertising_id' => 9, 'attribute_id' => 40, 'value' => 'جيدة'],
+            ['advertising_id' => 9, 'attribute_id' => 41, 'value' => 'Windows'],
+            ['advertising_id' => 9, 'attribute_id' => 42, 'value' => 'مستعمل'],
+
+            // الإعلان 10 (تلفزيون سامسونج)
+            ['advertising_id' => 10, 'attribute_id' => 50, 'value' => '12000'],
+            ['advertising_id' => 10, 'attribute_id' => 51, 'value' => '55 إنش'],
+            ['advertising_id' => 10, 'attribute_id' => 52, 'value' => '4K'],
+            ['advertising_id' => 10, 'attribute_id' => 53, 'value' => 'نعم'],
+            ['advertising_id' => 10, 'attribute_id' => 54, 'value' => 'LED'],
+            ['advertising_id' => 10, 'attribute_id' => 55, 'value' => 'جديد'],
+            ['advertising_id' => 10, 'attribute_id' => 56, 'value' => 'نعم'],
+
+            ['advertising_id' => 11, 'attribute_id' => 1, 'value' => '180000'],
+            ['advertising_id' => 11, 'attribute_id' => 2, 'value' => '2021'],
+            ['advertising_id' => 11, 'attribute_id' => 3, 'value' => '35000 كم'],
+            ['advertising_id' => 11, 'attribute_id' => 4, 'value' => 'أبيض'],
+            ['advertising_id' => 11, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 11, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 11, 'attribute_id' => 7, 'value' => 'SUV'],
+            ['advertising_id' => 11, 'attribute_id' => 8, 'value' => '2000 cc'],
+            ['advertising_id' => 11, 'attribute_id' => 9, 'value' => '150 حصان'],
+            ['advertising_id' => 11, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
+            ['advertising_id' => 11, 'attribute_id' => 11, 'value' => '5'],
+            ['advertising_id' => 11, 'attribute_id' => 12, 'value' => '5'],
+            ['advertising_id' => 11, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 12 (دراجة كاواساكي نينجا)
+            ['advertising_id' => 12, 'attribute_id' => 16, 'value' => '95000'],
+            ['advertising_id' => 12, 'attribute_id' => 17, 'value' => '2020'],
+            ['advertising_id' => 12, 'attribute_id' => 18, 'value' => '650 cc'],
+            ['advertising_id' => 12, 'attribute_id' => 19, 'value' => '8000 كم'],
+            ['advertising_id' => 12, 'attribute_id' => 20, 'value' => 'أخضر'],
+            ['advertising_id' => 12, 'attribute_id' => 21, 'value' => 'مستعمل'],
+            ['advertising_id' => 12, 'attribute_id' => 22, 'value' => 'بنزين'],
+            ['advertising_id' => 12, 'attribute_id' => 23, 'value' => 'مانيوال'],
+            ['advertising_id' => 12, 'attribute_id' => 24, 'value' => 'سبورت'],
+
+            // الإعلان 13 (موبايل شاومي ريدمي نوت 10)
+            ['advertising_id' => 13, 'attribute_id' => 25, 'value' => '8000'],
+            ['advertising_id' => 13, 'attribute_id' => 26, 'value' => '128 جيجا'],
+            ['advertising_id' => 13, 'attribute_id' => 27, 'value' => '6 جيجا'],
+            ['advertising_id' => 13, 'attribute_id' => 28, 'value' => '6.5 إنش'],
+            ['advertising_id' => 13, 'attribute_id' => 29, 'value' => '48 ميجا بكسل'],
+            ['advertising_id' => 13, 'attribute_id' => 30, 'value' => '5000 مللي أمبير'],
+            ['advertising_id' => 13, 'attribute_id' => 31, 'value' => 'Android'],
+            ['advertising_id' => 13, 'attribute_id' => 32, 'value' => 'مستعمل'],
+            ['advertising_id' => 13, 'attribute_id' => 33, 'value' => 'نعم'],
+
+            // الإعلان 14 (لابتوب لينوفو ثينك باد)
+            ['advertising_id' => 14, 'attribute_id' => 34, 'value' => '22000'],
+            ['advertising_id' => 14, 'attribute_id' => 35, 'value' => 'i5'],
+            ['advertising_id' => 14, 'attribute_id' => 36, 'value' => '8 جيجا'],
+            ['advertising_id' => 14, 'attribute_id' => 37, 'value' => '256 جيجا'],
+            ['advertising_id' => 14, 'attribute_id' => 38, 'value' => 'Intel UHD'],
+            ['advertising_id' => 14, 'attribute_id' => 39, 'value' => '14 إنش'],
+            ['advertising_id' => 14, 'attribute_id' => 40, 'value' => 'جيدة'],
+            ['advertising_id' => 14, 'attribute_id' => 41, 'value' => 'Windows'],
+            ['advertising_id' => 14, 'attribute_id' => 42, 'value' => 'مستعمل'],
+
+            // الإعلان 15 (تلفزيون LG)
+            ['advertising_id' => 15, 'attribute_id' => 50, 'value' => '15000'],
+            ['advertising_id' => 15, 'attribute_id' => 51, 'value' => '65 إنش'],
+            ['advertising_id' => 15, 'attribute_id' => 52, 'value' => '4K'],
+            ['advertising_id' => 15, 'attribute_id' => 53, 'value' => 'نعم'],
+            ['advertising_id' => 15, 'attribute_id' => 54, 'value' => 'LED'],
+            ['advertising_id' => 15, 'attribute_id' => 55, 'value' => 'جديد'],
+            ['advertising_id' => 15, 'attribute_id' => 56, 'value' => 'نعم'],
+
+            // الإعلان 16 (عقار تجاري - مكتب)
+            ['advertising_id' => 16, 'attribute_id' => 57, 'value' => '3500000'],
+            ['advertising_id' => 16, 'attribute_id' => 58, 'value' => 'مكتب'],
+            ['advertising_id' => 16, 'attribute_id' => 59, 'value' => '80 م²'],
+            ['advertising_id' => 16, 'attribute_id' => 60, 'value' => 'وسط البلد'],
+            ['advertising_id' => 16, 'attribute_id' => 61, 'value' => '3'],
+            ['advertising_id' => 16, 'attribute_id' => 62, 'value' => 'جديد'],
+            ['advertising_id' => 16, 'attribute_id' => 63, 'value' => 'مفروش'],
+            ['advertising_id' => 16, 'attribute_id' => 64, 'value' => 'لوكس'],
+            ['advertising_id' => 16, 'attribute_id' => 65, 'value' => 'بيع'],
+
+            // الإعلان 17 (عقار سكني - فيلا)
+            ['advertising_id' => 17, 'attribute_id' => 66, 'value' => '4500000'],
+            ['advertising_id' => 17, 'attribute_id' => 67, 'value' => 'فيلا'],
+            ['advertising_id' => 17, 'attribute_id' => 68, 'value' => '300 م²'],
+            ['advertising_id' => 17, 'attribute_id' => 69, 'value' => '4'],
+            ['advertising_id' => 17, 'attribute_id' => 70, 'value' => '3'],
+            ['advertising_id' => 17, 'attribute_id' => 71, 'value' => '2'],
+            ['advertising_id' => 17, 'attribute_id' => 72, 'value' => 'مفروش'],
+            ['advertising_id' => 17, 'attribute_id' => 73, 'value' => 'سوبر لوكس'],
+            ['advertising_id' => 17, 'attribute_id' => 74, 'value' => '1'],
+            ['advertising_id' => 17, 'attribute_id' => 75, 'value' => '10 سنوات'],
+            ['advertising_id' => 17, 'attribute_id' => 76, 'value' => 'بيع'],
+
+
+            // الإعلان 18 (لابتوب لينوفو ليغيون)
+            ['advertising_id' => 18, 'attribute_id' => 34, 'value' => '25000'],
+            ['advertising_id' => 18, 'attribute_id' => 35, 'value' => 'i7'],
+            ['advertising_id' => 18, 'attribute_id' => 36, 'value' => '16 جيجا'],
+            ['advertising_id' => 18, 'attribute_id' => 42, 'value' => 'مستعمل'],
+
+            // الإعلان 19 (تلفزيون تي سي إل)
+            ['advertising_id' => 19, 'attribute_id' => 50, 'value' => '10000'],
+            ['advertising_id' => 19, 'attribute_id' => 51, 'value' => '50 إنش'],
+            ['advertising_id' => 19, 'attribute_id' => 55, 'value' => 'جديد'],
+
+            // الإعلان 20 (تلفزيون سوني)
+            ['advertising_id' => 20, 'attribute_id' => 50, 'value' => '18000'],
+            ['advertising_id' => 20, 'attribute_id' => 51, 'value' => '55 إنش'],
+            ['advertising_id' => 20, 'attribute_id' => 55, 'value' => 'جديد'],
+
+            // الإعلان 21 (عقار تجاري - محل)
+            ['advertising_id' => 21, 'attribute_id' => 57, 'value' => '2000000'],
+            ['advertising_id' => 21, 'attribute_id' => 58, 'value' => 'محل'],
+            ['advertising_id' => 21, 'attribute_id' => 59, 'value' => '50 م²'],
+            ['advertising_id' => 21, 'attribute_id' => 65, 'value' => 'بيع'],
+
+            // الإعلان 22 (عقار تجاري - مستودع)
+            ['advertising_id' => 22, 'attribute_id' => 57, 'value' => '1500000'],
+            ['advertising_id' => 22, 'attribute_id' => 58, 'value' => 'مستودع'],
+            ['advertising_id' => 22, 'attribute_id' => 59, 'value' => '200 م²'],
+            ['advertising_id' => 22, 'attribute_id' => 65, 'value' => 'بيع'],
+
+            // الإعلان 23 (عقار سكني - دوبلكس)
+            ['advertising_id' => 23, 'attribute_id' => 66, 'value' => '3000000'],
+            ['advertising_id' => 23, 'attribute_id' => 67, 'value' => 'دوبلكس'],
+            ['advertising_id' => 23, 'attribute_id' => 68, 'value' => '180 م²'],
+            ['advertising_id' => 23, 'attribute_id' => 76, 'value' => 'بيع'],
+
+            // الإعلان 24 (عقار سكني - بنتهاوس)
+            ['advertising_id' => 24, 'attribute_id' => 66, 'value' => '4000000'],
+            ['advertising_id' => 24, 'attribute_id' => 67, 'value' => 'بنتهاوس'],
+            ['advertising_id' => 24, 'attribute_id' => 68, 'value' => '200 م²'],
+            ['advertising_id' => 24, 'attribute_id' => 76, 'value' => 'بيع'],
+            // الإعلان 25 (عقار سكني - شقة)
+            ['advertising_id' => 25, 'attribute_id' => 66, 'value' => '1800000'],
+            ['advertising_id' => 25, 'attribute_id' => 67, 'value' => 'شقة'],
+            ['advertising_id' => 25, 'attribute_id' => 68, 'value' => '120 م²'],
+            ['advertising_id' => 25, 'attribute_id' => 69, 'value' => '2'],
+            ['advertising_id' => 25, 'attribute_id' => 70, 'value' => '1'],
+            ['advertising_id' => 25, 'attribute_id' => 71, 'value' => '1'],
+            ['advertising_id' => 25, 'attribute_id' => 72, 'value' => 'نعم'],
+            ['advertising_id' => 25, 'attribute_id' => 73, 'value' => 'لوكس'],
+            ['advertising_id' => 25, 'attribute_id' => 74, 'value' => '3'],
+            ['advertising_id' => 25, 'attribute_id' => 75, 'value' => '3 سنوات'],
+            ['advertising_id' => 25, 'attribute_id' => 76, 'value' => 'بيع'],
+
+            // الإعلان 26 (عقار سكني - فيلا)
+            ['advertising_id' => 26, 'attribute_id' => 66, 'value' => '5000000'],
+            ['advertising_id' => 26, 'attribute_id' => 67, 'value' => 'فيلا'],
+            ['advertising_id' => 26, 'attribute_id' => 68, 'value' => '400 م²'],
+            ['advertising_id' => 26, 'attribute_id' => 69, 'value' => '5'],
+            ['advertising_id' => 26, 'attribute_id' => 70, 'value' => '4'],
+            ['advertising_id' => 26, 'attribute_id' => 71, 'value' => '3'],
+            ['advertising_id' => 26, 'attribute_id' => 72, 'value' => 'نعم'],
+            ['advertising_id' => 26, 'attribute_id' => 73, 'value' => 'سوبر لوكس'],
+            ['advertising_id' => 26, 'attribute_id' => 74, 'value' => '2'],
+            ['advertising_id' => 26, 'attribute_id' => 75, 'value' => '5 سنوات'],
+            ['advertising_id' => 26, 'attribute_id' => 76, 'value' => 'بيع'],
+
+            ['advertising_id' => 25, 'attribute_id' => 34, 'value' => '22000'],
+            ['advertising_id' => 25, 'attribute_id' => 35, 'value' => 'i5'],
+            ['advertising_id' => 25, 'attribute_id' => 36, 'value' => '8 جيجا'],
+            ['advertising_id' => 25, 'attribute_id' => 37, 'value' => '512 جيجا'],
+            ['advertising_id' => 25, 'attribute_id' => 38, 'value' => 'GTX 1650'],
+            ['advertising_id' => 25, 'attribute_id' => 42, 'value' => 'مستعمل'],
+
+            // الإعلان 26 (موبايل أوبو رينو 5)
+            ['advertising_id' => 26, 'attribute_id' => 25, 'value' => '9000'],
+            ['advertising_id' => 26, 'attribute_id' => 26, 'value' => '128 جيجا'],
+            ['advertising_id' => 26, 'attribute_id' => 27, 'value' => '8 جيجا'],
+            ['advertising_id' => 26, 'attribute_id' => 32, 'value' => 'مستعمل'],
+
+            // الإعلان 27 (سيارة بي إم دبليو X5)
+            ['advertising_id' => 27, 'attribute_id' => 1, 'value' => '450000'],
+            ['advertising_id' => 27, 'attribute_id' => 2, 'value' => '2019'],
+            ['advertising_id' => 27, 'attribute_id' => 3, 'value' => '60000 كم'],
+            ['advertising_id' => 27, 'attribute_id' => 4, 'value' => 'أسود'],
+            ['advertising_id' => 27, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 27, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 27, 'attribute_id' => 7, 'value' => 'SUV'],
+            ['advertising_id' => 27, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 28 (دراجة هارلي ديفيدسون)
+            ['advertising_id' => 28, 'attribute_id' => 16, 'value' => '150000'],
+            ['advertising_id' => 28, 'attribute_id' => 17, 'value' => '2020'],
+            ['advertising_id' => 28, 'attribute_id' => 18, 'value' => '1200 cc'],
+            ['advertising_id' => 28, 'attribute_id' => 21, 'value' => 'مستعمل'],
+
+            // الإعلان 29 (تلفزيون هايسنس)
+            ['advertising_id' => 29, 'attribute_id' => 50, 'value' => '8000'],
+            ['advertising_id' => 29, 'attribute_id' => 51, 'value' => '43 إنش'],
+            ['advertising_id' => 29, 'attribute_id' => 55, 'value' => 'جديد'],
+
+            // الإعلان 30 (عقار تجاري - عيادة)
+            ['advertising_id' => 30, 'attribute_id' => 57, 'value' => '2800000'],
+            ['advertising_id' => 30, 'attribute_id' => 58, 'value' => 'عيادة'],
+            ['advertising_id' => 30, 'attribute_id' => 59, 'value' => '90 م²'],
+            ['advertising_id' => 30, 'attribute_id' => 65, 'value' => 'بيع'],
+
+            // الإعلان 31 (موبايل شاومي ريدمي نوت 11)
+            ['advertising_id' => 31, 'attribute_id' => 25, 'value' => '7000'],
+            ['advertising_id' => 31, 'attribute_id' => 26, 'value' => '64 جيجا'],
+            ['advertising_id' => 31, 'attribute_id' => 27, 'value' => '4 جيجا'],
+            ['advertising_id' => 31, 'attribute_id' => 32, 'value' => 'جديد'],
+
+            // الإعلان 32 (لابتوب ماك بوك برو)
+            ['advertising_id' => 32, 'attribute_id' => 34, 'value' => '35000'],
+            ['advertising_id' => 32, 'attribute_id' => 35, 'value' => 'M1 Pro'],
+            ['advertising_id' => 32, 'attribute_id' => 36, 'value' => '16 جيجا'],
+            ['advertising_id' => 32, 'attribute_id' => 42, 'value' => 'جديد'],
+
+            // الإعلان 33 (سيارة ميتسوبيشي باجيرو)
+            ['advertising_id' => 33, 'attribute_id' => 1, 'value' => '220000'],
+            ['advertising_id' => 33, 'attribute_id' => 2, 'value' => '2018'],
+            ['advertising_id' => 33, 'attribute_id' => 3, 'value' => '70000 كم'],
+            ['advertising_id' => 33, 'attribute_id' => 4, 'value' => 'أبيض'],
+            ['advertising_id' => 33, 'attribute_id' => 5, 'value' => 'ديزل'],
+            ['advertising_id' => 33, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 33, 'attribute_id' => 7, 'value' => 'SUV'],
+            ['advertising_id' => 33, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 34 (دراجة هوندا سي بي آر 1000)
+            ['advertising_id' => 34, 'attribute_id' => 16, 'value' => '130000'],
+            ['advertising_id' => 34, 'attribute_id' => 17, 'value' => '2021'],
+            ['advertising_id' => 34, 'attribute_id' => 18, 'value' => '1000 cc'],
+            ['advertising_id' => 34, 'attribute_id' => 21, 'value' => 'مستعمل'],
+
+            // الإعلان 35 (تلفزيون تي سي إل 4K)
+            ['advertising_id' => 35, 'attribute_id' => 50, 'value' => '12000'],
+            ['advertising_id' => 35, 'attribute_id' => 51, 'value' => '55 إنش'],
+            ['advertising_id' => 35, 'attribute_id' => 55, 'value' => 'جديد'],
+
+            // الإعلان 36 (عقار سكني - تاون هاوس)
+            ['advertising_id' => 36, 'attribute_id' => 66, 'value' => '2800000'],
+            ['advertising_id' => 36, 'attribute_id' => 67, 'value' => 'تاون هاوس'],
+            ['advertising_id' => 36, 'attribute_id' => 68, 'value' => '160 م²'],
+            ['advertising_id' => 36, 'attribute_id' => 76, 'value' => 'بيع'],
+
+            // الإعلان 37 (موبايل سامسونج A52)
+            ['advertising_id' => 37, 'attribute_id' => 25, 'value' => '8500'],
+            ['advertising_id' => 37, 'attribute_id' => 26, 'value' => '128 جيجا'],
+            ['advertising_id' => 37, 'attribute_id' => 27, 'value' => '6 جيجا'],
+            ['advertising_id' => 37, 'attribute_id' => 32, 'value' => 'جديد'],
+
+            // الإعلان 38 (لابتوب ديل انسبيرون)
+            ['advertising_id' => 38, 'attribute_id' => 34, 'value' => '15000'],
+            ['advertising_id' => 38, 'attribute_id' => 35, 'value' => 'i5'],
+            ['advertising_id' => 38, 'attribute_id' => 36, 'value' => '8 جيجا'],
+            ['advertising_id' => 38, 'attribute_id' => 42, 'value' => 'مستعمل'],
+
+            // الإعلان 39 (سيارة كيا سيراتو)
+            ['advertising_id' => 39, 'attribute_id' => 1, 'value' => '140000'],
+            ['advertising_id' => 39, 'attribute_id' => 2, 'value' => '2019'],
+            ['advertising_id' => 39, 'attribute_id' => 3, 'value' => '50000 كم'],
+            ['advertising_id' => 39, 'attribute_id' => 4, 'value' => 'أبيض'],
+            ['advertising_id' => 39, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 39, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 39, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 40 (دراجة سوزوكي جي اس اكس اس 1000)
+            ['advertising_id' => 40, 'attribute_id' => 16, 'value' => '140000'],
+            ['advertising_id' => 40, 'attribute_id' => 17, 'value' => '2022'],
+            ['advertising_id' => 40, 'attribute_id' => 18, 'value' => '1000 cc'],
+            ['advertising_id' => 40, 'attribute_id' => 21, 'value' => 'جديد'],
+
+            // الإعلان 41 (تلفزيون سامسونج QLED)
+            ['advertising_id' => 41, 'attribute_id' => 50, 'value' => '25000'],
+            ['advertising_id' => 41, 'attribute_id' => 51, 'value' => '65 إنش'],
+            ['advertising_id' => 41, 'attribute_id' => 55, 'value' => 'جديد'],
+
+            // الإعلان 42 (عقار تجاري - صيدلية)
+            ['advertising_id' => 42, 'attribute_id' => 57, 'value' => '3200000'],
+            ['advertising_id' => 42, 'attribute_id' => 58, 'value' => 'صيدلية'],
+            ['advertising_id' => 42, 'attribute_id' => 59, 'value' => '70 م²'],
+            ['advertising_id' => 42, 'attribute_id' => 65, 'value' => 'بيع'],
+
+            // الإعلان 43 (موبايل آيفون 13)
+            ['advertising_id' => 43, 'attribute_id' => 25, 'value' => '25000'],
+            ['advertising_id' => 43, 'attribute_id' => 26, 'value' => '128 جيجا'],
+            ['advertising_id' => 43, 'attribute_id' => 27, 'value' => '4 جيجا'],
+            ['advertising_id' => 43, 'attribute_id' => 32, 'value' => 'جديد'],
+
+            // الإعلان 44 (لابتوب اسوس روج)
+            ['advertising_id' => 44, 'attribute_id' => 34, 'value' => '28000'],
+            ['advertising_id' => 44, 'attribute_id' => 35, 'value' => 'i7'],
+            ['advertising_id' => 44, 'attribute_id' => 36, 'value' => '16 جيجا'],
+            ['advertising_id' => 44, 'attribute_id' => 42, 'value' => 'مستعمل'],
+
+            // الإعلان 45 (سيارة فولكس فاجن جولف)
+            ['advertising_id' => 45, 'attribute_id' => 1, 'value' => '180000'],
+            ['advertising_id' => 45, 'attribute_id' => 2, 'value' => '2020'],
+            ['advertising_id' => 45, 'attribute_id' => 3, 'value' => '40000 كم'],
+            ['advertising_id' => 45, 'attribute_id' => 4, 'value' => 'أزرق'],
+            ['advertising_id' => 45, 'attribute_id' => 5, 'value' => 'بنزين'],
+            ['advertising_id' => 45, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+            ['advertising_id' => 45, 'attribute_id' => 13, 'value' => 'مستعمل'],
+
+            // الإعلان 46 (دراجة ياماها MT-07)
+            ['advertising_id' => 46, 'attribute_id' => 16, 'value' => '95000'],
+            ['advertising_id' => 46, 'attribute_id' => 17, 'value' => '2021'],
+            ['advertising_id' => 46, 'attribute_id' => 18, 'value' => '700 cc'],
+            ['advertising_id' => 46, 'attribute_id' => 21, 'value' => 'مستعمل'],
+
+            // الإعلان 47 (تلفزيون LG OLED)
+            ['advertising_id' => 47, 'attribute_id' => 50, 'value' => '30000'],
+            ['advertising_id' => 47, 'attribute_id' => 51, 'value' => '55 إنش'],
+            ['advertising_id' => 47, 'attribute_id' => 55, 'value' => 'جديد'],
+
+            // الإعلان 48 (عقار سكني - دوبلكس)
+            ['advertising_id' => 48, 'attribute_id' => 66, 'value' => '3200000'],
+            ['advertising_id' => 48, 'attribute_id' => 67, 'value' => 'دوبلكس'],
+            ['advertising_id' => 48, 'attribute_id' => 68, 'value' => '200 م²'],
+            ['advertising_id' => 48, 'attribute_id' => 76, 'value' => 'بيع'],
+
+            // الإعلان 49 (موبايل ون بلس 9)
+            ['advertising_id' => 49, 'attribute_id' => 25, 'value' => '12000'],
+            ['advertising_id' => 49, 'attribute_id' => 26, 'value' => '128 جيجا'],
+            ['advertising_id' => 49, 'attribute_id' => 27, 'value' => '8 جيجا'],
+            ['advertising_id' => 49, 'attribute_id' => 32, 'value' => 'مستعمل'],
+
+            // الإعلان 50 (لابتوب لينوفو يوجا)
+            ['advertising_id' => 50, 'attribute_id' => 34, 'value' => '20000'],
+            ['advertising_id' => 50, 'attribute_id' => 35, 'value' => 'i5'],
+            ['advertising_id' => 50, 'attribute_id' => 36, 'value' => '8 جيجا'],
+            ['advertising_id' => 50, 'attribute_id' => 42, 'value' => 'مستعمل'],
+    
+           
+        ];
+
+        DB::table('advertising_attribute')->insert($attributesData);
     }
 }
+   

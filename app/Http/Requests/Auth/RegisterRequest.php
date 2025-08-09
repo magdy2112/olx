@@ -33,7 +33,9 @@ class RegisterRequest extends FormRequest
             'password' => 'required|string|confirmed',
             'password_confirmation' => 'required|string|',
             'provider' => 'nullable',
-            rule::in(['google', 'facebook', 'twitter', 'github', 'linkedin', 'email'])
+            rule::in(['google', 'facebook', 'twitter', 'github', 'linkedin', 'email']),
+            'role'=> rule::in(['admin', 'user', 'guest','prouser']),
+            
 
 
 
