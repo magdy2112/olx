@@ -57,7 +57,7 @@ class SubCategory extends Model
     }
     public function attributes()
     {
-        return $this->hasMany(CustomAttribute::class);
+        return $this->hasMany(CategoryAttribute::class);
     }
    
 }

@@ -14,7 +14,7 @@ class Newadvertisingrequest extends FormRequest
     public function authorize(): bool
     {
         //   return Auth::check() ; 
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -25,18 +25,20 @@ class Newadvertisingrequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
-            'price' => 'nullable|numeric|min:0',
-            'purpose' => 'required|in:sell,buy',
-            'category_id' => 'required|exists:categories,id',
-            'sub_category_id' => 'required|exists:sub_categories,id',
-            'modal_id' => 'nullable|exists:modals,id',
-            'submodal_id' => 'nullable|exists:submodals,id',
-            'status' => 'nullable|string|in:active,inactive',
-            'user_id' => 'nullable|exists:users,id',
-               'attributes' => 'nullable|array',
-            'attributes.*' => 'nullable|string|max:255',
+          'title' => 'required|string|max:255',
+        'description' => 'nullable|string|max:1000',
+        'price' => 'nullable|numeric|min:0',
+        'purpose' => 'required|in:sell,buy',
+        'category_id' => 'required|exists:categories,id',
+        'sub_category_id' => 'required|exists:sub_categories,id',
+        'modal_id' => 'nullable|exists:modals,id',
+        'submodal_id' => 'nullable|exists:submodals,id',
+        'status' => 'nullable|string|in:active,inactive',
+        'user_id' => 'nullable|exists:users,id',
+        'categoryattributes' => 'required|array',
+        'categoryattributes.*' => 'required|string|max:255',
+        'images' => 'required|array|min:1|max:8',
+        'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120',
           
         ];
    

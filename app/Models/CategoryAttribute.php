@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
   use Illuminate\Database\Eloquent\Casts\Attribute;
-class CustomAttribute extends Model
+class CategoryAttribute extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'sub_category_id'];
-    protected $table = 'attributes';
+    protected $table = 'categoryattributes';
 
        protected function name(): Attribute
     {
@@ -25,7 +25,7 @@ class CustomAttribute extends Model
 
     public function advertisings()
     {
-        return $this->belongsToMany(Advertising::class, 'advertising_attribute')
+        return $this->belongsToMany(Advertising::class, 'advertising_categoryattribute')
             ->withPivot('value')
             ->withTimestamps();
     }

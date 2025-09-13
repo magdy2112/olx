@@ -38,13 +38,15 @@ class Advertising extends Model
         return $this->hasMany(image::class);
     }
 
-    public function attributes()
+    public function categoryattributes()
     {
-        return $this->belongsToMany(CustomAttribute::class, 'advertising_attribute')
+        return $this->belongsToMany(CategoryAttribute::class, 'advertising_categoryattribute')
             ->withPivot('value')
 
             ->withTimestamps();
     }
+
+    
 
     
     public function location()

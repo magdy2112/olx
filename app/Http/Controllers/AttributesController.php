@@ -8,41 +8,27 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Attributes\Updateattributerequest;
 use App\Http\Requests\Attributes\AddsubattributeRequest;
 use App\Http\Requests\Attributes\Updatesubattributerequest;
+use App\Models\CategoryAttribute;
 use App\Models\CustomAttribute;
+use App\Models\SubCategory;
 use App\Traits\Httpresponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
 
 
 class AttributesController extends Controller
 {
     use Httpresponse;
-    // public function attributewithsubattributes($attributeId)
-    // {
-    //     try {
-    //         $att = CustomAttribute::find($attributeId);
-    //         if (!$att) {
-    //             return $this->response(false, 404, 'Attribute not found');
-    //         }
-    //         $attribute = CustomAttribute::with('subattributes')->find($attributeId);
-    //         if ($attribute->subattributes->isEmpty()) {
-    //             return $this->response(true, 200, 'Subattribute not found', $attribute);
-    //         }
-
-    //         return $this->response(true, 200, 'success', $attribute);
-    //     } catch (\Throwable $th) {
-    //         return $this->response(false, 500, $th->getMessage());
-    //     }
-    // }
 
     public function addattribute(Addattributerequest $request)
     {
         try {
             $validatedData = $request->validated();
-            if (CustomAttribute::where('name', $validatedData['name'])->where('sub_category_id', $validatedData['sub_category_id'])->exists()) {
+            if (CategoryAttribute::where('name', $validatedData['name'])->where('sub_category_id', $validatedData['sub_category_id'])->exists()) {
                 return $this->response(false, 400, 'Attribute  already exists');
             }
-            $attribute = CustomAttribute::create($validatedData);
+            $attribute = CategoryAttribute::create($validatedData);
             return $this->response(true, 201, 'Attribute created successfully', $attribute);
         } catch (\Throwable $th) {
             return $this->response(false, 500, $th->getMessage());
@@ -53,11 +39,11 @@ class AttributesController extends Controller
     {
         try {
             $validatedData = $request->validated();
-            $attribute = CustomAttribute::find($id);
+            $attribute = CategoryAttribute::find($id);
             if (!$attribute) {
                 return $this->response(false, 404, 'Attribute not found');
             }
-            if (CustomAttribute::where('name', $validatedData['name'])->where('sub_category_id', $validatedData['sub_category_id'])->where('id', '!=', $id)->exists()) {
+            if (CategoryAttribute::where('name', $validatedData['name'])->where('sub_category_id', $validatedData['sub_category_id'])->where('id', '!=', $id)->exists()) {
                 return $this->response(false, 400, 'Attribute with this name already exists in this sub-category');
             }
             $attribute->update($validatedData);
@@ -80,7 +66,7 @@ class AttributesController extends Controller
                 return $this->response(false, 401, 'Unauthorized', null);
             }
             return DB::transaction(function () use ($id) {
-                $attribute = CustomAttribute::find($id);
+                $attribute = CategoryAttribute::find($id);
                 if (!$attribute) {
                     return $this->response(false, 404, 'Attribute not found');
                 }
@@ -98,19 +84,37 @@ class AttributesController extends Controller
         }
     }
 
-    public function getattributesbysubcategory($subCategoryId)
+
+
+    public function getAttributes(Request $request)
     {
         try {
-            $attributes = CustomAttribute::with(relations: 'attributes')->where('sub_category_id', $subCategoryId)->get();
-            if ($attributes->isEmpty()) {
-                return $this->response(true, 200, 'Attributes not found', $attributes);
+            $request->validate([
+                'sub_category_id' => 'required|exists:sub_categories,id',
+            ]);
+
+            $subCategory = SubCategory::with('attributes')
+                ->where('id', $request->sub_category_id)
+                ->first();
+
+            if (!$subCategory) {
+                return $this->response(false, 404, 'SubCategory not found');
             }
-            return $this->response(true, 200, 'success', $attributes);
+
+            $attributes = $subCategory->attributes->map(function ($attribute) {
+                return [
+                    'id'   => $attribute->id,
+                    'name' => $attribute->name,
+                ];
+            });
+
+            return $this->response(true, 200, 'Attributes fetched successfully', [
+                'sub_category' => $subCategory->name,
+                'attributes' => $attributes
+            ]);
         } catch (\Throwable $th) {
             return $this->response(false, 500, $th->getMessage());
         }
     }
-
-
 
 }

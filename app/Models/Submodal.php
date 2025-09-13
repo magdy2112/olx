@@ -10,11 +10,7 @@ class Submodal extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'modal_id'];
-    public function updateFinalStatus()
-    {
-        $this->isfinal = 'final'; // آخر مستوى
-        $this->save();
-    }
+
 
 
 

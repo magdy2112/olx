@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert($categories);
 
         // 2) Attributes for each category
-       $attributes = [
+       $categoryattributes = [
     // Cars (sub_category_id = 1)
     
     ['id' => 2, 'name' => 'Year', 'sub_category_id' => 1],
@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
  
 ];
 
-        DB::table('attributes')->insert($attributes);
+        DB::table('categoryattributes')->insert($categoryattributes);
 
 //         $subAttributes = [
 //     // Cars (sub_category_id = 1)

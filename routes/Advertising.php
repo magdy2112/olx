@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdvertisingController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/advertising', [AdvertisingController::class, 'getAttributes']);
+
 Route::post('/storeadvertising', [AdvertisingController::class, 'store']);
 Route::get('/advertising/{id}', [AdvertisingController::class, 'show']);
 Route::put('/advertising/{id}', [AdvertisingController::class, 'update']);
