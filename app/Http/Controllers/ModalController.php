@@ -153,24 +153,5 @@ class ModalController extends Controller
           }
      }
 
-     public function isfinal()
-     {
-          $modals = Modal::all();
-          foreach ($modals as $modal) {
-               $modal->updateFinalStatus();
-          }
-
-
-          $subcategorys = subCategory::all();
-          foreach ($subcategorys as $subcategory) {
-               $subcategory->updateFinalStatus();
-          }
-
-
-
-
-
-
-          return $this->response(true, 200, 'success');
-     }
+ 
 }

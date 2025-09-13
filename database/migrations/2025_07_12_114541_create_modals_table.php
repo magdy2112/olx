@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('modals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
             $table->foreignId('sub_category_id')->nullable()->constrained('sub_categories');
-            $table->string('isfinal')->nullable();
             $table->timestamps();
         });
     }

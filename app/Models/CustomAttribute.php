@@ -39,10 +39,8 @@ class CustomAttribute extends Model
     {
         return $this->belongsTo(SubCategory::class);
     }
-
-    public function subattributes (){
-        return $this->hasMany(Subattribute::class,'attribute_id');
-    }
+ 
+  
 }
 
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('advertising_id')->constrained('advertisings');
             $table->foreignId('attribute_id')->constrained('attributes');
-            $table->text('value');
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }

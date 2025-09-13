@@ -2,209 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Advertising\Newadvertisingrequest;
 use App\Models\Advertising;
-use App\Models\Category;
-use App\Models\Chain;
-use App\Models\Modal;
-use App\Models\SubCategory;
-use App\Models\Submodal;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Models\CustomAttribute;
+use App\Models\SubCategory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
-use App\Jobs\Homescreen;
-use Illuminate\Validation\Rules\Exists;
+use App\Traits\Httpresponse;
+use Illuminate\Support\Facades\Auth;
+
+// use Illuminate\Support\Facades\Request;
 
 class AdvertisingController extends Controller
 {
-    public function home()
+    use Httpresponse;
+
+
+
+    public function getAttributes(Request $request)
+    {
+        $request->validate([
+         
+            'sub_category_id' => 'required|exists:sub_categories,id',
+        ]);
+
+        $attributes = SubCategory::with('attributes')
+            ->where('id', $request->sub_category_id)
+            ->get();
+           
+        return $this->response(true, 200, 'Attributes fetched successfully', ['attributes' => $attributes]);
+    }
+    public function store(Newadvertisingrequest $request)
     {
 
-        $category = Category::select('id', 'name')->get();
 
+        $data = $request->validated();
+         if (
+        Cache::has('destroy_subcategory') ||
+        Cache::has('destroy_category') ||
+        Cache::has('destroy_modal') ||
+        Cache::has('destroy_submodal') ||
+        Cache::has('destroy_attribute')
+    ) {
+        return $this->response(false, 429, 'we are updating our system, please try again later');
+    }
 
-        $alladd  = Advertising::with(['attributes' => function ($query) {
-            $query->select('attributes.id', 'attributes.name');
-        }])->orderBy('created_at', direction: 'desc')->Paginate(10);
+        $advertising = Advertising::create([
+            'user_id' => Auth::id(),
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'purpose' => $data['purpose'],
+            'category_id' => $data['category_id'],
+            'sub_category_id' => $data['sub_category_id'],
+            'modal_id' => $data['modal_id'],
+            'submodal_id' => $data['submodal_id'],
+            'status' => $data['status'] ?? 'active',
 
-        // return response()->json(
-        //     [
-        //         'category' => $category,
-        //         'data' => $alladd,
-        //     ]
-        // );
-
-        $formatted = $alladd->map(function ($ad) {
-            return [
-                'ad_id' => $ad->id,
-                'ad_user' => $ad->user_id,
-                'ad_category' => $ad->category->name,
-                'ad_att' => $ad->attributes->map(function ($att) {
-                    return [
-                        'id' => $att->id,
-                        'name' => $att->name,
-                        'value' => $att->pivot->value
-                    ];
-                })
-
-            ];
-        });
-        return response()->json([
-            'category' => $category,
-            'data' => $formatted,
-            'pagination' => [
-                'current_page' => $alladd->currentPage(),
-                'last_page' => $alladd->lastPage(),
-                'next_page_url' => $alladd->nextPageUrl(),
-                'prev_page_url' => $alladd->previousPageUrl(),
-                'total' => $alladd->total(),
-            ]
 
         ]);
-    }
-
-
-
-
-
-    public function selectcategory($categoryid)
-    {
-
-        $category = Category::where('id', $categoryid)->first();
-
-        $subcategoryid = SubCategory::where('category_id', $categoryid)->pluck('id');
-        $subcategory = SubCategory::where('category_id', $categoryid)->select('name', 'id')->get();
-
-
-        $addsid  = advertising::where('category_id', $categoryid)->pluck('id');
-
-        $alladd  = Advertising::with(['attributes' => function ($query) {
-            $query->select('attributes.id', 'attributes.name');
-        }])->where('category_id', $categoryid)->whereIn('id', $addsid)
-            ->orderBy('created_at', direction: 'desc')->Paginate(10);
-
-
-        $formatted = $alladd->map(function ($ad) {
-
-            $subcategory = SubCategory::where('category_id', $ad->category_id)->select('name', 'id')->get();
-
-            return [
-                'ad_id' => $ad->id,
-                'ad_user' => $ad->user_id,
-                'ad_category' => $ad->category->name,
-                // 'add_subcategory' =>  $subcategory,
-                'ad_att' => $ad->attributes->map(function ($att) {
-                    return [
-                        'id' => $att->id,
-                        'name' => $att->name,
-                        'value' => $att->pivot->value
-                    ];
-                })
-
-            ];
-        });
-
-
-
-        return response()->json([
-
-            // 'category' => $category,
-            'subcategory' => $subcategory,
-            'alladd' => $formatted,
-            // 'add_subcategory'
-            // 'alladd' => $alladd
-
-
-
-        ]);;
-    }
-
-
-
-    public function selectsubcategory($subcategoryid)
-    {
-
-        $subcategory = SubCategory::where('id',   $subcategoryid)->first();
-        $category  =  Category::where('id', $subcategory->category_id)->pluck('name');
-        $modal = Modal::where('sub_category_id', $subcategoryid)->whereDoesntHave('submodals')->get();
-        if ($modal->isEmpty()) {
-            $modalid = Modal::where('sub_category_id', $subcategoryid)->pluck('id');
-            $submodal = Submodal::whereIn('modal_id', $modalid)->whereHas('modal')->get();
-
-            return response()->json([
-                'category' => $category,
-                'subcategory' => $subcategory,
-                'submodal' => $submodal,
-
-            ]);
+       
+        if (!empty($data['attributes'])) {
+        $attachData = [];
+        foreach ($data['attributes'] as $attributeId => $value) {
+            $attachData[$attributeId] = ['value' => $value];
         }
-        return response()->json([
 
-            'category' => $category,
-            'subcategory' => $subcategory,
-            'modals' =>  $modal,
+        // ربط attributes بالـ pivot
+        $advertising->attributes()->sync($attachData);
+     
+         return $this->response(true, 201, 'Advertising created successfully', ['advertising' => $advertising]);
+       
 
-        ]);
+     
     }
-
-
-    public function selectproduct() {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function list1(Request $request)
-    {
-
-        $data = [
-            'user_id' => 1,
-            'category_id' => 3,
-
-        ];
-        $category = Category::where('id', $data['category_id'])->pluck('name', 'id');
-        $subcatogory = SubCategory::where('category_id', $data['category_id'])->pluck('name', 'id');
-        return response()->json([
-            'category' =>      $category,
-            'subcatogory' => $subcatogory,
-        ]);
-    }
-
-    public function list2()
-    {
-        // $x = cache::get('$subcatogory');
-        $specialsubcategoryid = [
-
-            'id' => 6
-        ];
-        $modal = Modal::where('sub_category_id', $specialsubcategoryid['id'])->get();
-        return response()->json([
-            'modal' =>    $modal
-        ]);
-    }
-
-
-    public function list3()
-    {
-
-        $specialmodalid = [
-
-            'id' => 9
-        ];
-        $submodal = Submodal::where('modal_id', $specialmodalid['id'])->get();
-        return response()->json([
-            'modal' =>  $submodal
-        ]);
     }
 }

@@ -22,11 +22,7 @@ class SubCategory extends Model
         );
     }
 
-    public function updateFinalStatus()
-    {
-        $this->isfinal = $this->modals()->count() == 0 ? 'final' : 'not_final';
-        $this->save();
-    }
+
 
  
 
@@ -58,6 +54,10 @@ class SubCategory extends Model
     public function advertisings()
     {
         return $this->hasMany(Advertising::class);
+    }
+    public function attributes()
+    {
+        return $this->hasMany(CustomAttribute::class);
     }
    
 }

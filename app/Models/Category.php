@@ -39,15 +39,7 @@ class Category extends Model
     {
         return $this->hasMany(Advertising::class);
     }
-    /**
-     * Get the attributes for the category.
-     */
-    // public function attributes()
-    // {
-    //     return $this->belongsToMany(CustomAttribute::class,'attribute_category')
 
-    //         ->withTimestamps();
-    // }
     public function attributes()
     {
         return $this->hasMany(CustomAttribute::class);

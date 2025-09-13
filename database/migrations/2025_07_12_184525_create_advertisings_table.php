@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('advertisings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('title')->default(''); // Added title column for advertising
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2)->nullable();
+            $table->enum('purpose', ['sell', 'buy'])->nullable();
+            $table->string('status')->default('active'); // Added status column for advertising status
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('sub_category_id')->nullable()->constrained('sub_categories');
             $table->foreignId('modal_id')->nullable()->constrained('modals');

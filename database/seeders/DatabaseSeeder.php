@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         // 2) Attributes for each category
        $attributes = [
     // Cars (sub_category_id = 1)
-    ['id' => 1, 'name' => 'Price', 'sub_category_id' => 1],
+    
     ['id' => 2, 'name' => 'Year', 'sub_category_id' => 1],
     ['id' => 3, 'name' => 'Mileage', 'sub_category_id' => 1],
     ['id' => 4, 'name' => 'Color', 'sub_category_id' => 1],
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
     ['id' => 15, 'name' => 'Insurance', 'sub_category_id' => 1],
 
     // Motorcycles (sub_category_id = 2)
-    ['id' => 16, 'name' => 'Price', 'sub_category_id' => 2],
+   
     ['id' => 17, 'name' => 'Year', 'sub_category_id' => 2],
     ['id' => 18, 'name' => 'Engine Capacity (CC)', 'sub_category_id' => 2],
     ['id' => 19, 'name' => 'Mileage', 'sub_category_id' => 2],
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
     ['id' => 24, 'name' => 'Type', 'sub_category_id' => 2],
 
     // Mobiles (sub_category_id = 3)
-    ['id' => 25, 'name' => 'Price', 'sub_category_id' => 3],
+  
     ['id' => 26, 'name' => 'Storage Capacity', 'sub_category_id' => 3],
     ['id' => 27, 'name' => 'RAM', 'sub_category_id' => 3],
     ['id' => 28, 'name' => 'Screen Size', 'sub_category_id' => 3],
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
     ['id' => 33, 'name' => 'Warranty', 'sub_category_id' => 3],
 
     // Laptops (sub_category_id = 4)
-    ['id' => 34, 'name' => 'Price', 'sub_category_id' => 4],
+
     ['id' => 35, 'name' => 'CPU', 'sub_category_id' => 4],
     ['id' => 36, 'name' => 'RAM', 'sub_category_id' => 4],
     ['id' => 37, 'name' => 'Storage Capacity', 'sub_category_id' => 4],
@@ -89,18 +89,20 @@ class DatabaseSeeder extends Seeder
     ['id' => 40, 'name' => 'Battery Condition', 'sub_category_id' => 4],
     ['id' => 41, 'name' => 'OS', 'sub_category_id' => 4],
     ['id' => 42, 'name' => 'Condition', 'sub_category_id' => 4],
+    ['id' => 43, 'name' => 'Model', 'sub_category_id' => 4],
 
     // Computers (sub_category_id = 5)
-    ['id' => 43, 'name' => 'Price', 'sub_category_id' => 5],
+  
     ['id' => 44, 'name' => 'CPU', 'sub_category_id' => 5],
     ['id' => 45, 'name' => 'RAM', 'sub_category_id' => 5],
     ['id' => 46, 'name' => 'Storage Capacity', 'sub_category_id' => 5],
     ['id' => 47, 'name' => 'GPU', 'sub_category_id' => 5],
     ['id' => 48, 'name' => 'Condition', 'sub_category_id' => 5],
     ['id' => 49, 'name' => 'OS', 'sub_category_id' => 5],
+    ['id' => 50, 'name' => 'Model', 'sub_category_id' => 5],
 
     // TVs (sub_category_id = 6)
-    ['id' => 50, 'name' => 'Price', 'sub_category_id' => 6],
+
     ['id' => 51, 'name' => 'Screen Size', 'sub_category_id' => 6],
     ['id' => 52, 'name' => 'Resolution', 'sub_category_id' => 6],
     ['id' => 53, 'name' => 'Smart TV', 'sub_category_id' => 6],
@@ -109,7 +111,7 @@ class DatabaseSeeder extends Seeder
     ['id' => 56, 'name' => 'Warranty', 'sub_category_id' => 6],
 
     // Commercial Properties (sub_category_id = 7)
-    ['id' => 57, 'name' => 'Price', 'sub_category_id' => 7],
+
     ['id' => 58, 'name' => 'Property Type', 'sub_category_id' => 7],
     ['id' => 59, 'name' => 'Area (sqm)', 'sub_category_id' => 7],
     ['id' => 60, 'name' => 'Location', 'sub_category_id' => 7],
@@ -117,10 +119,10 @@ class DatabaseSeeder extends Seeder
     ['id' => 62, 'name' => 'Condition', 'sub_category_id' => 7],
     ['id' => 63, 'name' => 'Furnished', 'sub_category_id' => 7],
     ['id' => 64, 'name' => 'Finishing Type', 'sub_category_id' => 7],
-    ['id' => 65, 'name' => 'Purpose', 'sub_category_id' => 7],
+  
 
     // Residential Properties (sub_category_id = 8)
-    ['id' => 66, 'name' => 'Price', 'sub_category_id' => 8],
+
     ['id' => 67, 'name' => 'Property Type', 'sub_category_id' => 8],
     ['id' => 68, 'name' => 'Area (sqm)', 'sub_category_id' => 8],
     ['id' => 69, 'name' => 'Bedrooms', 'sub_category_id' => 8],
@@ -130,238 +132,238 @@ class DatabaseSeeder extends Seeder
     ['id' => 73, 'name' => 'Finishing Type', 'sub_category_id' => 8],
     ['id' => 74, 'name' => 'Floor Number', 'sub_category_id' => 8],
     ['id' => 75, 'name' => 'Building Age', 'sub_category_id' => 8],
-    ['id' => 76, 'name' => 'Purpose', 'sub_category_id' => 8],
+ 
 
     // Lands (sub_category_id = 9)
-    ['id' => 77, 'name' => 'Price', 'sub_category_id' => 9],
+  
     ['id' => 78, 'name' => 'Land Area (sqm)', 'sub_category_id' => 9],
     ['id' => 79, 'name' => 'Land Type', 'sub_category_id' => 9],
     ['id' => 80, 'name' => 'Number of Streets', 'sub_category_id' => 9],
     ['id' => 81, 'name' => 'Land Nature', 'sub_category_id' => 9],
     ['id' => 82, 'name' => 'Licensing Status', 'sub_category_id' => 9],
-    ['id' => 83, 'name' => 'Purpose', 'sub_category_id' => 9]
+ 
 ];
 
         DB::table('attributes')->insert($attributes);
 
-        $subAttributes = [
-    // Cars (sub_category_id = 1)
-    ['id' => 1, 'name' => 'Gasoline', 'attribute_id' => 5],  // Fuel Type
-    ['id' => 2, 'name' => 'Diesel', 'attribute_id' => 5],
-    ['id' => 3, 'name' => 'Electric', 'attribute_id' => 5],
-    ['id' => 4, 'name' => 'Hybrid', 'attribute_id' => 5],
+//         $subAttributes = [
+//     // Cars (sub_category_id = 1)
+//     ['id' => 1, 'name' => 'Gasoline', 'attribute_id' => 5],  // Fuel Type
+//     ['id' => 2, 'name' => 'Diesel', 'attribute_id' => 5],
+//     ['id' => 3, 'name' => 'Electric', 'attribute_id' => 5],
+//     ['id' => 4, 'name' => 'Hybrid', 'attribute_id' => 5],
     
-    ['id' => 5, 'name' => 'Automatic', 'attribute_id' => 6],  // Transmission
-    ['id' => 6, 'name' => 'Manual', 'attribute_id' => 6],
-    ['id' => 7, 'name' => 'CVT', 'attribute_id' => 6],
+//     ['id' => 5, 'name' => 'Automatic', 'attribute_id' => 6],  // Transmission
+//     ['id' => 6, 'name' => 'Manual', 'attribute_id' => 6],
+//     ['id' => 7, 'name' => 'CVT', 'attribute_id' => 6],
     
-    ['id' => 8, 'name' => 'Sedan', 'attribute_id' => 7],  // Body Type
-    ['id' => 9, 'name' => 'SUV', 'attribute_id' => 7],
-    ['id' => 10, 'name' => 'Hatchback', 'attribute_id' => 7],
-    ['id' => 11, 'name' => 'Pickup', 'attribute_id' => 7],
-    ['id' => 12, 'name' => 'Coupe', 'attribute_id' => 7],
+//     ['id' => 8, 'name' => 'Sedan', 'attribute_id' => 7],  // Body Type
+//     ['id' => 9, 'name' => 'SUV', 'attribute_id' => 7],
+//     ['id' => 10, 'name' => 'Hatchback', 'attribute_id' => 7],
+//     ['id' => 11, 'name' => 'Pickup', 'attribute_id' => 7],
+//     ['id' => 12, 'name' => 'Coupe', 'attribute_id' => 7],
     
-    ['id' => 13, 'name' => 'Front Wheel Drive', 'attribute_id' => 10],  // Drive Type
-    ['id' => 14, 'name' => 'Rear Wheel Drive', 'attribute_id' => 10],
-    ['id' => 15, 'name' => 'All Wheel Drive', 'attribute_id' => 10],
+//     ['id' => 13, 'name' => 'Front Wheel Drive', 'attribute_id' => 10],  // Drive Type
+//     ['id' => 14, 'name' => 'Rear Wheel Drive', 'attribute_id' => 10],
+//     ['id' => 15, 'name' => 'All Wheel Drive', 'attribute_id' => 10],
     
-    ['id' => 16, 'name' => 'New', 'attribute_id' => 13],  // Condition
-    ['id' => 17, 'name' => 'Used', 'attribute_id' => 13],
-    ['id' => 18, 'name' => 'Certified Pre-owned', 'attribute_id' => 13],
+//     ['id' => 16, 'name' => 'New', 'attribute_id' => 13],  // Condition
+//     ['id' => 17, 'name' => 'Used', 'attribute_id' => 13],
+//     ['id' => 18, 'name' => 'Certified Pre-owned', 'attribute_id' => 13],
 
-    // Motorcycles (sub_category_id = 2)
-    ['id' => 19, 'name' => 'Gasoline', 'attribute_id' => 22],  // Fuel Type
-    ['id' => 20, 'name' => 'Electric', 'attribute_id' => 22],
+//     // Motorcycles (sub_category_id = 2)
+//     ['id' => 19, 'name' => 'Gasoline', 'attribute_id' => 22],  // Fuel Type
+//     ['id' => 20, 'name' => 'Electric', 'attribute_id' => 22],
     
-    ['id' => 21, 'name' => 'Automatic', 'attribute_id' => 23],  // Transmission
-    ['id' => 22, 'name' => 'Manual', 'attribute_id' => 23],
+//     ['id' => 21, 'name' => 'Automatic', 'attribute_id' => 23],  // Transmission
+//     ['id' => 22, 'name' => 'Manual', 'attribute_id' => 23],
     
-    ['id' => 23, 'name' => 'Scooter', 'attribute_id' => 24],  // Type
-    ['id' => 24, 'name' => 'Sport', 'attribute_id' => 24],
-    ['id' => 25, 'name' => 'Cruiser', 'attribute_id' => 24],
-    ['id' => 26, 'name' => 'Off-road', 'attribute_id' => 24],
-    ['id' => 27, 'name' => 'Touring', 'attribute_id' => 24],
+//     ['id' => 23, 'name' => 'Scooter', 'attribute_id' => 24],  // Type
+//     ['id' => 24, 'name' => 'Sport', 'attribute_id' => 24],
+//     ['id' => 25, 'name' => 'Cruiser', 'attribute_id' => 24],
+//     ['id' => 26, 'name' => 'Off-road', 'attribute_id' => 24],
+//     ['id' => 27, 'name' => 'Touring', 'attribute_id' => 24],
     
-    ['id' => 28, 'name' => 'New', 'attribute_id' => 21],  // Condition
-    ['id' => 29, 'name' => 'Used', 'attribute_id' => 21],
+//     ['id' => 28, 'name' => 'New', 'attribute_id' => 21],  // Condition
+//     ['id' => 29, 'name' => 'Used', 'attribute_id' => 21],
 
-    // Mobiles (sub_category_id = 3)
-    ['id' => 30, 'name' => '32GB', 'attribute_id' => 26],  // Storage Capacity
-    ['id' => 31, 'name' => '64GB', 'attribute_id' => 26],
-    ['id' => 32, 'name' => '128GB', 'attribute_id' => 26],
-    ['id' => 33, 'name' => '256GB', 'attribute_id' => 26],
-    ['id' => 34, 'name' => '512GB', 'attribute_id' => 26],
-    ['id' => 35, 'name' => '1TB', 'attribute_id' => 26],
+//     // Mobiles (sub_category_id = 3)
+//     ['id' => 30, 'name' => '32GB', 'attribute_id' => 26],  // Storage Capacity
+//     ['id' => 31, 'name' => '64GB', 'attribute_id' => 26],
+//     ['id' => 32, 'name' => '128GB', 'attribute_id' => 26],
+//     ['id' => 33, 'name' => '256GB', 'attribute_id' => 26],
+//     ['id' => 34, 'name' => '512GB', 'attribute_id' => 26],
+//     ['id' => 35, 'name' => '1TB', 'attribute_id' => 26],
     
-    ['id' => 36, 'name' => '2GB', 'attribute_id' => 27],  // RAM
-    ['id' => 37, 'name' => '4GB', 'attribute_id' => 27],
-    ['id' => 38, 'name' => '6GB', 'attribute_id' => 27],
-    ['id' => 39, 'name' => '8GB', 'attribute_id' => 27],
-    ['id' => 40, 'name' => '12GB', 'attribute_id' => 27],
-    ['id' => 41, 'name' => '16GB', 'attribute_id' => 27],
+//     ['id' => 36, 'name' => '2GB', 'attribute_id' => 27],  // RAM
+//     ['id' => 37, 'name' => '4GB', 'attribute_id' => 27],
+//     ['id' => 38, 'name' => '6GB', 'attribute_id' => 27],
+//     ['id' => 39, 'name' => '8GB', 'attribute_id' => 27],
+//     ['id' => 40, 'name' => '12GB', 'attribute_id' => 27],
+//     ['id' => 41, 'name' => '16GB', 'attribute_id' => 27],
     
-    ['id' => 42, 'name' => 'Android', 'attribute_id' => 31],  // OS
-    ['id' => 43, 'name' => 'iOS', 'attribute_id' => 31],
-    ['id' => 44, 'name' => 'Other', 'attribute_id' => 31],
+//     ['id' => 42, 'name' => 'Android', 'attribute_id' => 31],  // OS
+//     ['id' => 43, 'name' => 'iOS', 'attribute_id' => 31],
+//     ['id' => 44, 'name' => 'Other', 'attribute_id' => 31],
     
-    ['id' => 45, 'name' => 'New', 'attribute_id' => 32],  // Condition
-    ['id' => 46, 'name' => 'Used', 'attribute_id' => 32],
-    ['id' => 47, 'name' => 'Refurbished', 'attribute_id' => 32],
+//     ['id' => 45, 'name' => 'New', 'attribute_id' => 32],  // Condition
+//     ['id' => 46, 'name' => 'Used', 'attribute_id' => 32],
+//     ['id' => 47, 'name' => 'Refurbished', 'attribute_id' => 32],
 
-    // Laptops (sub_category_id = 4)
-    ['id' => 48, 'name' => 'Intel Core i3', 'attribute_id' => 35],  // CPU
-    ['id' => 49, 'name' => 'Intel Core i5', 'attribute_id' => 35],
-    ['id' => 50, 'name' => 'Intel Core i7', 'attribute_id' => 35],
-    ['id' => 51, 'name' => 'Intel Core i9', 'attribute_id' => 35],
-    ['id' => 52, 'name' => 'AMD Ryzen 3', 'attribute_id' => 35],
-    ['id' => 53, 'name' => 'AMD Ryzen 5', 'attribute_id' => 35],
-    ['id' => 54, 'name' => 'AMD Ryzen 7', 'attribute_id' => 35],
-    ['id' => 55, 'name' => 'AMD Ryzen 9', 'attribute_id' => 35],
+//     // Laptops (sub_category_id = 4)
+//     ['id' => 48, 'name' => 'Intel Core i3', 'attribute_id' => 35],  // CPU
+//     ['id' => 49, 'name' => 'Intel Core i5', 'attribute_id' => 35],
+//     ['id' => 50, 'name' => 'Intel Core i7', 'attribute_id' => 35],
+//     ['id' => 51, 'name' => 'Intel Core i9', 'attribute_id' => 35],
+//     ['id' => 52, 'name' => 'AMD Ryzen 3', 'attribute_id' => 35],
+//     ['id' => 53, 'name' => 'AMD Ryzen 5', 'attribute_id' => 35],
+//     ['id' => 54, 'name' => 'AMD Ryzen 7', 'attribute_id' => 35],
+//     ['id' => 55, 'name' => 'AMD Ryzen 9', 'attribute_id' => 35],
     
-    ['id' => 56, 'name' => '4GB', 'attribute_id' => 36],  // RAM
-    ['id' => 57, 'name' => '8GB', 'attribute_id' => 36],
-    ['id' => 58, 'name' => '16GB', 'attribute_id' => 36],
-    ['id' => 59, 'name' => '32GB', 'attribute_id' => 36],
-    ['id' => 60, 'name' => '64GB', 'attribute_id' => 36],
+//     ['id' => 56, 'name' => '4GB', 'attribute_id' => 36],  // RAM
+//     ['id' => 57, 'name' => '8GB', 'attribute_id' => 36],
+//     ['id' => 58, 'name' => '16GB', 'attribute_id' => 36],
+//     ['id' => 59, 'name' => '32GB', 'attribute_id' => 36],
+//     ['id' => 60, 'name' => '64GB', 'attribute_id' => 36],
     
-    ['id' => 61, 'name' => '128GB', 'attribute_id' => 37],  // Storage Capacity
-    ['id' => 62, 'name' => '256GB', 'attribute_id' => 37],
-    ['id' => 63, 'name' => '512GB', 'attribute_id' => 37],
-    ['id' => 64, 'name' => '1TB', 'attribute_id' => 37],
-    ['id' => 65, 'name' => '2TB', 'attribute_id' => 37],
+//     ['id' => 61, 'name' => '128GB', 'attribute_id' => 37],  // Storage Capacity
+//     ['id' => 62, 'name' => '256GB', 'attribute_id' => 37],
+//     ['id' => 63, 'name' => '512GB', 'attribute_id' => 37],
+//     ['id' => 64, 'name' => '1TB', 'attribute_id' => 37],
+//     ['id' => 65, 'name' => '2TB', 'attribute_id' => 37],
     
-    ['id' => 66, 'name' => 'Integrated', 'attribute_id' => 38],  // GPU
-    ['id' => 67, 'name' => 'NVIDIA GeForce', 'attribute_id' => 38],
-    ['id' => 68, 'name' => 'AMD Radeon', 'attribute_id' => 38],
+//     ['id' => 66, 'name' => 'Integrated', 'attribute_id' => 38],  // GPU
+//     ['id' => 67, 'name' => 'NVIDIA GeForce', 'attribute_id' => 38],
+//     ['id' => 68, 'name' => 'AMD Radeon', 'attribute_id' => 38],
     
-    ['id' => 69, 'name' => 'Windows', 'attribute_id' => 41],  // OS
-    ['id' => 70, 'name' => 'macOS', 'attribute_id' => 41],
-    ['id' => 71, 'name' => 'Linux', 'attribute_id' => 41],
-    ['id' => 72, 'name' => 'Chrome OS', 'attribute_id' => 41],
+//     ['id' => 69, 'name' => 'Windows', 'attribute_id' => 41],  // OS
+//     ['id' => 70, 'name' => 'macOS', 'attribute_id' => 41],
+//     ['id' => 71, 'name' => 'Linux', 'attribute_id' => 41],
+//     ['id' => 72, 'name' => 'Chrome OS', 'attribute_id' => 41],
     
-    ['id' => 73, 'name' => 'New', 'attribute_id' => 42],  // Condition
-    ['id' => 74, 'name' => 'Used', 'attribute_id' => 42],
-    ['id' => 75, 'name' => 'Refurbished', 'attribute_id' => 42],
+//     ['id' => 73, 'name' => 'New', 'attribute_id' => 42],  // Condition
+//     ['id' => 74, 'name' => 'Used', 'attribute_id' => 42],
+//     ['id' => 75, 'name' => 'Refurbished', 'attribute_id' => 42],
 
-    // Computers (sub_category_id = 5)
-    ['id' => 76, 'name' => 'Intel Core i3', 'attribute_id' => 44],  // CPU
-    ['id' => 77, 'name' => 'Intel Core i5', 'attribute_id' => 44],
-    ['id' => 78, 'name' => 'Intel Core i7', 'attribute_id' => 44],
-    ['id' => 79, 'name' => 'Intel Core i9', 'attribute_id' => 44],
-    ['id' => 80, 'name' => 'AMD Ryzen 3', 'attribute_id' => 44],
-    ['id' => 81, 'name' => 'AMD Ryzen 5', 'attribute_id' => 44],
-    ['id' => 82, 'name' => 'AMD Ryzen 7', 'attribute_id' => 44],
-    ['id' => 83, 'name' => 'AMD Ryzen 9', 'attribute_id' => 44],
+//     // Computers (sub_category_id = 5)
+//     ['id' => 76, 'name' => 'Intel Core i3', 'attribute_id' => 44],  // CPU
+//     ['id' => 77, 'name' => 'Intel Core i5', 'attribute_id' => 44],
+//     ['id' => 78, 'name' => 'Intel Core i7', 'attribute_id' => 44],
+//     ['id' => 79, 'name' => 'Intel Core i9', 'attribute_id' => 44],
+//     ['id' => 80, 'name' => 'AMD Ryzen 3', 'attribute_id' => 44],
+//     ['id' => 81, 'name' => 'AMD Ryzen 5', 'attribute_id' => 44],
+//     ['id' => 82, 'name' => 'AMD Ryzen 7', 'attribute_id' => 44],
+//     ['id' => 83, 'name' => 'AMD Ryzen 9', 'attribute_id' => 44],
     
-    ['id' => 84, 'name' => '4GB', 'attribute_id' => 45],  // RAM
-    ['id' => 85, 'name' => '8GB', 'attribute_id' => 45],
-    ['id' => 86, 'name' => '16GB', 'attribute_id' => 45],
-    ['id' => 87, 'name' => '32GB', 'attribute_id' => 45],
-    ['id' => 88, 'name' => '64GB', 'attribute_id' => 45],
+//     ['id' => 84, 'name' => '4GB', 'attribute_id' => 45],  // RAM
+//     ['id' => 85, 'name' => '8GB', 'attribute_id' => 45],
+//     ['id' => 86, 'name' => '16GB', 'attribute_id' => 45],
+//     ['id' => 87, 'name' => '32GB', 'attribute_id' => 45],
+//     ['id' => 88, 'name' => '64GB', 'attribute_id' => 45],
     
-    ['id' => 89, 'name' => '128GB', 'attribute_id' => 46],  // Storage Capacity
-    ['id' => 90, 'name' => '256GB', 'attribute_id' => 46],
-    ['id' => 91, 'name' => '512GB', 'attribute_id' => 46],
-    ['id' => 92, 'name' => '1TB', 'attribute_id' => 46],
-    ['id' => 93, 'name' => '2TB', 'attribute_id' => 46],
+//     ['id' => 89, 'name' => '128GB', 'attribute_id' => 46],  // Storage Capacity
+//     ['id' => 90, 'name' => '256GB', 'attribute_id' => 46],
+//     ['id' => 91, 'name' => '512GB', 'attribute_id' => 46],
+//     ['id' => 92, 'name' => '1TB', 'attribute_id' => 46],
+//     ['id' => 93, 'name' => '2TB', 'attribute_id' => 46],
     
-    ['id' => 94, 'name' => 'Integrated', 'attribute_id' => 47],  // GPU
-    ['id' => 95, 'name' => 'NVIDIA GeForce', 'attribute_id' => 47],
-    ['id' => 96, 'name' => 'AMD Radeon', 'attribute_id' => 47],
-    ['id' => 97, 'name' => 'NVIDIA Quadro', 'attribute_id' => 47],
-    ['id' => 98, 'name' => 'AMD Radeon Pro', 'attribute_id' => 47],
+//     ['id' => 94, 'name' => 'Integrated', 'attribute_id' => 47],  // GPU
+//     ['id' => 95, 'name' => 'NVIDIA GeForce', 'attribute_id' => 47],
+//     ['id' => 96, 'name' => 'AMD Radeon', 'attribute_id' => 47],
+//     ['id' => 97, 'name' => 'NVIDIA Quadro', 'attribute_id' => 47],
+//     ['id' => 98, 'name' => 'AMD Radeon Pro', 'attribute_id' => 47],
     
-    ['id' => 99, 'name' => 'Windows', 'attribute_id' => 49],  // OS
-    ['id' => 100, 'name' => 'Linux', 'attribute_id' => 49],
-    ['id' => 101, 'name' => 'macOS', 'attribute_id' => 49],
-    ['id' => 102, 'name' => 'No OS', 'attribute_id' => 49],
+//     ['id' => 99, 'name' => 'Windows', 'attribute_id' => 49],  // OS
+//     ['id' => 100, 'name' => 'Linux', 'attribute_id' => 49],
+//     ['id' => 101, 'name' => 'macOS', 'attribute_id' => 49],
+//     ['id' => 102, 'name' => 'No OS', 'attribute_id' => 49],
     
-    ['id' => 103, 'name' => 'New', 'attribute_id' => 48],  // Condition
-    ['id' => 104, 'name' => 'Used', 'attribute_id' => 48],
-    ['id' => 105, 'name' => 'Refurbished', 'attribute_id' => 48],
+//     ['id' => 103, 'name' => 'New', 'attribute_id' => 48],  // Condition
+//     ['id' => 104, 'name' => 'Used', 'attribute_id' => 48],
+//     ['id' => 105, 'name' => 'Refurbished', 'attribute_id' => 48],
 
-    // TVs (sub_category_id = 6)
-    ['id' => 106, 'name' => 'HD', 'attribute_id' => 52],  // Resolution
-    ['id' => 107, 'name' => 'Full HD', 'attribute_id' => 52],
-    ['id' => 108, 'name' => '4K UHD', 'attribute_id' => 52],
-    ['id' => 109, 'name' => '8K UHD', 'attribute_id' => 52],
+//     // TVs (sub_category_id = 6)
+//     ['id' => 106, 'name' => 'HD', 'attribute_id' => 52],  // Resolution
+//     ['id' => 107, 'name' => 'Full HD', 'attribute_id' => 52],
+//     ['id' => 108, 'name' => '4K UHD', 'attribute_id' => 52],
+//     ['id' => 109, 'name' => '8K UHD', 'attribute_id' => 52],
     
-    ['id' => 110, 'name' => 'Yes', 'attribute_id' => 53],  // Smart TV
-    ['id' => 111, 'name' => 'No', 'attribute_id' => 53],
+//     ['id' => 110, 'name' => 'Yes', 'attribute_id' => 53],  // Smart TV
+//     ['id' => 111, 'name' => 'No', 'attribute_id' => 53],
     
-    ['id' => 112, 'name' => 'LED', 'attribute_id' => 54],  // Panel Type
-    ['id' => 113, 'name' => 'OLED', 'attribute_id' => 54],
-    ['id' => 114, 'name' => 'QLED', 'attribute_id' => 54],
-    ['id' => 115, 'name' => 'Plasma', 'attribute_id' => 54],
+//     ['id' => 112, 'name' => 'LED', 'attribute_id' => 54],  // Panel Type
+//     ['id' => 113, 'name' => 'OLED', 'attribute_id' => 54],
+//     ['id' => 114, 'name' => 'QLED', 'attribute_id' => 54],
+//     ['id' => 115, 'name' => 'Plasma', 'attribute_id' => 54],
     
-    ['id' => 116, 'name' => 'New', 'attribute_id' => 55],  // Condition
-    ['id' => 117, 'name' => 'Used', 'attribute_id' => 55],
-    ['id' => 118, 'name' => 'Refurbished', 'attribute_id' => 55],
+//     ['id' => 116, 'name' => 'New', 'attribute_id' => 55],  // Condition
+//     ['id' => 117, 'name' => 'Used', 'attribute_id' => 55],
+//     ['id' => 118, 'name' => 'Refurbished', 'attribute_id' => 55],
 
-    // Commercial Properties (sub_category_id = 7)
-    ['id' => 119, 'name' => 'Office', 'attribute_id' => 58],  // Property Type
-    ['id' => 120, 'name' => 'Shop', 'attribute_id' => 58],
-    ['id' => 121, 'name' => 'Warehouse', 'attribute_id' => 58],
-    ['id' => 122, 'name' => 'Showroom', 'attribute_id' => 58],
-    ['id' => 123, 'name' => 'Restaurant', 'attribute_id' => 58],
-    ['id' => 124, 'name' => 'Hotel', 'attribute_id' => 58],
+//     // Commercial Properties (sub_category_id = 7)
+//     ['id' => 119, 'name' => 'Office', 'attribute_id' => 58],  // Property Type
+//     ['id' => 120, 'name' => 'Shop', 'attribute_id' => 58],
+//     ['id' => 121, 'name' => 'Warehouse', 'attribute_id' => 58],
+//     ['id' => 122, 'name' => 'Showroom', 'attribute_id' => 58],
+//     ['id' => 123, 'name' => 'Restaurant', 'attribute_id' => 58],
+//     ['id' => 124, 'name' => 'Hotel', 'attribute_id' => 58],
     
-    ['id' => 125, 'name' => 'New', 'attribute_id' => 62],  // Condition
-    ['id' => 126, 'name' => 'Used', 'attribute_id' => 62],
-    ['id' => 127, 'name' => 'Under Construction', 'attribute_id' => 62],
+//     ['id' => 125, 'name' => 'New', 'attribute_id' => 62],  // Condition
+//     ['id' => 126, 'name' => 'Used', 'attribute_id' => 62],
+//     ['id' => 127, 'name' => 'Under Construction', 'attribute_id' => 62],
     
-    ['id' => 128, 'name' => 'Furnished', 'attribute_id' => 63],  // Furnished
-    ['id' => 129, 'name' => 'Semi-Furnished', 'attribute_id' => 63],
-    ['id' => 130, 'name' => 'Unfurnished', 'attribute_id' => 63],
+//     ['id' => 128, 'name' => 'Furnished', 'attribute_id' => 63],  // Furnished
+//     ['id' => 129, 'name' => 'Semi-Furnished', 'attribute_id' => 63],
+//     ['id' => 130, 'name' => 'Unfurnished', 'attribute_id' => 63],
     
-    ['id' => 131, 'name' => 'Super Lux', 'attribute_id' => 64],  // Finishing Type
-    ['id' => 132, 'name' => 'Lux', 'attribute_id' => 64],
-    ['id' => 133, 'name' => 'Semi Finished', 'attribute_id' => 64],
-    ['id' => 134, 'name' => 'Bare', 'attribute_id' => 64],
+//     ['id' => 131, 'name' => 'Super Lux', 'attribute_id' => 64],  // Finishing Type
+//     ['id' => 132, 'name' => 'Lux', 'attribute_id' => 64],
+//     ['id' => 133, 'name' => 'Semi Finished', 'attribute_id' => 64],
+//     ['id' => 134, 'name' => 'Bare', 'attribute_id' => 64],
     
-    ['id' => 135, 'name' => 'Rent', 'attribute_id' => 65],  // Purpose
-    ['id' => 136, 'name' => 'Sale', 'attribute_id' => 65],
+//     ['id' => 135, 'name' => 'Rent', 'attribute_id' => 65],  // Purpose
+//     ['id' => 136, 'name' => 'Sale', 'attribute_id' => 65],
 
-    // Residential Properties (sub_category_id = 8)
-    ['id' => 137, 'name' => 'Apartment', 'attribute_id' => 67],  // Property Type
-    ['id' => 138, 'name' => 'Villa', 'attribute_id' => 67],
-    ['id' => 139, 'name' => 'Townhouse', 'attribute_id' => 67],
-    ['id' => 140, 'name' => 'Duplex', 'attribute_id' => 67],
-    ['id' => 141, 'name' => 'Penthouse', 'attribute_id' => 67],
-    ['id' => 142, 'name' => 'Studio', 'attribute_id' => 67],
+//     // Residential Properties (sub_category_id = 8)
+//     ['id' => 137, 'name' => 'Apartment', 'attribute_id' => 67],  // Property Type
+//     ['id' => 138, 'name' => 'Villa', 'attribute_id' => 67],
+//     ['id' => 139, 'name' => 'Townhouse', 'attribute_id' => 67],
+//     ['id' => 140, 'name' => 'Duplex', 'attribute_id' => 67],
+//     ['id' => 141, 'name' => 'Penthouse', 'attribute_id' => 67],
+//     ['id' => 142, 'name' => 'Studio', 'attribute_id' => 67],
     
-    ['id' => 143, 'name' => 'Furnished', 'attribute_id' => 72],  // Furnished
-    ['id' => 144, 'name' => 'Semi-Furnished', 'attribute_id' => 72],
-    ['id' => 145, 'name' => 'Unfurnished', 'attribute_id' => 72],
+//     ['id' => 143, 'name' => 'Furnished', 'attribute_id' => 72],  // Furnished
+//     ['id' => 144, 'name' => 'Semi-Furnished', 'attribute_id' => 72],
+//     ['id' => 145, 'name' => 'Unfurnished', 'attribute_id' => 72],
     
-    ['id' => 146, 'name' => 'Super Lux', 'attribute_id' => 73],  // Finishing Type
-    ['id' => 147, 'name' => 'Lux', 'attribute_id' => 73],
-    ['id' => 148, 'name' => 'Semi Finished', 'attribute_id' => 73],
-    ['id' => 149, 'name' => 'Bare', 'attribute_id' => 73],
+//     ['id' => 146, 'name' => 'Super Lux', 'attribute_id' => 73],  // Finishing Type
+//     ['id' => 147, 'name' => 'Lux', 'attribute_id' => 73],
+//     ['id' => 148, 'name' => 'Semi Finished', 'attribute_id' => 73],
+//     ['id' => 149, 'name' => 'Bare', 'attribute_id' => 73],
     
-    ['id' => 150, 'name' => 'Rent', 'attribute_id' => 76],  // Purpose
-    ['id' => 151, 'name' => 'Sale', 'attribute_id' => 76],
+//     ['id' => 150, 'name' => 'Rent', 'attribute_id' => 76],  // Purpose
+//     ['id' => 151, 'name' => 'Sale', 'attribute_id' => 76],
 
-    // Lands (sub_category_id = 9)
-    ['id' => 152, 'name' => 'Residential', 'attribute_id' => 79],  // Land Type
-    ['id' => 153, 'name' => 'Agricultural', 'attribute_id' => 79],
-    ['id' => 154, 'name' => 'Commercial', 'attribute_id' => 79],
-    ['id' => 155, 'name' => 'Industrial', 'attribute_id' => 79],
+//     // Lands (sub_category_id = 9)
+//     ['id' => 152, 'name' => 'Residential', 'attribute_id' => 79],  // Land Type
+//     ['id' => 153, 'name' => 'Agricultural', 'attribute_id' => 79],
+//     ['id' => 154, 'name' => 'Commercial', 'attribute_id' => 79],
+//     ['id' => 155, 'name' => 'Industrial', 'attribute_id' => 79],
     
-    ['id' => 156, 'name' => 'Flat', 'attribute_id' => 81],  // Land Nature
-    ['id' => 157, 'name' => 'Sloped', 'attribute_id' => 81],
-    ['id' => 158, 'name' => 'Mountainous', 'attribute_id' => 81],
+//     ['id' => 156, 'name' => 'Flat', 'attribute_id' => 81],  // Land Nature
+//     ['id' => 157, 'name' => 'Sloped', 'attribute_id' => 81],
+//     ['id' => 158, 'name' => 'Mountainous', 'attribute_id' => 81],
     
-    ['id' => 159, 'name' => 'Licensed', 'attribute_id' => 82],  // Licensing Status
-    ['id' => 160, 'name' => 'Unlicensed', 'attribute_id' => 82],
-    ['id' => 161, 'name' => 'Under Process', 'attribute_id' => 82],
+//     ['id' => 159, 'name' => 'Licensed', 'attribute_id' => 82],  // Licensing Status
+//     ['id' => 160, 'name' => 'Unlicensed', 'attribute_id' => 82],
+//     ['id' => 161, 'name' => 'Under Process', 'attribute_id' => 82],
     
-    ['id' => 162, 'name' => 'Rent', 'attribute_id' => 83],  // Purpose
-    ['id' => 163, 'name' => 'Sale', 'attribute_id' => 83],
-    ['id' => 164, 'name' => 'Investment', 'attribute_id' => 83]
-];
+//     ['id' => 162, 'name' => 'Rent', 'attribute_id' => 83],  // Purpose
+//     ['id' => 163, 'name' => 'Sale', 'attribute_id' => 83],
+//     ['id' => 164, 'name' => 'Investment', 'attribute_id' => 83]
+// ];
 
-        DB::table('subattributes')->insert($subAttributes);
+//         DB::table('subattributes')->insert($subAttributes);
 
 
 
@@ -894,444 +896,442 @@ class DatabaseSeeder extends Seeder
 
 
       
-        $attributesData = [
-            // الإعلان 1 (سيارة تويوتا كورولا)
-            ['advertising_id' => 1, 'attribute_id' => 1, 'value' => '85000'],
-            ['advertising_id' => 1, 'attribute_id' => 2, 'value' => '2018'],
-            ['advertising_id' => 1, 'attribute_id' => 3, 'value' => '45000 كم'],
-            ['advertising_id' => 1, 'attribute_id' => 4, 'value' => 'أبيض'],
-            ['advertising_id' => 1, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 1, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 1, 'attribute_id' => 7, 'value' => 'سيدان'],
-            ['advertising_id' => 1, 'attribute_id' => 8, 'value' => '1600 cc'],
-            ['advertising_id' => 1, 'attribute_id' => 9, 'value' => '120 حصان'],
-            ['advertising_id' => 1, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
-            ['advertising_id' => 1, 'attribute_id' => 11, 'value' => '4'],
-            ['advertising_id' => 1, 'attribute_id' => 12, 'value' => '5'],
-            ['advertising_id' => 1, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        // $attributesData = [
+        //     // الإعلان 1 (سيارة تويوتا كورولا)
+        
+        //     ['advertising_id' => 1, 'attribute_id' => 2, 'value' => '2018'],
+        //     ['advertising_id' => 1, 'attribute_id' => 3, 'value' => '45000 كم'],
+        //     ['advertising_id' => 1, 'attribute_id' => 4, 'value' => 'أبيض'],
+        //     ['advertising_id' => 1, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 1, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 1, 'attribute_id' => 7, 'value' => 'سيدان'],
+        //     ['advertising_id' => 1, 'attribute_id' => 8, 'value' => '1600 cc'],
+        //     ['advertising_id' => 1, 'attribute_id' => 9, 'value' => '120 حصان'],
+        //     ['advertising_id' => 1, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
+        //     ['advertising_id' => 1, 'attribute_id' => 11, 'value' => '4'],
+        //     ['advertising_id' => 1, 'attribute_id' => 12, 'value' => '5'],
+        //     ['advertising_id' => 1, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 2 (سيارة نيسان صني)
-            ['advertising_id' => 2, 'attribute_id' => 1, 'value' => '65000'],
-            ['advertising_id' => 2, 'attribute_id' => 2, 'value' => '2016'],
-            ['advertising_id' => 2, 'attribute_id' => 3, 'value' => '80000 كم'],
-            ['advertising_id' => 2, 'attribute_id' => 4, 'value' => 'فضي'],
-            ['advertising_id' => 2, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 2, 'attribute_id' => 6, 'value' => 'مانيوال'],
-            ['advertising_id' => 2, 'attribute_id' => 7, 'value' => 'سيدان'],
-            ['advertising_id' => 2, 'attribute_id' => 8, 'value' => '1500 cc'],
-            ['advertising_id' => 2, 'attribute_id' => 9, 'value' => '105 حصان'],
-            ['advertising_id' => 2, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
-            ['advertising_id' => 2, 'attribute_id' => 11, 'value' => '4'],
-            ['advertising_id' => 2, 'attribute_id' => 12, 'value' => '5'],
-            ['advertising_id' => 2, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        //     // الإعلان 2 (سيارة نيسان صني)
+           
+        //     ['advertising_id' => 2, 'attribute_id' => 2, 'value' => '2016'],
+        //     ['advertising_id' => 2, 'attribute_id' => 3, 'value' => '80000 كم'],
+        //     ['advertising_id' => 2, 'attribute_id' => 4, 'value' => 'فضي'],
+        //     ['advertising_id' => 2, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 2, 'attribute_id' => 6, 'value' => 'مانيوال'],
+        //     ['advertising_id' => 2, 'attribute_id' => 7, 'value' => 'سيدان'],
+        //     ['advertising_id' => 2, 'attribute_id' => 8, 'value' => '1500 cc'],
+        //     ['advertising_id' => 2, 'attribute_id' => 9, 'value' => '105 حصان'],
+        //     ['advertising_id' => 2, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
+        //     ['advertising_id' => 2, 'attribute_id' => 11, 'value' => '4'],
+        //     ['advertising_id' => 2, 'attribute_id' => 12, 'value' => '5'],
+        //     ['advertising_id' => 2, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 3 (سيارة مرسيدس E200)
-            ['advertising_id' => 3, 'attribute_id' => 1, 'value' => '350000'],
-            ['advertising_id' => 3, 'attribute_id' => 2, 'value' => '2020'],
-            ['advertising_id' => 3, 'attribute_id' => 3, 'value' => '25000 كم'],
-            ['advertising_id' => 3, 'attribute_id' => 4, 'value' => 'أسود'],
-            ['advertising_id' => 3, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 3, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 3, 'attribute_id' => 7, 'value' => 'سيدان'],
-            ['advertising_id' => 3, 'attribute_id' => 8, 'value' => '2000 cc'],
-            ['advertising_id' => 3, 'attribute_id' => 9, 'value' => '184 حصان'],
-            ['advertising_id' => 3, 'attribute_id' => 10, 'value' => 'دفع خلفي'],
-            ['advertising_id' => 3, 'attribute_id' => 11, 'value' => '4'],
-            ['advertising_id' => 3, 'attribute_id' => 12, 'value' => '5'],
-            ['advertising_id' => 3, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        //     // الإعلان 3 (سيارة مرسيدس E200)
+           
+        
+        //     ['advertising_id' => 3, 'attribute_id' => 3, 'value' => '25000 كم'],
+        //     ['advertising_id' => 3, 'attribute_id' => 4, 'value' => 'أسود'],
+        //     ['advertising_id' => 3, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 3, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 3, 'attribute_id' => 7, 'value' => 'سيدان'],
+        //     ['advertising_id' => 3, 'attribute_id' => 8, 'value' => '2000 cc'],
+        //     ['advertising_id' => 3, 'attribute_id' => 9, 'value' => '184 حصان'],
+        //     ['advertising_id' => 3, 'attribute_id' => 10, 'value' => 'دفع خلفي'],
+        //     ['advertising_id' => 3, 'attribute_id' => 11, 'value' => '4'],
+        //     ['advertising_id' => 3, 'attribute_id' => 12, 'value' => '5'],
+        //     ['advertising_id' => 3, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 4 (دراجة هوندا CBR500R)
-            ['advertising_id' => 4, 'attribute_id' => 16, 'value' => '75000'],
-            ['advertising_id' => 4, 'attribute_id' => 17, 'value' => '2019'],
-            ['advertising_id' => 4, 'attribute_id' => 18, 'value' => '500 cc'],
-            ['advertising_id' => 4, 'attribute_id' => 19, 'value' => '12000 كم'],
-            ['advertising_id' => 4, 'attribute_id' => 20, 'value' => 'أحمر'],
-            ['advertising_id' => 4, 'attribute_id' => 21, 'value' => 'مستعمل'],
-            ['advertising_id' => 4, 'attribute_id' => 22, 'value' => 'بنزين'],
-            ['advertising_id' => 4, 'attribute_id' => 23, 'value' => 'مانيوال'],
-            ['advertising_id' => 4, 'attribute_id' => 24, 'value' => 'سبورت'],
+        //     // الإعلان 4 (دراجة هوندا CBR500R)
+         
+        //     ['advertising_id' => 4, 'attribute_id' => 17, 'value' => '2019'],
+        //     ['advertising_id' => 4, 'attribute_id' => 18, 'value' => '500 cc'],
+        //     ['advertising_id' => 4, 'attribute_id' => 19, 'value' => '12000 كم'],
+        //     ['advertising_id' => 4, 'attribute_id' => 20, 'value' => 'أحمر'],
+        //     ['advertising_id' => 4, 'attribute_id' => 21, 'value' => 'مستعمل'],
+        //     ['advertising_id' => 4, 'attribute_id' => 22, 'value' => 'بنزين'],
+        //     ['advertising_id' => 4, 'attribute_id' => 23, 'value' => 'مانيوال'],
+        //     ['advertising_id' => 4, 'attribute_id' => 24, 'value' => 'سبورت'],
 
-            // الإعلان 5 (دراجة ياماها R1)
-            ['advertising_id' => 5, 'attribute_id' => 16, 'value' => '120000'],
-            ['advertising_id' => 5, 'attribute_id' => 17, 'value' => '2021'],
-            ['advertising_id' => 5, 'attribute_id' => 18, 'value' => '1000 cc'],
-            ['advertising_id' => 5, 'attribute_id' => 19, 'value' => '5000 كم'],
-            ['advertising_id' => 5, 'attribute_id' => 20, 'value' => 'أزرق'],
-            ['advertising_id' => 5, 'attribute_id' => 21, 'value' => 'جديد'],
-            ['advertising_id' => 5, 'attribute_id' => 22, 'value' => 'بنزين'],
-            ['advertising_id' => 5, 'attribute_id' => 23, 'value' => 'مانيوال'],
-            ['advertising_id' => 5, 'attribute_id' => 24, 'value' => 'سبورت'],
+        //     // الإعلان 5 (دراجة ياماها R1)
+          
+        //     ['advertising_id' => 5, 'attribute_id' => 17, 'value' => '2021'],
+        //     ['advertising_id' => 5, 'attribute_id' => 18, 'value' => '1000 cc'],
+        //     ['advertising_id' => 5, 'attribute_id' => 19, 'value' => '5000 كم'],
+        //     ['advertising_id' => 5, 'attribute_id' => 20, 'value' => 'أزرق'],
+        //     ['advertising_id' => 5, 'attribute_id' => 21, 'value' => 'جديد'],
+        //     ['advertising_id' => 5, 'attribute_id' => 22, 'value' => 'بنزين'],
+        //     ['advertising_id' => 5, 'attribute_id' => 23, 'value' => 'مانيوال'],
+        //     ['advertising_id' => 5, 'attribute_id' => 24, 'value' => 'سبورت'],
 
-            // الإعلان 6 (موبايل آيفون 11)
-            ['advertising_id' => 6, 'attribute_id' => 25, 'value' => '12000'],
-            ['advertising_id' => 6, 'attribute_id' => 26, 'value' => '64 جيجا'],
-            ['advertising_id' => 6, 'attribute_id' => 27, 'value' => '4 جيجا'],
-            ['advertising_id' => 6, 'attribute_id' => 28, 'value' => '6.1 إنش'],
-            ['advertising_id' => 6, 'attribute_id' => 29, 'value' => '12 ميجا بكسل'],
-            ['advertising_id' => 6, 'attribute_id' => 30, 'value' => '3110 مللي أمبير'],
-            ['advertising_id' => 6, 'attribute_id' => 31, 'value' => 'iOS'],
-            ['advertising_id' => 6, 'attribute_id' => 32, 'value' => 'مستعمل'],
-            ['advertising_id' => 6, 'attribute_id' => 33, 'value' => 'نعم'],
+        //     // الإعلان 6 (موبايل آيفون 11)
+         
+        //     ['advertising_id' => 6, 'attribute_id' => 26, 'value' => '64 جيجا'],
+        //     ['advertising_id' => 6, 'attribute_id' => 27, 'value' => '4 جيجا'],
+        //     ['advertising_id' => 6, 'attribute_id' => 28, 'value' => '6.1 إنش'],
+        //     ['advertising_id' => 6, 'attribute_id' => 29, 'value' => '12 ميجا بكسل'],
+        //     ['advertising_id' => 6, 'attribute_id' => 30, 'value' => '3110 مللي أمبير'],
+        //     ['advertising_id' => 6, 'attribute_id' => 31, 'value' => 'iOS'],
+        //     ['advertising_id' => 6, 'attribute_id' => 32, 'value' => 'مستعمل'],
+        //     ['advertising_id' => 6, 'attribute_id' => 33, 'value' => 'نعم'],
 
-            // الإعلان 7 (موبايل سامسونج S20)
-            ['advertising_id' => 7, 'attribute_id' => 25, 'value' => '15000'],
-            ['advertising_id' => 7, 'attribute_id' => 26, 'value' => '128 جيجا'],
-            ['advertising_id' => 7, 'attribute_id' => 27, 'value' => '8 جيجا'],
-            ['advertising_id' => 7, 'attribute_id' => 28, 'value' => '6.2 إنش'],
-            ['advertising_id' => 7, 'attribute_id' => 29, 'value' => '64 ميجا بكسل'],
-            ['advertising_id' => 7, 'attribute_id' => 30, 'value' => '4000 مللي أمبير'],
-            ['advertising_id' => 7, 'attribute_id' => 31, 'value' => 'Android'],
-            ['advertising_id' => 7, 'attribute_id' => 32, 'value' => 'جديد'],
-            ['advertising_id' => 7, 'attribute_id' => 33, 'value' => 'نعم'],
+        //     // الإعلان 7 (موبايل سامسونج S20)
+        
+        //     ['advertising_id' => 7, 'attribute_id' => 26, 'value' => '128 جيجا'],
+        //     ['advertising_id' => 7, 'attribute_id' => 27, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 7, 'attribute_id' => 28, 'value' => '6.2 إنش'],
+        //     ['advertising_id' => 7, 'attribute_id' => 29, 'value' => '64 ميجا بكسل'],
+        //     ['advertising_id' => 7, 'attribute_id' => 30, 'value' => '4000 مللي أمبير'],
+        //     ['advertising_id' => 7, 'attribute_id' => 31, 'value' => 'Android'],
+        //     ['advertising_id' => 7, 'attribute_id' => 32, 'value' => 'جديد'],
+        //     ['advertising_id' => 7, 'attribute_id' => 33, 'value' => 'نعم'],
 
-            // الإعلان 8 (لابتوب ماك بوك اير)
-            ['advertising_id' => 8, 'attribute_id' => 34, 'value' => '25000'],
-            ['advertising_id' => 8, 'attribute_id' => 35, 'value' => 'M1'],
-            ['advertising_id' => 8, 'attribute_id' => 36, 'value' => '8 جيجا'],
-            ['advertising_id' => 8, 'attribute_id' => 37, 'value' => '256 جيجا'],
-            ['advertising_id' => 8, 'attribute_id' => 38, 'value' => 'M1 GPU'],
-            ['advertising_id' => 8, 'attribute_id' => 39, 'value' => '13.3 إنش'],
-            ['advertising_id' => 8, 'attribute_id' => 40, 'value' => 'جيدة'],
-            ['advertising_id' => 8, 'attribute_id' => 41, 'value' => 'macOS'],
-            ['advertising_id' => 8, 'attribute_id' => 42, 'value' => 'جديد'],
+        //     // الإعلان 8 (لابتوب ماك بوك اير)
+         
+        //     ['advertising_id' => 8, 'attribute_id' => 35, 'value' => 'M1'],
+        //     ['advertising_id' => 8, 'attribute_id' => 36, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 8, 'attribute_id' => 37, 'value' => '256 جيجا'],
+        //     ['advertising_id' => 8, 'attribute_id' => 38, 'value' => 'M1 GPU'],
+        //     ['advertising_id' => 8, 'attribute_id' => 39, 'value' => '13.3 إنش'],
+        //     ['advertising_id' => 8, 'attribute_id' => 40, 'value' => 'جيدة'],
+        //     ['advertising_id' => 8, 'attribute_id' => 41, 'value' => 'macOS'],
+        //     ['advertising_id' => 8, 'attribute_id' => 42, 'value' => 'جديد'],
 
-            // الإعلان 9 (لابتوب ديل XPS)
-            ['advertising_id' => 9, 'attribute_id' => 34, 'value' => '30000'],
-            ['advertising_id' => 9, 'attribute_id' => 35, 'value' => 'i7'],
-            ['advertising_id' => 9, 'attribute_id' => 36, 'value' => '16 جيجا'],
-            ['advertising_id' => 9, 'attribute_id' => 37, 'value' => '512 جيجا'],
-            ['advertising_id' => 9, 'attribute_id' => 38, 'value' => 'NVIDIA'],
-            ['advertising_id' => 9, 'attribute_id' => 39, 'value' => '15.6 إنش'],
-            ['advertising_id' => 9, 'attribute_id' => 40, 'value' => 'جيدة'],
-            ['advertising_id' => 9, 'attribute_id' => 41, 'value' => 'Windows'],
-            ['advertising_id' => 9, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 9 (لابتوب ديل XPS)
+      
+        //     ['advertising_id' => 9, 'attribute_id' => 35, 'value' => 'i7'],
+        //     ['advertising_id' => 9, 'attribute_id' => 36, 'value' => '16 جيجا'],
+        //     ['advertising_id' => 9, 'attribute_id' => 37, 'value' => '512 جيجا'],
+        //     ['advertising_id' => 9, 'attribute_id' => 38, 'value' => 'NVIDIA'],
+        //     ['advertising_id' => 9, 'attribute_id' => 39, 'value' => '15.6 إنش'],
+        //     ['advertising_id' => 9, 'attribute_id' => 40, 'value' => 'جيدة'],
+        //     ['advertising_id' => 9, 'attribute_id' => 41, 'value' => 'Windows'],
+        //     ['advertising_id' => 9, 'attribute_id' => 42, 'value' => 'مستعمل'],
 
-            // الإعلان 10 (تلفزيون سامسونج)
-            ['advertising_id' => 10, 'attribute_id' => 50, 'value' => '12000'],
-            ['advertising_id' => 10, 'attribute_id' => 51, 'value' => '55 إنش'],
-            ['advertising_id' => 10, 'attribute_id' => 52, 'value' => '4K'],
-            ['advertising_id' => 10, 'attribute_id' => 53, 'value' => 'نعم'],
-            ['advertising_id' => 10, 'attribute_id' => 54, 'value' => 'LED'],
-            ['advertising_id' => 10, 'attribute_id' => 55, 'value' => 'جديد'],
-            ['advertising_id' => 10, 'attribute_id' => 56, 'value' => 'نعم'],
+        //     // الإعلان 10 (تلفزيون سامسونج)
+    
+        //     ['advertising_id' => 10, 'attribute_id' => 51, 'value' => '55 إنش'],
+        //     ['advertising_id' => 10, 'attribute_id' => 52, 'value' => '4K'],
+        //     ['advertising_id' => 10, 'attribute_id' => 53, 'value' => 'نعم'],
+        //     ['advertising_id' => 10, 'attribute_id' => 54, 'value' => 'LED'],
+        //     ['advertising_id' => 10, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     ['advertising_id' => 10, 'attribute_id' => 56, 'value' => 'نعم'],
 
-            ['advertising_id' => 11, 'attribute_id' => 1, 'value' => '180000'],
-            ['advertising_id' => 11, 'attribute_id' => 2, 'value' => '2021'],
-            ['advertising_id' => 11, 'attribute_id' => 3, 'value' => '35000 كم'],
-            ['advertising_id' => 11, 'attribute_id' => 4, 'value' => 'أبيض'],
-            ['advertising_id' => 11, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 11, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 11, 'attribute_id' => 7, 'value' => 'SUV'],
-            ['advertising_id' => 11, 'attribute_id' => 8, 'value' => '2000 cc'],
-            ['advertising_id' => 11, 'attribute_id' => 9, 'value' => '150 حصان'],
-            ['advertising_id' => 11, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
-            ['advertising_id' => 11, 'attribute_id' => 11, 'value' => '5'],
-            ['advertising_id' => 11, 'attribute_id' => 12, 'value' => '5'],
-            ['advertising_id' => 11, 'attribute_id' => 13, 'value' => 'مستعمل'],
+           
+        //     ['advertising_id' => 11, 'attribute_id' => 2, 'value' => '2021'],
+        //     ['advertising_id' => 11, 'attribute_id' => 3, 'value' => '35000 كم'],
+        //     ['advertising_id' => 11, 'attribute_id' => 4, 'value' => 'أبيض'],
+        //     ['advertising_id' => 11, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 11, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 11, 'attribute_id' => 7, 'value' => 'SUV'],
+        //     ['advertising_id' => 11, 'attribute_id' => 8, 'value' => '2000 cc'],
+        //     ['advertising_id' => 11, 'attribute_id' => 9, 'value' => '150 حصان'],
+        //     ['advertising_id' => 11, 'attribute_id' => 10, 'value' => 'دفع أمامي'],
+        //     ['advertising_id' => 11, 'attribute_id' => 11, 'value' => '5'],
+        //     ['advertising_id' => 11, 'attribute_id' => 12, 'value' => '5'],
+        //     ['advertising_id' => 11, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 12 (دراجة كاواساكي نينجا)
-            ['advertising_id' => 12, 'attribute_id' => 16, 'value' => '95000'],
-            ['advertising_id' => 12, 'attribute_id' => 17, 'value' => '2020'],
-            ['advertising_id' => 12, 'attribute_id' => 18, 'value' => '650 cc'],
-            ['advertising_id' => 12, 'attribute_id' => 19, 'value' => '8000 كم'],
-            ['advertising_id' => 12, 'attribute_id' => 20, 'value' => 'أخضر'],
-            ['advertising_id' => 12, 'attribute_id' => 21, 'value' => 'مستعمل'],
-            ['advertising_id' => 12, 'attribute_id' => 22, 'value' => 'بنزين'],
-            ['advertising_id' => 12, 'attribute_id' => 23, 'value' => 'مانيوال'],
-            ['advertising_id' => 12, 'attribute_id' => 24, 'value' => 'سبورت'],
+        //     // الإعلان 12 (دراجة كاواساكي نينجا)
+    
+        //     ['advertising_id' => 12, 'attribute_id' => 17, 'value' => '2020'],
+        //     ['advertising_id' => 12, 'attribute_id' => 18, 'value' => '650 cc'],
+        //     ['advertising_id' => 12, 'attribute_id' => 19, 'value' => '8000 كم'],
+        //     ['advertising_id' => 12, 'attribute_id' => 20, 'value' => 'أخضر'],
+        //     ['advertising_id' => 12, 'attribute_id' => 21, 'value' => 'مستعمل'],
+        //     ['advertising_id' => 12, 'attribute_id' => 22, 'value' => 'بنزين'],
+        //     ['advertising_id' => 12, 'attribute_id' => 23, 'value' => 'مانيوال'],
+        //     ['advertising_id' => 12, 'attribute_id' => 24, 'value' => 'سبورت'],
 
-            // الإعلان 13 (موبايل شاومي ريدمي نوت 10)
-            ['advertising_id' => 13, 'attribute_id' => 25, 'value' => '8000'],
-            ['advertising_id' => 13, 'attribute_id' => 26, 'value' => '128 جيجا'],
-            ['advertising_id' => 13, 'attribute_id' => 27, 'value' => '6 جيجا'],
-            ['advertising_id' => 13, 'attribute_id' => 28, 'value' => '6.5 إنش'],
-            ['advertising_id' => 13, 'attribute_id' => 29, 'value' => '48 ميجا بكسل'],
-            ['advertising_id' => 13, 'attribute_id' => 30, 'value' => '5000 مللي أمبير'],
-            ['advertising_id' => 13, 'attribute_id' => 31, 'value' => 'Android'],
-            ['advertising_id' => 13, 'attribute_id' => 32, 'value' => 'مستعمل'],
-            ['advertising_id' => 13, 'attribute_id' => 33, 'value' => 'نعم'],
+        //     // الإعلان 13 (موبايل شاومي ريدمي نوت 10)
+    
+        //     ['advertising_id' => 13, 'attribute_id' => 26, 'value' => '128 جيجا'],
+        //     ['advertising_id' => 13, 'attribute_id' => 27, 'value' => '6 جيجا'],
+        //     ['advertising_id' => 13, 'attribute_id' => 28, 'value' => '6.5 إنش'],
+        //     ['advertising_id' => 13, 'attribute_id' => 29, 'value' => '48 ميجا بكسل'],
+        //     ['advertising_id' => 13, 'attribute_id' => 30, 'value' => '5000 مللي أمبير'],
+        //     ['advertising_id' => 13, 'attribute_id' => 31, 'value' => 'Android'],
+        //     ['advertising_id' => 13, 'attribute_id' => 32, 'value' => 'مستعمل'],
+        //     ['advertising_id' => 13, 'attribute_id' => 33, 'value' => 'نعم'],
 
-            // الإعلان 14 (لابتوب لينوفو ثينك باد)
-            ['advertising_id' => 14, 'attribute_id' => 34, 'value' => '22000'],
-            ['advertising_id' => 14, 'attribute_id' => 35, 'value' => 'i5'],
-            ['advertising_id' => 14, 'attribute_id' => 36, 'value' => '8 جيجا'],
-            ['advertising_id' => 14, 'attribute_id' => 37, 'value' => '256 جيجا'],
-            ['advertising_id' => 14, 'attribute_id' => 38, 'value' => 'Intel UHD'],
-            ['advertising_id' => 14, 'attribute_id' => 39, 'value' => '14 إنش'],
-            ['advertising_id' => 14, 'attribute_id' => 40, 'value' => 'جيدة'],
-            ['advertising_id' => 14, 'attribute_id' => 41, 'value' => 'Windows'],
-            ['advertising_id' => 14, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 14 (لابتوب لينوفو ثينك باد)
+        
+        //     ['advertising_id' => 14, 'attribute_id' => 35, 'value' => 'i5'],
+        //     ['advertising_id' => 14, 'attribute_id' => 36, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 14, 'attribute_id' => 37, 'value' => '256 جيجا'],
+        //     ['advertising_id' => 14, 'attribute_id' => 38, 'value' => 'Intel UHD'],
+        //     ['advertising_id' => 14, 'attribute_id' => 39, 'value' => '14 إنش'],
+        //     ['advertising_id' => 14, 'attribute_id' => 40, 'value' => 'جيدة'],
+        //     ['advertising_id' => 14, 'attribute_id' => 41, 'value' => 'Windows'],
+        //     ['advertising_id' => 14, 'attribute_id' => 42, 'value' => 'مستعمل'],
 
-            // الإعلان 15 (تلفزيون LG)
-            ['advertising_id' => 15, 'attribute_id' => 50, 'value' => '15000'],
-            ['advertising_id' => 15, 'attribute_id' => 51, 'value' => '65 إنش'],
-            ['advertising_id' => 15, 'attribute_id' => 52, 'value' => '4K'],
-            ['advertising_id' => 15, 'attribute_id' => 53, 'value' => 'نعم'],
-            ['advertising_id' => 15, 'attribute_id' => 54, 'value' => 'LED'],
-            ['advertising_id' => 15, 'attribute_id' => 55, 'value' => 'جديد'],
-            ['advertising_id' => 15, 'attribute_id' => 56, 'value' => 'نعم'],
+        //     // الإعلان 15 (تلفزيون LG)
+        
+        //     ['advertising_id' => 15, 'attribute_id' => 51, 'value' => '65 إنش'],
+        //     ['advertising_id' => 15, 'attribute_id' => 52, 'value' => '4K'],
+        //     ['advertising_id' => 15, 'attribute_id' => 53, 'value' => 'نعم'],
+        //     ['advertising_id' => 15, 'attribute_id' => 54, 'value' => 'LED'],
+        //     ['advertising_id' => 15, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     ['advertising_id' => 15, 'attribute_id' => 56, 'value' => 'نعم'],
 
-            // الإعلان 16 (عقار تجاري - مكتب)
-            ['advertising_id' => 16, 'attribute_id' => 57, 'value' => '3500000'],
-            ['advertising_id' => 16, 'attribute_id' => 58, 'value' => 'مكتب'],
-            ['advertising_id' => 16, 'attribute_id' => 59, 'value' => '80 م²'],
-            ['advertising_id' => 16, 'attribute_id' => 60, 'value' => 'وسط البلد'],
-            ['advertising_id' => 16, 'attribute_id' => 61, 'value' => '3'],
-            ['advertising_id' => 16, 'attribute_id' => 62, 'value' => 'جديد'],
-            ['advertising_id' => 16, 'attribute_id' => 63, 'value' => 'مفروش'],
-            ['advertising_id' => 16, 'attribute_id' => 64, 'value' => 'لوكس'],
-            ['advertising_id' => 16, 'attribute_id' => 65, 'value' => 'بيع'],
+        //     // الإعلان 16 (عقار تجاري - مكتب)
+       
+        //     ['advertising_id' => 16, 'attribute_id' => 58, 'value' => 'مكتب'],
+        //     ['advertising_id' => 16, 'attribute_id' => 59, 'value' => '80 م²'],
+        //     ['advertising_id' => 16, 'attribute_id' => 60, 'value' => 'وسط البلد'],
+        //     ['advertising_id' => 16, 'attribute_id' => 61, 'value' => '3'],
+        //     ['advertising_id' => 16, 'attribute_id' => 62, 'value' => 'جديد'],
+        //     ['advertising_id' => 16, 'attribute_id' => 63, 'value' => 'مفروش'],
+        //     ['advertising_id' => 16, 'attribute_id' => 64, 'value' => 'لوكس'],
+           
 
-            // الإعلان 17 (عقار سكني - فيلا)
-            ['advertising_id' => 17, 'attribute_id' => 66, 'value' => '4500000'],
-            ['advertising_id' => 17, 'attribute_id' => 67, 'value' => 'فيلا'],
-            ['advertising_id' => 17, 'attribute_id' => 68, 'value' => '300 م²'],
-            ['advertising_id' => 17, 'attribute_id' => 69, 'value' => '4'],
-            ['advertising_id' => 17, 'attribute_id' => 70, 'value' => '3'],
-            ['advertising_id' => 17, 'attribute_id' => 71, 'value' => '2'],
-            ['advertising_id' => 17, 'attribute_id' => 72, 'value' => 'مفروش'],
-            ['advertising_id' => 17, 'attribute_id' => 73, 'value' => 'سوبر لوكس'],
-            ['advertising_id' => 17, 'attribute_id' => 74, 'value' => '1'],
-            ['advertising_id' => 17, 'attribute_id' => 75, 'value' => '10 سنوات'],
-            ['advertising_id' => 17, 'attribute_id' => 76, 'value' => 'بيع'],
+        //     // الإعلان 17 (عقار سكني - فيلا)
+          
+        //     ['advertising_id' => 17, 'attribute_id' => 67, 'value' => 'فيلا'],
+        //     ['advertising_id' => 17, 'attribute_id' => 68, 'value' => '300 م²'],
+        //     ['advertising_id' => 17, 'attribute_id' => 69, 'value' => '4'],
+        //     ['advertising_id' => 17, 'attribute_id' => 70, 'value' => '3'],
+        //     ['advertising_id' => 17, 'attribute_id' => 71, 'value' => '2'],
+        //     ['advertising_id' => 17, 'attribute_id' => 72, 'value' => 'مفروش'],
+        //     ['advertising_id' => 17, 'attribute_id' => 73, 'value' => 'سوبر لوكس'],
+        //     ['advertising_id' => 17, 'attribute_id' => 74, 'value' => '1'],
+        //     ['advertising_id' => 17, 'attribute_id' => 75, 'value' => '10 سنوات'],
+           
 
 
-            // الإعلان 18 (لابتوب لينوفو ليغيون)
-            ['advertising_id' => 18, 'attribute_id' => 34, 'value' => '25000'],
-            ['advertising_id' => 18, 'attribute_id' => 35, 'value' => 'i7'],
-            ['advertising_id' => 18, 'attribute_id' => 36, 'value' => '16 جيجا'],
-            ['advertising_id' => 18, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 18 (لابتوب لينوفو ليغيون)
+          
+        //     ['advertising_id' => 18, 'attribute_id' => 35, 'value' => 'i7'],
+        //     ['advertising_id' => 18, 'attribute_id' => 36, 'value' => '16 جيجا'],
+        //     ['advertising_id' => 18, 'attribute_id' => 42, 'value' => 'مستعمل'],
 
-            // الإعلان 19 (تلفزيون تي سي إل)
-            ['advertising_id' => 19, 'attribute_id' => 50, 'value' => '10000'],
-            ['advertising_id' => 19, 'attribute_id' => 51, 'value' => '50 إنش'],
-            ['advertising_id' => 19, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     // الإعلان 19 (تلفزيون تي سي إل)
+          
+        //     ['advertising_id' => 19, 'attribute_id' => 51, 'value' => '50 إنش'],
+        //     ['advertising_id' => 19, 'attribute_id' => 55, 'value' => 'جديد'],
 
-            // الإعلان 20 (تلفزيون سوني)
-            ['advertising_id' => 20, 'attribute_id' => 50, 'value' => '18000'],
-            ['advertising_id' => 20, 'attribute_id' => 51, 'value' => '55 إنش'],
-            ['advertising_id' => 20, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     // الإعلان 20 (تلفزيون سوني)
+          
+        //     ['advertising_id' => 20, 'attribute_id' => 51, 'value' => '55 إنش'],
+        //     ['advertising_id' => 20, 'attribute_id' => 55, 'value' => 'جديد'],
 
-            // الإعلان 21 (عقار تجاري - محل)
-            ['advertising_id' => 21, 'attribute_id' => 57, 'value' => '2000000'],
-            ['advertising_id' => 21, 'attribute_id' => 58, 'value' => 'محل'],
-            ['advertising_id' => 21, 'attribute_id' => 59, 'value' => '50 م²'],
-            ['advertising_id' => 21, 'attribute_id' => 65, 'value' => 'بيع'],
+        //     // الإعلان 21 (عقار تجاري - محل)
+          
+        //     ['advertising_id' => 21, 'attribute_id' => 58, 'value' => 'محل'],
+        //     ['advertising_id' => 21, 'attribute_id' => 59, 'value' => '50 م²'],
+           
+        //     // الإعلان 22 (عقار تجاري - مستودع)
+         
+        //     ['advertising_id' => 22, 'attribute_id' => 58, 'value' => 'مستودع'],
+        //     ['advertising_id' => 22, 'attribute_id' => 59, 'value' => '200 م²'],
+           
 
-            // الإعلان 22 (عقار تجاري - مستودع)
-            ['advertising_id' => 22, 'attribute_id' => 57, 'value' => '1500000'],
-            ['advertising_id' => 22, 'attribute_id' => 58, 'value' => 'مستودع'],
-            ['advertising_id' => 22, 'attribute_id' => 59, 'value' => '200 م²'],
-            ['advertising_id' => 22, 'attribute_id' => 65, 'value' => 'بيع'],
+        //     // الإعلان 23 (عقار سكني - دوبلكس)
 
-            // الإعلان 23 (عقار سكني - دوبلكس)
-            ['advertising_id' => 23, 'attribute_id' => 66, 'value' => '3000000'],
-            ['advertising_id' => 23, 'attribute_id' => 67, 'value' => 'دوبلكس'],
-            ['advertising_id' => 23, 'attribute_id' => 68, 'value' => '180 م²'],
-            ['advertising_id' => 23, 'attribute_id' => 76, 'value' => 'بيع'],
+        //     ['advertising_id' => 23, 'attribute_id' => 67, 'value' => 'دوبلكس'],
+        //     ['advertising_id' => 23, 'attribute_id' => 68, 'value' => '180 م²'],
+         
 
-            // الإعلان 24 (عقار سكني - بنتهاوس)
-            ['advertising_id' => 24, 'attribute_id' => 66, 'value' => '4000000'],
-            ['advertising_id' => 24, 'attribute_id' => 67, 'value' => 'بنتهاوس'],
-            ['advertising_id' => 24, 'attribute_id' => 68, 'value' => '200 م²'],
-            ['advertising_id' => 24, 'attribute_id' => 76, 'value' => 'بيع'],
-            // الإعلان 25 (عقار سكني - شقة)
-            ['advertising_id' => 25, 'attribute_id' => 66, 'value' => '1800000'],
-            ['advertising_id' => 25, 'attribute_id' => 67, 'value' => 'شقة'],
-            ['advertising_id' => 25, 'attribute_id' => 68, 'value' => '120 م²'],
-            ['advertising_id' => 25, 'attribute_id' => 69, 'value' => '2'],
-            ['advertising_id' => 25, 'attribute_id' => 70, 'value' => '1'],
-            ['advertising_id' => 25, 'attribute_id' => 71, 'value' => '1'],
-            ['advertising_id' => 25, 'attribute_id' => 72, 'value' => 'نعم'],
-            ['advertising_id' => 25, 'attribute_id' => 73, 'value' => 'لوكس'],
-            ['advertising_id' => 25, 'attribute_id' => 74, 'value' => '3'],
-            ['advertising_id' => 25, 'attribute_id' => 75, 'value' => '3 سنوات'],
-            ['advertising_id' => 25, 'attribute_id' => 76, 'value' => 'بيع'],
+        //     // الإعلان 24 (عقار سكني - بنتهاوس)
+       
+        //     ['advertising_id' => 24, 'attribute_id' => 67, 'value' => 'بنتهاوس'],
+        //     ['advertising_id' => 24, 'attribute_id' => 68, 'value' => '200 م²'],
+           
+        //     // الإعلان 25 (عقار سكني - شقة)
+          
+        //     ['advertising_id' => 25, 'attribute_id' => 67, 'value' => 'شقة'],
+        //     ['advertising_id' => 25, 'attribute_id' => 68, 'value' => '120 م²'],
+        //     ['advertising_id' => 25, 'attribute_id' => 69, 'value' => '2'],
+        //     ['advertising_id' => 25, 'attribute_id' => 70, 'value' => '1'],
+        //     ['advertising_id' => 25, 'attribute_id' => 71, 'value' => '1'],
+        //     ['advertising_id' => 25, 'attribute_id' => 72, 'value' => 'نعم'],
+        //     ['advertising_id' => 25, 'attribute_id' => 73, 'value' => 'لوكس'],
+        //     ['advertising_id' => 25, 'attribute_id' => 74, 'value' => '3'],
+        //     ['advertising_id' => 25, 'attribute_id' => 75, 'value' => '3 سنوات'],
+         
+        //     // الإعلان 26 (عقار سكني - فيلا)
+         
+        //     ['advertising_id' => 26, 'attribute_id' => 67, 'value' => 'فيلا'],
+        //     ['advertising_id' => 26, 'attribute_id' => 68, 'value' => '400 م²'],
+        //     ['advertising_id' => 26, 'attribute_id' => 69, 'value' => '5'],
+        //     ['advertising_id' => 26, 'attribute_id' => 70, 'value' => '4'],
+        //     ['advertising_id' => 26, 'attribute_id' => 71, 'value' => '3'],
+        //     ['advertising_id' => 26, 'attribute_id' => 72, 'value' => 'نعم'],
+        //     ['advertising_id' => 26, 'attribute_id' => 73, 'value' => 'سوبر لوكس'],
+        //     ['advertising_id' => 26, 'attribute_id' => 74, 'value' => '2'],
+        //     ['advertising_id' => 26, 'attribute_id' => 75, 'value' => '5 سنوات'],
+          
 
-            // الإعلان 26 (عقار سكني - فيلا)
-            ['advertising_id' => 26, 'attribute_id' => 66, 'value' => '5000000'],
-            ['advertising_id' => 26, 'attribute_id' => 67, 'value' => 'فيلا'],
-            ['advertising_id' => 26, 'attribute_id' => 68, 'value' => '400 م²'],
-            ['advertising_id' => 26, 'attribute_id' => 69, 'value' => '5'],
-            ['advertising_id' => 26, 'attribute_id' => 70, 'value' => '4'],
-            ['advertising_id' => 26, 'attribute_id' => 71, 'value' => '3'],
-            ['advertising_id' => 26, 'attribute_id' => 72, 'value' => 'نعم'],
-            ['advertising_id' => 26, 'attribute_id' => 73, 'value' => 'سوبر لوكس'],
-            ['advertising_id' => 26, 'attribute_id' => 74, 'value' => '2'],
-            ['advertising_id' => 26, 'attribute_id' => 75, 'value' => '5 سنوات'],
-            ['advertising_id' => 26, 'attribute_id' => 76, 'value' => 'بيع'],
+         
+        //     ['advertising_id' => 25, 'attribute_id' => 35, 'value' => 'i5'],
+        //     ['advertising_id' => 25, 'attribute_id' => 36, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 25, 'attribute_id' => 37, 'value' => '512 جيجا'],
+        //     ['advertising_id' => 25, 'attribute_id' => 38, 'value' => 'GTX 1650'],
+        //     ['advertising_id' => 25, 'attribute_id' => 42, 'value' => 'مستعمل'],
 
-            ['advertising_id' => 25, 'attribute_id' => 34, 'value' => '22000'],
-            ['advertising_id' => 25, 'attribute_id' => 35, 'value' => 'i5'],
-            ['advertising_id' => 25, 'attribute_id' => 36, 'value' => '8 جيجا'],
-            ['advertising_id' => 25, 'attribute_id' => 37, 'value' => '512 جيجا'],
-            ['advertising_id' => 25, 'attribute_id' => 38, 'value' => 'GTX 1650'],
-            ['advertising_id' => 25, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 26 (موبايل أوبو رينو 5)
+          
+        //     ['advertising_id' => 26, 'attribute_id' => 26, 'value' => '128 جيجا'],
+        //     ['advertising_id' => 26, 'attribute_id' => 27, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 26, 'attribute_id' => 32, 'value' => 'مستعمل'],
 
-            // الإعلان 26 (موبايل أوبو رينو 5)
-            ['advertising_id' => 26, 'attribute_id' => 25, 'value' => '9000'],
-            ['advertising_id' => 26, 'attribute_id' => 26, 'value' => '128 جيجا'],
-            ['advertising_id' => 26, 'attribute_id' => 27, 'value' => '8 جيجا'],
-            ['advertising_id' => 26, 'attribute_id' => 32, 'value' => 'مستعمل'],
+        //     // الإعلان 27 (سيارة بي إم دبليو X5)
+           
+        //     ['advertising_id' => 27, 'attribute_id' => 2, 'value' => '2019'],
+        //     ['advertising_id' => 27, 'attribute_id' => 3, 'value' => '60000 كم'],
+        //     ['advertising_id' => 27, 'attribute_id' => 4, 'value' => 'أسود'],
+        //     ['advertising_id' => 27, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 27, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 27, 'attribute_id' => 7, 'value' => 'SUV'],
+        //     ['advertising_id' => 27, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 27 (سيارة بي إم دبليو X5)
-            ['advertising_id' => 27, 'attribute_id' => 1, 'value' => '450000'],
-            ['advertising_id' => 27, 'attribute_id' => 2, 'value' => '2019'],
-            ['advertising_id' => 27, 'attribute_id' => 3, 'value' => '60000 كم'],
-            ['advertising_id' => 27, 'attribute_id' => 4, 'value' => 'أسود'],
-            ['advertising_id' => 27, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 27, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 27, 'attribute_id' => 7, 'value' => 'SUV'],
-            ['advertising_id' => 27, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        //     // الإعلان 28 (دراجة هارلي ديفيدسون)
+         
+        //     ['advertising_id' => 28, 'attribute_id' => 17, 'value' => '2020'],
+        //     ['advertising_id' => 28, 'attribute_id' => 18, 'value' => '1200 cc'],
+        //     ['advertising_id' => 28, 'attribute_id' => 21, 'value' => 'مستعمل'],
 
-            // الإعلان 28 (دراجة هارلي ديفيدسون)
-            ['advertising_id' => 28, 'attribute_id' => 16, 'value' => '150000'],
-            ['advertising_id' => 28, 'attribute_id' => 17, 'value' => '2020'],
-            ['advertising_id' => 28, 'attribute_id' => 18, 'value' => '1200 cc'],
-            ['advertising_id' => 28, 'attribute_id' => 21, 'value' => 'مستعمل'],
+        //     // الإعلان 29 (تلفزيون هايسنس)
+       
+        //     ['advertising_id' => 29, 'attribute_id' => 51, 'value' => '43 إنش'],
+        //     ['advertising_id' => 29, 'attribute_id' => 55, 'value' => 'جديد'],
 
-            // الإعلان 29 (تلفزيون هايسنس)
-            ['advertising_id' => 29, 'attribute_id' => 50, 'value' => '8000'],
-            ['advertising_id' => 29, 'attribute_id' => 51, 'value' => '43 إنش'],
-            ['advertising_id' => 29, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     // الإعلان 30 (عقار تجاري - عيادة)
+     
+        //     ['advertising_id' => 30, 'attribute_id' => 58, 'value' => 'عيادة'],
+        //     ['advertising_id' => 30, 'attribute_id' => 59, 'value' => '90 م²'],
+          
 
-            // الإعلان 30 (عقار تجاري - عيادة)
-            ['advertising_id' => 30, 'attribute_id' => 57, 'value' => '2800000'],
-            ['advertising_id' => 30, 'attribute_id' => 58, 'value' => 'عيادة'],
-            ['advertising_id' => 30, 'attribute_id' => 59, 'value' => '90 م²'],
-            ['advertising_id' => 30, 'attribute_id' => 65, 'value' => 'بيع'],
+        //     // الإعلان 31 (موبايل شاومي ريدمي نوت 11)
+           
+        //     ['advertising_id' => 31, 'attribute_id' => 26, 'value' => '64 جيجا'],
+        //     ['advertising_id' => 31, 'attribute_id' => 27, 'value' => '4 جيجا'],
+        //     ['advertising_id' => 31, 'attribute_id' => 32, 'value' => 'جديد'],
 
-            // الإعلان 31 (موبايل شاومي ريدمي نوت 11)
-            ['advertising_id' => 31, 'attribute_id' => 25, 'value' => '7000'],
-            ['advertising_id' => 31, 'attribute_id' => 26, 'value' => '64 جيجا'],
-            ['advertising_id' => 31, 'attribute_id' => 27, 'value' => '4 جيجا'],
-            ['advertising_id' => 31, 'attribute_id' => 32, 'value' => 'جديد'],
+        //     // الإعلان 32 (لابتوب ماك بوك برو)
+        
+        //     ['advertising_id' => 32, 'attribute_id' => 35, 'value' => 'M1 Pro'],
+        //     ['advertising_id' => 32, 'attribute_id' => 36, 'value' => '16 جيجا'],
+        //     ['advertising_id' => 32, 'attribute_id' => 42, 'value' => 'جديد'],
 
-            // الإعلان 32 (لابتوب ماك بوك برو)
-            ['advertising_id' => 32, 'attribute_id' => 34, 'value' => '35000'],
-            ['advertising_id' => 32, 'attribute_id' => 35, 'value' => 'M1 Pro'],
-            ['advertising_id' => 32, 'attribute_id' => 36, 'value' => '16 جيجا'],
-            ['advertising_id' => 32, 'attribute_id' => 42, 'value' => 'جديد'],
+        //     // الإعلان 33 (سيارة ميتسوبيشي باجيرو)
+            
+        //     ['advertising_id' => 33, 'attribute_id' => 2, 'value' => '2018'],
+        //     ['advertising_id' => 33, 'attribute_id' => 3, 'value' => '70000 كم'],
+        //     ['advertising_id' => 33, 'attribute_id' => 4, 'value' => 'أبيض'],
+        //     ['advertising_id' => 33, 'attribute_id' => 5, 'value' => 'ديزل'],
+        //     ['advertising_id' => 33, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 33, 'attribute_id' => 7, 'value' => 'SUV'],
+        //     ['advertising_id' => 33, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 33 (سيارة ميتسوبيشي باجيرو)
-            ['advertising_id' => 33, 'attribute_id' => 1, 'value' => '220000'],
-            ['advertising_id' => 33, 'attribute_id' => 2, 'value' => '2018'],
-            ['advertising_id' => 33, 'attribute_id' => 3, 'value' => '70000 كم'],
-            ['advertising_id' => 33, 'attribute_id' => 4, 'value' => 'أبيض'],
-            ['advertising_id' => 33, 'attribute_id' => 5, 'value' => 'ديزل'],
-            ['advertising_id' => 33, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 33, 'attribute_id' => 7, 'value' => 'SUV'],
-            ['advertising_id' => 33, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        //     // الإعلان 34 (دراجة هوندا سي بي آر 1000)
+     
+        //     ['advertising_id' => 34, 'attribute_id' => 17, 'value' => '2021'],
+        //     ['advertising_id' => 34, 'attribute_id' => 18, 'value' => '1000 cc'],
+        //     ['advertising_id' => 34, 'attribute_id' => 21, 'value' => 'مستعمل'],
 
-            // الإعلان 34 (دراجة هوندا سي بي آر 1000)
-            ['advertising_id' => 34, 'attribute_id' => 16, 'value' => '130000'],
-            ['advertising_id' => 34, 'attribute_id' => 17, 'value' => '2021'],
-            ['advertising_id' => 34, 'attribute_id' => 18, 'value' => '1000 cc'],
-            ['advertising_id' => 34, 'attribute_id' => 21, 'value' => 'مستعمل'],
+        //     // الإعلان 35 (تلفزيون تي سي إل 4K)
+       
+        //     ['advertising_id' => 35, 'attribute_id' => 51, 'value' => '55 إنش'],
+        //     ['advertising_id' => 35, 'attribute_id' => 55, 'value' => 'جديد'],
 
-            // الإعلان 35 (تلفزيون تي سي إل 4K)
-            ['advertising_id' => 35, 'attribute_id' => 50, 'value' => '12000'],
-            ['advertising_id' => 35, 'attribute_id' => 51, 'value' => '55 إنش'],
-            ['advertising_id' => 35, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     // الإعلان 36 (عقار سكني - تاون هاوس)
+         
+        //     ['advertising_id' => 36, 'attribute_id' => 67, 'value' => 'تاون هاوس'],
+        //     ['advertising_id' => 36, 'attribute_id' => 68, 'value' => '160 م²'],
+        //     ['advertising_id' => 36, 'attribute_id' => 76, 'value' => 'بيع'],
 
-            // الإعلان 36 (عقار سكني - تاون هاوس)
-            ['advertising_id' => 36, 'attribute_id' => 66, 'value' => '2800000'],
-            ['advertising_id' => 36, 'attribute_id' => 67, 'value' => 'تاون هاوس'],
-            ['advertising_id' => 36, 'attribute_id' => 68, 'value' => '160 م²'],
-            ['advertising_id' => 36, 'attribute_id' => 76, 'value' => 'بيع'],
+        //     // الإعلان 37 (موبايل سامسونج A52)
+          
+        //     ['advertising_id' => 37, 'attribute_id' => 26, 'value' => '128 جيجا'],
+        //     ['advertising_id' => 37, 'attribute_id' => 27, 'value' => '6 جيجا'],
+        //     ['advertising_id' => 37, 'attribute_id' => 32, 'value' => 'جديد'],
 
-            // الإعلان 37 (موبايل سامسونج A52)
-            ['advertising_id' => 37, 'attribute_id' => 25, 'value' => '8500'],
-            ['advertising_id' => 37, 'attribute_id' => 26, 'value' => '128 جيجا'],
-            ['advertising_id' => 37, 'attribute_id' => 27, 'value' => '6 جيجا'],
-            ['advertising_id' => 37, 'attribute_id' => 32, 'value' => 'جديد'],
+        //     // الإعلان 38 (لابتوب ديل انسبيرون)
+        //  ,
+        //     ['advertising_id' => 38, 'attribute_id' => 35, 'value' => 'i5'],
+        //     ['advertising_id' => 38, 'attribute_id' => 36, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 38, 'attribute_id' => 42, 'value' => 'مستعمل'],
 
-            // الإعلان 38 (لابتوب ديل انسبيرون)
-            ['advertising_id' => 38, 'attribute_id' => 34, 'value' => '15000'],
-            ['advertising_id' => 38, 'attribute_id' => 35, 'value' => 'i5'],
-            ['advertising_id' => 38, 'attribute_id' => 36, 'value' => '8 جيجا'],
-            ['advertising_id' => 38, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 39 (سيارة كيا سيراتو)
+        
+        //     ['advertising_id' => 39, 'attribute_id' => 2, 'value' => '2019'],
+        //     ['advertising_id' => 39, 'attribute_id' => 3, 'value' => '50000 كم'],
+        //     ['advertising_id' => 39, 'attribute_id' => 4, 'value' => 'أبيض'],
+        //     ['advertising_id' => 39, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 39, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 39, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 39 (سيارة كيا سيراتو)
-            ['advertising_id' => 39, 'attribute_id' => 1, 'value' => '140000'],
-            ['advertising_id' => 39, 'attribute_id' => 2, 'value' => '2019'],
-            ['advertising_id' => 39, 'attribute_id' => 3, 'value' => '50000 كم'],
-            ['advertising_id' => 39, 'attribute_id' => 4, 'value' => 'أبيض'],
-            ['advertising_id' => 39, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 39, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 39, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        //     // الإعلان 40 (دراجة سوزوكي جي اس اكس اس 1000)
+      
+        //     ['advertising_id' => 40, 'attribute_id' => 17, 'value' => '2022'],
+        //     ['advertising_id' => 40, 'attribute_id' => 18, 'value' => '1000 cc'],
+        //     ['advertising_id' => 40, 'attribute_id' => 21, 'value' => 'جديد'],
 
-            // الإعلان 40 (دراجة سوزوكي جي اس اكس اس 1000)
-            ['advertising_id' => 40, 'attribute_id' => 16, 'value' => '140000'],
-            ['advertising_id' => 40, 'attribute_id' => 17, 'value' => '2022'],
-            ['advertising_id' => 40, 'attribute_id' => 18, 'value' => '1000 cc'],
-            ['advertising_id' => 40, 'attribute_id' => 21, 'value' => 'جديد'],
+        //     // الإعلان 41 (تلفزيون سامسونج QLED)
+      
+        //     ['advertising_id' => 41, 'attribute_id' => 51, 'value' => '65 إنش'],
+        //     ['advertising_id' => 41, 'attribute_id' => 55, 'value' => 'جديد'],
 
-            // الإعلان 41 (تلفزيون سامسونج QLED)
-            ['advertising_id' => 41, 'attribute_id' => 50, 'value' => '25000'],
-            ['advertising_id' => 41, 'attribute_id' => 51, 'value' => '65 إنش'],
-            ['advertising_id' => 41, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     // الإعلان 42 (عقار تجاري - صيدلية)
+          
+        //     ['advertising_id' => 42, 'attribute_id' => 58, 'value' => 'صيدلية'],
+        //     ['advertising_id' => 42, 'attribute_id' => 59, 'value' => '70 م²'],
+        //     ['advertising_id' => 42, 'attribute_id' => 65, 'value' => 'بيع'],
 
-            // الإعلان 42 (عقار تجاري - صيدلية)
-            ['advertising_id' => 42, 'attribute_id' => 57, 'value' => '3200000'],
-            ['advertising_id' => 42, 'attribute_id' => 58, 'value' => 'صيدلية'],
-            ['advertising_id' => 42, 'attribute_id' => 59, 'value' => '70 م²'],
-            ['advertising_id' => 42, 'attribute_id' => 65, 'value' => 'بيع'],
+        //     // الإعلان 43 (موبايل آيفون 13)
+       
+        //     ['advertising_id' => 43, 'attribute_id' => 26, 'value' => '128 جيجا'],
+        //     ['advertising_id' => 43, 'attribute_id' => 27, 'value' => '4 جيجا'],
+        //     ['advertising_id' => 43, 'attribute_id' => 32, 'value' => 'جديد'],
 
-            // الإعلان 43 (موبايل آيفون 13)
-            ['advertising_id' => 43, 'attribute_id' => 25, 'value' => '25000'],
-            ['advertising_id' => 43, 'attribute_id' => 26, 'value' => '128 جيجا'],
-            ['advertising_id' => 43, 'attribute_id' => 27, 'value' => '4 جيجا'],
-            ['advertising_id' => 43, 'attribute_id' => 32, 'value' => 'جديد'],
+        //     // الإعلان 44 (لابتوب اسوس روج)
+      
+        //     ['advertising_id' => 44, 'attribute_id' => 35, 'value' => 'i7'],
+        //     ['advertising_id' => 44, 'attribute_id' => 36, 'value' => '16 جيجا'],
+        //     ['advertising_id' => 44, 'attribute_id' => 42, 'value' => 'مستعمل'],
 
-            // الإعلان 44 (لابتوب اسوس روج)
-            ['advertising_id' => 44, 'attribute_id' => 34, 'value' => '28000'],
-            ['advertising_id' => 44, 'attribute_id' => 35, 'value' => 'i7'],
-            ['advertising_id' => 44, 'attribute_id' => 36, 'value' => '16 جيجا'],
-            ['advertising_id' => 44, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 45 (سيارة فولكس فاجن جولف)
+         
+        //     ['advertising_id' => 45, 'attribute_id' => 2, 'value' => '2020'],
+        //     ['advertising_id' => 45, 'attribute_id' => 3, 'value' => '40000 كم'],
+        //     ['advertising_id' => 45, 'attribute_id' => 4, 'value' => 'أزرق'],
+        //     ['advertising_id' => 45, 'attribute_id' => 5, 'value' => 'بنزين'],
+        //     ['advertising_id' => 45, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
+        //     ['advertising_id' => 45, 'attribute_id' => 13, 'value' => 'مستعمل'],
 
-            // الإعلان 45 (سيارة فولكس فاجن جولف)
-            ['advertising_id' => 45, 'attribute_id' => 1, 'value' => '180000'],
-            ['advertising_id' => 45, 'attribute_id' => 2, 'value' => '2020'],
-            ['advertising_id' => 45, 'attribute_id' => 3, 'value' => '40000 كم'],
-            ['advertising_id' => 45, 'attribute_id' => 4, 'value' => 'أزرق'],
-            ['advertising_id' => 45, 'attribute_id' => 5, 'value' => 'بنزين'],
-            ['advertising_id' => 45, 'attribute_id' => 6, 'value' => 'أوتوماتيك'],
-            ['advertising_id' => 45, 'attribute_id' => 13, 'value' => 'مستعمل'],
+        //     // الإعلان 46 (دراجة ياماها MT-07)
+        
+        //     ['advertising_id' => 46, 'attribute_id' => 17, 'value' => '2021'],
+        //     ['advertising_id' => 46, 'attribute_id' => 18, 'value' => '700 cc'],
+        //     ['advertising_id' => 46, 'attribute_id' => 21, 'value' => 'مستعمل'],
 
-            // الإعلان 46 (دراجة ياماها MT-07)
-            ['advertising_id' => 46, 'attribute_id' => 16, 'value' => '95000'],
-            ['advertising_id' => 46, 'attribute_id' => 17, 'value' => '2021'],
-            ['advertising_id' => 46, 'attribute_id' => 18, 'value' => '700 cc'],
-            ['advertising_id' => 46, 'attribute_id' => 21, 'value' => 'مستعمل'],
+        //     // الإعلان 47 (تلفزيون LG OLED)
+         
+        //     ['advertising_id' => 47, 'attribute_id' => 51, 'value' => '55 إنش'],
+        //     ['advertising_id' => 47, 'attribute_id' => 55, 'value' => 'جديد'],
 
-            // الإعلان 47 (تلفزيون LG OLED)
-            ['advertising_id' => 47, 'attribute_id' => 50, 'value' => '30000'],
-            ['advertising_id' => 47, 'attribute_id' => 51, 'value' => '55 إنش'],
-            ['advertising_id' => 47, 'attribute_id' => 55, 'value' => 'جديد'],
+        //     // الإعلان 48 (عقار سكني - دوبلكس)
+        
+        //     ['advertising_id' => 48, 'attribute_id' => 67, 'value' => 'دوبلكس'],
+        //     ['advertising_id' => 48, 'attribute_id' => 68, 'value' => '200 م²'],
+        //     ['advertising_id' => 48, 'attribute_id' => 76, 'value' => 'بيع'],
 
-            // الإعلان 48 (عقار سكني - دوبلكس)
-            ['advertising_id' => 48, 'attribute_id' => 66, 'value' => '3200000'],
-            ['advertising_id' => 48, 'attribute_id' => 67, 'value' => 'دوبلكس'],
-            ['advertising_id' => 48, 'attribute_id' => 68, 'value' => '200 م²'],
-            ['advertising_id' => 48, 'attribute_id' => 76, 'value' => 'بيع'],
+        //     // الإعلان 49 (موبايل ون بلس 9)
+       
+        //     ['advertising_id' => 49, 'attribute_id' => 26, 'value' => '128 جيجا'],
+        //     ['advertising_id' => 49, 'attribute_id' => 27, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 49, 'attribute_id' => 32, 'value' => 'مستعمل'],
 
-            // الإعلان 49 (موبايل ون بلس 9)
-            ['advertising_id' => 49, 'attribute_id' => 25, 'value' => '12000'],
-            ['advertising_id' => 49, 'attribute_id' => 26, 'value' => '128 جيجا'],
-            ['advertising_id' => 49, 'attribute_id' => 27, 'value' => '8 جيجا'],
-            ['advertising_id' => 49, 'attribute_id' => 32, 'value' => 'مستعمل'],
-
-            // الإعلان 50 (لابتوب لينوفو يوجا)
-            ['advertising_id' => 50, 'attribute_id' => 34, 'value' => '20000'],
-            ['advertising_id' => 50, 'attribute_id' => 35, 'value' => 'i5'],
-            ['advertising_id' => 50, 'attribute_id' => 36, 'value' => '8 جيجا'],
-            ['advertising_id' => 50, 'attribute_id' => 42, 'value' => 'مستعمل'],
+        //     // الإعلان 50 (لابتوب لينوفو يوجا)
+      
+        //     ['advertising_id' => 50, 'attribute_id' => 35, 'value' => 'i5'],
+        //     ['advertising_id' => 50, 'attribute_id' => 36, 'value' => '8 جيجا'],
+        //     ['advertising_id' => 50, 'attribute_id' => 42, 'value' => 'مستعمل'],
     
            
-        ];
+        // ];
 
-        DB::table('advertising_attribute')->insert($attributesData);
+        // DB::table('advertising_attribute')->insert($attributesData);
     }
 }
    

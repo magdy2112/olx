@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('role')->nullable()->default('user');
             $table->string('provider')->nullable();
+            $table->string('image')->nullable(); // Added image column for user profile picture
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

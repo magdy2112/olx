@@ -10,7 +10,8 @@ class Advertising extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'category_id', 'sub_category_id', 'modal_id', 'submodal_id'];
+    protected $fillable = ['user_id', 'category_id', 'sub_category_id', 'modal_id', 'submodal_id',
+        'title', 'description', 'price', 'purpose', 'status'];
 
     public function user()
     {
@@ -46,7 +47,6 @@ class Advertising extends Model
     }
 
     
-
     public function location()
     {
         return $this->morphOne(Location::class, 'locationable');
