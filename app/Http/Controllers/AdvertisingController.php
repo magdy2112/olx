@@ -1,29 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\Advertising\Newadvertisingrequest;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Advertising;
-use App\Models\CategoryAttribute;
+use App\Enum\Role;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Traits\Httpresponse;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Illuminate\Http\Request;
 
 // use Illuminate\Support\Facades\Request;
 
 class AdvertisingController extends Controller
 {
     use Httpresponse;
-        const MAX_IMAGES_FREE = 5;
-    const MAX_IMAGES_PRO = 8;
+ 
 
 
- public function store(Newadvertisingrequest $request)
+    public function store(Newadvertisingrequest $request)
     {
+
+
         if (
             Cache::has('destroy_subcategory') ||
             Cache::has('destroy_category') ||
@@ -37,13 +40,13 @@ class AdvertisingController extends Controller
         try {
             $data = $request->validated();
             $user = Auth::user();
-            
+
             if (!$user) {
                 throw new Exception('Unauthorized', 401);
             }
 
             $advertising = null;
-            
+
             DB::beginTransaction();
 
             try {
@@ -61,27 +64,15 @@ class AdvertisingController extends Controller
                     'status'            => $data['status'] ?? 'active',
                 ]);
 
-         if (isset($data['attributes']) && is_array($data['attributes'])) {
-    $attachData = [];
-foreach ($data['attributes'] as $key => $value) {
-    $categoryAttribute = CategoryAttribute::where('sub_category_id', $data['sub_category_id'])
-                                          ->where('name', $key)
-                                          ->first();
-    if ($categoryAttribute && !empty($value)) {
-        $attachData[$categoryAttribute->id] = ['value' => $value];
-    }
-}
-$advertising->categoryattributes()->sync($attachData);
-}
-
+        
                 // 3. Handle Images
                 $files = $data['images'] ?? [];
                 $newImagesCount = count($files);
                 $existingImagesCount = 0; // Since it's new advertising, this should be 0
 
-                $maxImagesAllowed = $user->role === 'proser' 
-                    ? self::MAX_IMAGES_PRO 
-                    : self::MAX_IMAGES_FREE;
+                $maxImagesAllowed = $user->role === Role::Prouser
+                    ? config('advertising.max_images_pro')
+                    : config('advertising.max_images_free');
 
                 if (($existingImagesCount + $newImagesCount) > $maxImagesAllowed) {
                     throw new Exception("You can upload max {$maxImagesAllowed} images per advertising.");
@@ -91,9 +82,9 @@ $advertising->categoryattributes()->sync($attachData);
                 if ($newImagesCount > 0) {
                     $manager = new ImageManager(new Driver());
                     $imageDirectory = storage_path('app/public/ad_images/');
-                    
+
                     if (!file_exists($imageDirectory)) {
-                        mkdir($imageDirectory, 0777, true);
+                        mkdir($imageDirectory, 0755, true);
                     }
 
                     foreach ($files as $uploadedFile) {
@@ -109,7 +100,7 @@ $advertising->categoryattributes()->sync($attachData);
                         $savePath = storage_path('app/public/' . $relativePath);
 
                         $image->toJpeg(80)->save($savePath);
-                           $savedFiles[] = $savePath;
+                        $savedFiles[] = $savePath;
                         $advertising->images()->create([
                             'name'           => $uploadedFile->getClientOriginalName(),
                             'url'            => asset('storage/ad_images/' . $filename),
@@ -119,30 +110,44 @@ $advertising->categoryattributes()->sync($attachData);
                     }
                 }
 
+                $bulkInsertData = [];
+    $now = now();
+    // Save the attributes
+    foreach ($data['categoryattributes'] ?? [] as $attribute) {
+        $bulkInsertData[] = [
+            'advertising_id' => $advertising->id,
+            'category_attribute_id' => $attribute['attribute_id'],
+            'value' => $attribute['value'],
+            'created_at' => $now,
+            'updated_at' => $now,
+        ];
+    }
+
+    DB::table('advertising_categoryattribute')->insert($bulkInsertData);
+   
+
                 DB::commit();
                 return $this->response(true, 201, 'Advertising created successfully', [
                     'advertising' => $advertising->load('categoryattributes', 'images')
+                   
                 ]);
             } catch (Exception $e) {
                 DB::rollBack();
-                 if (!empty($savedFiles)) {
-        foreach ($savedFiles as $file) {
-            if (file_exists($file)) {
-                unlink($file);
-            }
-        }
-    }
+                if (!empty($savedFiles)) {
+                    foreach ($savedFiles as $file) {
+                        if (file_exists($file)) {
+                            unlink($file);
+                        }
+                    }
+                }
                 throw $e;
             }
-
-            // return $this->response(true, 201, 'Advertising created successfully', [
-            //     'advertising' => $advertising->load('attributes', 'images')
-            // ]);
         } catch (Exception $e) {
             return $this->response(false, 500, 'Error creating advertising: ' . $e->getMessage());
         }
     }
+
+
+
+
 }
-
-
-

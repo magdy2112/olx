@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\Role;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->string('role')->nullable()->default('user');
+
+            $table->enum('role',array_column(App\Enum\Role::cases(), 'value'))->default(Role::User->value);
             $table->string('provider')->nullable();
             $table->string('image')->nullable(); // Added image column for user profile picture
 
