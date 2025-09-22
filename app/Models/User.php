@@ -53,6 +53,16 @@ class User extends Authenticatable
         ];
     }
 
+    public function advertisings()
+    {
+        return $this->hasMany(Advertising::class);
+    }
+
+    public function favs()
+    {
+        return $this->hasMany(Fav::class);
+    }
+
     public function location()
     {
         return $this->morphOne(Location::class, 'locationable');

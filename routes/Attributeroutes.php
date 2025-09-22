@@ -9,5 +9,5 @@ Route::controller( AttributesController::class)->group(function () {
     Route::delete('/deleteattribute/{id}', action: 'deleteattribute'); 
     Route::post('/attributes', 'getAttributes');
 
-});
+})->middleware('auth:sanctum');
 

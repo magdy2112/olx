@@ -11,5 +11,5 @@ Route::controller(ModalController::class)
       Route::patch('updatemodal/{id}', 'updatemodal');
       Route::delete('deletemodal/{id}', 'destroy');
       Route::get('isfinal', 'isfinal');
-});
+})->middleware('auth:sanctum');
 

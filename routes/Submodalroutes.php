@@ -15,4 +15,4 @@ Route::controller(SubmodalController::class)->prefix('submodal')
             Route::patch('updatesubmodal/{id}', 'updatesubmodal');
 
             Route::delete('deletesubmodal/{id}', 'destroy');
-      });
+      })->middleware('auth:sanctum')      ;

@@ -46,9 +46,11 @@ class Advertising extends Model
             ->withTimestamps();
     }
 
-    
+    public function favs()
+    {
+        return $this->hasMany(Fav::class);
+    }
 
-    
     public function location()
     {
         return $this->morphOne(Location::class, 'locationable');

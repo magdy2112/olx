@@ -12,4 +12,4 @@ Route::controller( SubCategoryController::class)->prefix('subcategory')
       Route::patch('updatesubcategory/{id}', 'updatesubcategory');
       Route::get('subcategorybycategory/{categoryid}', 'allsubcategorybycategory');
       Route::delete('deletesubcategory/{id}', 'destroy');
-});
+})->middleware('auth:sanctum');

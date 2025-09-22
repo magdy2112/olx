@@ -16,6 +16,7 @@ require __DIR__ . '/Submodalroutes.php';
 require __DIR__ . '/Attributeroutes.php';
 require __DIR__ . '/Image.php';
 require __DIR__ . '/Advertising.php';
+require __DIR__ . '/Fav.php';
 
 
 
