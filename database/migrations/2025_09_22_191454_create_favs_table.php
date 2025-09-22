@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('favs', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->constrained('users');
-            $table->foreign('advertising_id')->constrained('advertisings');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('advertising_id')->constrained('advertisings');
             $table->timestamps();
          
         });

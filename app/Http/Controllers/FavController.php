@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fav;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,10 @@ class FavController extends Controller
         $advertisingId = $request->input('advertising_id');
 
         // Check if the favorite already exists
-        $fav = $user->favs()->where('advertising_id', $advertisingId)->first();
+        // $fav = $user->favs()->where('advertising_id', $advertisingId)->first();
+        $fav = Fav::where('user_id', $user->id)
+                  ->where('advertising_id', $advertisingId)
+                  ->first();
 
         if ($fav) {
             // If it exists, remove it (unfavorite)
@@ -26,7 +30,10 @@ class FavController extends Controller
             return response()->json(['message' => 'Advertising removed from favorites'], 200);
         } else {
             // If it doesn't exist, add it to favorites
-            $user->favs()->create(['advertising_id' => $advertisingId]);
+            Fav::create([
+                'user_id' => $user->id,
+                'advertising_id' => $advertisingId,
+            ]);
             return response()->json(['message' => 'Advertising added to favorites'], 201);
         }
     }
