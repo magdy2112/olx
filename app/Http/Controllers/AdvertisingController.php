@@ -15,6 +15,7 @@ use App\Traits\Httpresponse;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Http\Request;
+use App\Http\Resources\AdvertisingResource;
 
 // use Illuminate\Support\Facades\Request;
 
@@ -35,7 +36,7 @@ class AdvertisingController extends Controller
             Cache::has('destroy_submodal') ||
             Cache::has('destroy_attribute')
         ) {
-            return $this->response(false, 429, 'We are updating our system, please try again later');
+            return $this->response(false, 429, __('message.system_updating'));
         }
 
         try {
@@ -51,6 +52,7 @@ class AdvertisingController extends Controller
             DB::beginTransaction();
 
             try {
+               
                 // 1. Create Advertising
                 $advertising = Advertising::create([
                     'user_id'           => $user->id,
@@ -128,10 +130,12 @@ class AdvertisingController extends Controller
    
 
                 DB::commit();
-                return $this->response(true, 201, 'Advertising created successfully', [
-                    'advertising' => $advertising->load('categoryattributes', 'images')
+                // return $this->response(true, 201, __('message.created_success'), [
+                //     'advertising' => $advertising->load('categoryattributes', 'images')
                    
-                ]);
+                // ]);
+                return new AdvertisingResource($advertising->load('categoryattributes', 'images'));
+
             } catch (Exception $e) {
                 DB::rollBack();
                 if (!empty($savedFiles)) {
@@ -144,7 +148,9 @@ class AdvertisingController extends Controller
                 throw $e;
             }
         } catch (Exception $e) {
-            return $this->response(false, 500, 'Error creating advertising: ' . $e->getMessage());
+            return $this->response(false, 500, __('message.failure'), [
+                'error' => $e->getMessage()
+            ]);
         }
     }
 
@@ -159,7 +165,7 @@ public function updateadvertising( Updateadvertising $request,$id){
             Cache::has('destroy_submodal') ||
             Cache::has('destroy_attribute')
         ) {
-            return $this->response(false, 429, 'We are updating our system, please try again later');
+            return $this->response(false, 429, __('message.system_updating'));
         }
 
         try {
@@ -248,10 +254,12 @@ public function updateadvertising( Updateadvertising $request,$id){
    
 
                 DB::commit();
-                return $this->response(true, 201, 'Advertising update successfully', [
-                    'advertising' => $advertising->load('categoryattributes', 'images')
+                // return $this->response(true, 201, __('message.updated_success'), [
+                //     'advertising' => $advertising->load('categoryattributes', 'images')
                    
-                ]);
+                // ]);
+                return new AdvertisingResource($advertising->load('categoryattributes', 'images'));
+
             } catch (Exception $e) {
                 DB::rollBack();
                 if (!empty($savedFiles)) {
@@ -264,7 +272,7 @@ public function updateadvertising( Updateadvertising $request,$id){
                 throw $e;
             }
         } catch (Exception $e) {
-            return $this->response(false, 500, 'Error creating advertising: ' . $e->getMessage());
+            return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
         }
       
 }
@@ -275,13 +283,13 @@ public function deleteadvertising(Request $request,$id){
    
 
     if (!$user) {
-        return $this->response(false, 401, 'Unauthorized');
+        return $this->response(false, 401, __('message.unauthorized'));
     }
 
     $advertising = Advertising::find($id);
 
     if (!$advertising || $advertising->user_id !== $user->id) {
-        return $this->response(false, 403, 'Forbidden');
+        return $this->response(false, 403, __('message.forbidden'));
     }
 
     try {
@@ -301,9 +309,9 @@ public function deleteadvertising(Request $request,$id){
 
         DB::table('advertising_categoryattribute')->where('advertising_id', $id)->delete();
 
-        return $this->response(true, 200, 'Advertising deleted successfully');
+        return $this->response(true, 200, __('message.deleted_success'));
     } catch (Exception $e) {
-        return $this->response(false, 500, 'Error deleting advertising: ' . $e->getMessage());
+        return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
     }
 }
 }
