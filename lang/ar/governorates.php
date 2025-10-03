@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'Cairo'        => 'القاهرة',
+    'Giza'         => 'الجيزة',
+    'Alexandria'   => 'الإسكندرية',
+    'Dakahlia'     => 'الدقهلية',
+    'Red Sea'      => 'البحر الأحمر',
+    'Beheira'      => 'البحيرة',
+    'Fayoum'       => 'الفيوم',
+    'Gharbia'      => 'الغربية',
+    'Ismailia'     => 'الإسماعيلية',
+    'Monufia'      => 'المنوفية',
+    'Minya'        => 'المنيا',
+    'Qalyubia'     => 'القليوبية',
+    'New Valley'   => 'الوادي الجديد',
+    'Suez'         => 'السويس',
+    'Aswan'        => 'أسوان',
+    'Assiut'       => 'أسيوط',
+    'Beni Suef'    => 'بني سويف',
+    'Port Said'    => 'بورسعيد',
+    'Damietta'     => 'دمياط',
+    'Sharqia'      => 'الشرقية',
+    'South Sinai'  => 'جنوب سيناء',
+    'Kafr El Sheikh' => 'كفر الشيخ',
+    'Matrouh'      => 'مطروح',
+    'Luxor'        => 'الأقصر',
+    'Qena'         => 'قنا',
+    'North Sinai'  => 'شمال سيناء',
+    'Sohag'        => 'سوهاج',
+];
+

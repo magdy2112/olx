@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Advertising;
 
+use App\Enum\Apurpose;
 use App\Models\CustomAttribute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
@@ -20,6 +21,12 @@ class Newadvertisingrequest extends FormRequest
         return Auth::check();
     }
 
+
+public function prepareForValidation()
+{
+
+}
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,15 +35,16 @@ class Newadvertisingrequest extends FormRequest
     public function rules(): array
     {
         return [
-          'title' => 'required|string|max:255',
+          'title' => 'required_without:العنوان|string|max:255',
         'description' => 'nullable|string|max:1000',
         'price' => 'nullable|numeric|min:0',
-       'purpose' => ['required', new Enum(Purpose::class)],
+       'purpose' => ['required_without:الغرض', new Enum(Purpose::class)],
         'category_id' => 'required|exists:categories,id',
         'sub_category_id' => 'required|exists:sub_categories,id',
         'modal_id' => 'required|exists:modals,id',
         'submodal_id' => 'nullable|exists:submodals,id',
         'status' => 'nullable|string|in:active,inactive',
+        'الحالة' => 'nullable|string|in:active,inactive',
         'user_id' => 'nullable|exists:users,id',
         'categoryattributes' => 'required|array',
         'categoryattributes.*.attribute_id' => 'required|integer|exists:categoryattributes,id', 

@@ -6,5 +6,11 @@ enum Purpose: string
 {
     case Sell = 'sell';
     case Buy = 'buy';
+
+    case Rent = 'rent';
 }
+
+
+
+
 

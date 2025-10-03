@@ -51,4 +51,8 @@ return [
     'Description' => 'Description',
     'Price' => 'Price',
     'Purpose' => 'Purpose',
+    'sell' => 'sell',
+    'buy' => 'buy',
+    'rent' => 'rent',
+    'system_updating' => 'The system is being updated, please try again later',
 ];

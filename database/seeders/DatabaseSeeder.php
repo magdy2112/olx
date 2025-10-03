@@ -25,7 +25,37 @@ class DatabaseSeeder extends Seeder
 
 
 
-       
+        $governorates = [
+            ['name' => 'Cairo',        'lat' => 30.0444, 'lng' => 31.2357],
+            ['name' => 'Giza',         'lat' => 30.0131, 'lng' => 31.2089],
+            ['name' => 'Alexandria',   'lat' => 31.2001, 'lng' => 29.9187],
+            ['name' => 'Dakahlia',     'lat' => 31.0364, 'lng' => 31.3807],
+            ['name' => 'Red Sea',      'lat' => 25.2934, 'lng' => 33.7633],
+            ['name' => 'Beheira',      'lat' => 30.8480, 'lng' => 30.3436],
+            ['name' => 'Fayoum',       'lat' => 29.3084, 'lng' => 30.8428],
+            ['name' => 'Gharbia',      'lat' => 30.8754, 'lng' => 31.0335],
+            ['name' => 'Ismailia',     'lat' => 30.5965, 'lng' => 32.2715],
+            ['name' => 'Monufia',      'lat' => 30.5972, 'lng' => 30.9876],
+            ['name' => 'Minya',        'lat' => 28.1099, 'lng' => 30.7503],
+            ['name' => 'Qalyubia',     'lat' => 30.4650, 'lng' => 31.1848],
+            ['name' => 'New Valley',   'lat' => 25.5460, 'lng' => 28.9618],
+            ['name' => 'Suez',         'lat' => 29.9668, 'lng' => 32.5498],
+            ['name' => 'Aswan',        'lat' => 24.0889, 'lng' => 32.8998],
+            ['name' => 'Assiut',       'lat' => 27.1801, 'lng' => 31.1837],
+            ['name' => 'Beni Suef',    'lat' => 29.0661, 'lng' => 31.0994],
+            ['name' => 'Port Said',    'lat' => 31.2565, 'lng' => 32.2841],
+            ['name' => 'Damietta',     'lat' => 31.4165, 'lng' => 31.8133],
+            ['name' => 'Sharqia',      'lat' => 30.7323, 'lng' => 31.7195],
+            ['name' => 'South Sinai',  'lat' => 28.2410, 'lng' => 33.6220],
+            ['name' => 'Kafr El Sheikh','lat' => 31.1095, 'lng' => 30.9397],
+            ['name' => 'Matrouh',      'lat' => 31.3543, 'lng' => 27.2373],
+            ['name' => 'Luxor',        'lat' => 25.6872, 'lng' => 32.6396],
+            ['name' => 'Qena',         'lat' => 26.1642, 'lng' => 32.7267],
+            ['name' => 'North Sinai',  'lat' => 30.6200, 'lng' => 33.8000],
+            ['name' => 'Sohag',        'lat' => 26.5590, 'lng' => 31.6957],
+        ];
+
+        DB::table('governorates')->insert($governorates);
 
 
         // 1) Categories
