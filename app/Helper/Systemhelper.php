@@ -4,7 +4,7 @@ namespace App\Helper;
 
 use Illuminate\Support\Facades\Cache;
 
-class SystemHelper
+class Systemhelper
 {
     public static function systemUpdatingResponse()
     {
