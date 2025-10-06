@@ -53,10 +53,10 @@ class Advertising extends Model
         return $this->hasMany(Fav::class);
     }
 
-    public function location()
-    {
-        return $this->morphOne(Location::class, 'locationable');
-    }
+  public function location()
+{
+    return $this->morphOne(Location::class, 'locationable');
+}
 public function toSearchableArray()
 {
     return [

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('modal_id')->nullable()->constrained('modals');
             $table->foreignId('submodal_id')->nullable()->constrained('submodals');
 
-    $table->index(['title', 'description', 'price', 'status']);
+    
             $table->timestamps();
         });
     }

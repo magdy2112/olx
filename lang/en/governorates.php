@@ -28,4 +28,5 @@ return [
     'Qena'         => 'Qena',
     'North Sinai'  => 'North Sinai',
     'Sohag'        => 'Sohag',
+    'Egypt'       => 'Egypt',
 ];

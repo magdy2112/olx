@@ -20,7 +20,7 @@ class Advertising_service
      public function createNewAdvertising(Newadvertisingrequest $request, Image_service $image_service)
      {
 
-         
+
           $response = SystemHelper::systemUpdatingResponse();
           if ($response) {
                return $response;
@@ -82,7 +82,7 @@ class Advertising_service
 
 
                     DB::commit();
-                
+
                     return new AdvertisingResource($advertising->load('categoryattributes', 'images'));
                } catch (Exception $e) {
                     DB::rollBack();
@@ -157,13 +157,13 @@ class Advertising_service
                          ];
                     }
 
-                
+
 
                     DB::table('advertising_categoryattribute')->where('advertising_id', $advertising->id)->delete();
                     // ثم إضافة الجديدة
                     DB::table('advertising_categoryattribute')->insert($bulkInsertData);
                     DB::commit();
-             
+
                     return new AdvertisingResource($advertising->load('categoryattributes', 'images'));
                } catch (Exception $e) {
                     DB::rollBack();
@@ -197,7 +197,7 @@ class Advertising_service
           }
 
           try {
-          
+
 
                foreach ($advertising->images as $image) {
                     $imagePath = storage_path('app/public/' . $image->path);
@@ -222,157 +222,168 @@ class Advertising_service
           if (!$user) {
                return $this->response(false, 401, __('message.unauthorized'));
           }
-            try {
-                  $advertisings = Advertising::with('images', 'categoryattributes')
-                         ->where('user_id', $user->id)->where('status', 'active'     )
-                         ->orderBy('created_at', 'desc')
-                         ->paginate(10);
+          try {
+               $advertisings = Advertising::with('images', 'categoryattributes')
+                    ->where('user_id', $user->id)->where('status', 'active')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
-                  return $this->response(true, 200, __('message.success'), [
-                         'advertisings' => $advertisings,
-                  ]);
-            } catch (Exception $e) {
-                  return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
-            }
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
+          } catch (Exception $e) {
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+          }
      }
 
      public function getcategoryAdvertisings(Request $request, $categoryId)
      {
-            try {
-                  $advertisings = Advertising::with('images', 'category')
-                         ->where('category_id', $categoryId)->where('status', 'active')
-                         ->orderBy('created_at', 'desc')
-                         ->paginate(10);
+          try {
+               $advertisings = Advertising::with('images', 'category')
+                    ->where('category_id', $categoryId)->where('status', 'active')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
-                  return $this->response(true, 200, __('message.success'), [
-                         'advertisings' => $advertisings,
-                  ]);
-            } catch (Exception $e) {
-                  return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
-            }
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
+          } catch (Exception $e) {
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+          }
      }
 
      public function getsubcategoryAdvertisings(Request $request, $subcategoryId)
      {
           try {
-              $advertisings = Advertising::with('images', 'subCategory')
-               ->where('sub_category_id', $subcategoryId)->where('status', 'active') 
-               ->orderBy('created_at', 'desc')
-               ->paginate(10);
+               $advertisings = Advertising::with('images', 'subCategory')
+                    ->where('sub_category_id', $subcategoryId)->where('status', 'active')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
-              return $this->response(true, 200, __('message.success'), [
-               'advertisings' => $advertisings,
-              ]);
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
           } catch (Exception $e) {
-              return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
           }
      }
 
      public function getAllAdvertisings(Request $request)
      {
           try {
-              $advertisings = Advertising::with('images', 'category', 'subCategory', 'modal', 'submodal')
-              ->where('status', 'active')
-               ->orderBy('created_at', 'desc')
-               ->paginate(10);
+               $advertisings = Advertising::with('images', 'category', 'subCategory', 'modal', 'submodal')
+                    ->where('status', 'active')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
-              return $this->response(true, 200, __('message.success'), [
-               'advertisings' => $advertisings,
-              ]);
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
           } catch (Exception $e) {
-              return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
           }
      }
 
      public function getadvertisingDetails(Request $request, $id)
      {
-           try {
-                 $advertising = Advertising::with('images', 'categoryattributes', 'category', 'subCategory', 'modal', 'submodal', 'location', 'user')
-                       ->where('id', $id)->where('status', 'active')  
-                       ->first();
+          try {
+               $advertising = Advertising::with('images', 'categoryattributes', 'category', 'subCategory', 'modal', 'submodal', 'location', 'user')
+                    ->where('id', $id)->where('status', 'active')
+                    ->first();
 
-                 if (!$advertising) {
-                       return $this->response(false, 404, __('message.not_found'));
-                 }
+               if (!$advertising) {
+                    return $this->response(false, 404, __('message.not_found'));
+               }
 
-                 return $this->response(true, 200, __('message.success'), [
-                       'advertising' => $advertising,
-                 ]);
-           } catch (Exception $e) {
-                 return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
-           }
+               return $this->response(true, 200, __('message.success'), [
+                    'advertising' => $advertising,
+               ]);
+          } catch (Exception $e) {
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+          }
      }
 
      public function getmodaladvertisings(Request $request, $modalId)
      {
-           try {
-                 $advertisings = Advertising::with('images', 'modal')
-                       ->where('modal_id', $modalId)->where('status', 'active') 
-                       ->orderBy('created_at', 'desc')
-                       ->paginate(10);
+          try {
+               $advertisings = Advertising::with('images', 'modal')
+                    ->where('modal_id', $modalId)->where('status', 'active')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
-                 return $this->response(true, 200, __('message.success'), [
-                       'advertisings' => $advertisings,
-                 ]);
-           } catch (Exception $e) {
-                 return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
-           }
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
+          } catch (Exception $e) {
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+          }
      }
 
      public function getsubmodaladvertisings(Request $request, $submodalId)
      {
-            try {
-                  $advertisings = Advertising::with('images', 'submodal')
-                         ->where('submodal_id', $submodalId)->where('status', 'active')   
-                         ->orderBy('created_at', 'desc')
-                         ->paginate(10);
+          try {
+               $advertisings = Advertising::with('images', 'submodal')
+                    ->where('submodal_id', $submodalId)->where('status', 'active')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
-                  return $this->response(true, 200, __('message.success'), [
-                         'advertisings' => $advertisings,
-                  ]);
-            } catch (Exception $e) {
-                  return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
-            }
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
+          } catch (Exception $e) {
+               return $this->response(false, 500, __('message.error_occurred') . $e->getMessage());
+          }
      }
-public function searchAdvertisings(Request $request)
-{
-    try {
-        $query = $request->input('q');              // كلمة البحث (اختياري)
-        $minPrice = $request->input('min');         // أقل سعر
-        $maxPrice = $request->input('max');         // أعلى سعر
-        $categoryId = $request->input('category_id');
-        $subCategoryId = $request->input('sub_category_id');
-        $modalId = $request->input('modal_id');
-        $submodalId = $request->input('submodal_id');
+     public function searchAdvertisings(Request $request)
+     {
+          try {
+               $query = $request->input('q');              // كلمة البحث (اختياري)
+               $minPrice = $request->input('min');         // أقل سعر
+               $maxPrice = $request->input('max');         // أعلى سعر
+               $categoryId = $request->input('category_id');
+               $subCategoryId = $request->input('sub_category_id');
+               $modalId = $request->input('modal_id');
+               $submodalId = $request->input('submodal_id');
+               $categoryAttributes = $request->input('category_attributes', []); // مصفوفة من السمات والقيّم
 
-        // 1️⃣ لو فيه كلمة بحث، استخدم Scout لجلب الـ IDs
-        if (!empty($query)) {
-            $advertisingIds = Advertising::search($query)->get()->pluck('id');
-            $builder = Advertising::whereIn('id', $advertisingIds);
-        } else {
-            // بحث عام بدون Scout
-            $builder = Advertising::query();
-        }
+               // 1️⃣ لو فيه كلمة بحث، استخدم Scout لجلب الـ IDs
+               if (!empty($query)) {
+                    $advertisingIds = Advertising::search($query)->get()->pluck('id');
+                    $builder = Advertising::whereIn('id', $advertisingIds);
+               } else {
+                    // بحث عام بدون Scout
+                    $builder = Advertising::query();
+               }
 
-        // 2️⃣ فلترة إضافية
-        $advertisings = $builder
-            ->when($minPrice, fn($q) => $q->where('price', '>=', $minPrice))
-            ->when($maxPrice, fn($q) => $q->where('price', '<=', $maxPrice))
-            ->when($categoryId, fn($q) => $q->where('category_id', $categoryId))
-            ->when($subCategoryId, fn($q) => $q->where('sub_category_id', $subCategoryId))
-            ->when($modalId, fn($q) => $q->where('modal_id', $modalId))
-            ->when($submodalId, fn($q) => $q->where('submodal_id', $submodalId))
-            ->where('status', 'active')
-            ->with(['images', 'category', 'subCategory', 'modal', 'submodal'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+               // 2️⃣ فلترة إضافية
+               $advertisings = $builder
+                    ->when($minPrice !== null && $minPrice !== '', fn($q) => $q->where('price', '>=', (float)$minPrice))
+                    ->when($maxPrice !== null && $maxPrice !== '', fn($q) => $q->where('price', '<=', (float)$maxPrice))
+                    ->when($categoryId, fn($q) => $q->where('category_id', $categoryId))
+                    ->when($subCategoryId, fn($q) => $q->where('sub_category_id', $subCategoryId))
+                    ->when($modalId, fn($q) => $q->where('modal_id', $modalId))
+                    ->when($submodalId, fn($q) => $q->where('submodal_id', $submodalId))
+                    ->when(!empty($categoryAttributes), function ($q) use ($categoryAttributes) {
+                         foreach ($categoryAttributes as $attr) {
+                              if (!isset($attr['attribute_id']) || !isset($attr['value'])) continue;
 
-        return $this->response(true, 200, __('message.success'), [
-            'advertisings' => $advertisings,
-        ]);
-    } catch (\Exception $e) {
-        return $this->response(false, 500, __('message.error_occurred') . ' ' . $e->getMessage());
-    }
-}
+                              $q->whereHas('categoryattributes', function ($subQ) use ($attr) {
+                                   $subQ->where('category_attribute_id', $attr['attribute_id'])
+                                        ->where('value', $attr['value']);
+                              });
+                         }
+                         return $q;
+                    })
+                    ->where('status', 'active')
+                    ->with(['images', 'category', 'subCategory', 'modal', 'submodal'])
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
 
+               return $this->response(true, 200, __('message.success'), [
+                    'advertisings' => $advertisings,
+               ]);
+          } catch (\Exception $e) {
+               return $this->response(false, 500, __('message.error_occurred') . ' ' . $e->getMessage());
+          }
+     }
 }

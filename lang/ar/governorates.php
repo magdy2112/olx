@@ -28,5 +28,6 @@ return [
     'Qena'         => 'قنا',
     'North Sinai'  => 'شمال سيناء',
     'Sohag'        => 'سوهاج',
+    'Egypt'       => 'مصر',
 ];
 

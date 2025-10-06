@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
-                  $table->id();
-            $table->string('city')->nullable();
+        Schema::create('governorates', function (Blueprint $table) {
+            $table->id();
+            $table->string('city');
             $table->string('country')->default('Egypt');
             $table->decimal('lat', 10, 7)->nullable();
             $table->decimal('lng', 10, 7)->nullable();
-            $table->foreignId('governorate_id')->nullable()->constrained('governorates');
-            $table->nullableMorphs('locationable'); // user أو advertising
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('governorates');
     }
 };
