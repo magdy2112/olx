@@ -83,7 +83,7 @@ class Advertising_service
 
                     DB::commit();
 
-                    return new AdvertisingResource($advertising->load('categoryattributes', 'images'));
+                    return new AdvertisingResource($advertising->load('categoryattributes', 'images', 'location'));
                } catch (Exception $e) {
                     DB::rollBack();
                     if (!empty($savedFiles)) {
@@ -164,7 +164,7 @@ class Advertising_service
                     DB::table('advertising_categoryattribute')->insert($bulkInsertData);
                     DB::commit();
 
-                    return new AdvertisingResource($advertising->load('categoryattributes', 'images'));
+                    return new AdvertisingResource($advertising->load('categoryattributes', 'images', 'location'));
                } catch (Exception $e) {
                     DB::rollBack();
                     if (!empty($savedFiles)) {
@@ -207,6 +207,7 @@ class Advertising_service
                }
 
                $advertising->images()->delete();
+               $advertising->location()->delete();
                DB::table('advertising_categoryattribute')->where('advertising_id', $id)->delete();
                $advertising->delete();
                return $this->response(true, 200, __('message.deleted_success'));
@@ -223,7 +224,7 @@ class Advertising_service
                return $this->response(false, 401, __('message.unauthorized'));
           }
           try {
-               $advertisings = Advertising::with('images', 'categoryattributes')
+               $advertisings = Advertising::with('images', 'categoryattributes', 'location')
                     ->where('user_id', $user->id)->where('status', 'active')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
@@ -239,7 +240,7 @@ class Advertising_service
      public function getcategoryAdvertisings(Request $request, $categoryId)
      {
           try {
-               $advertisings = Advertising::with('images', 'category')
+               $advertisings = Advertising::with('images', 'category','location')
                     ->where('category_id', $categoryId)->where('status', 'active')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
@@ -255,7 +256,7 @@ class Advertising_service
      public function getsubcategoryAdvertisings(Request $request, $subcategoryId)
      {
           try {
-               $advertisings = Advertising::with('images', 'subCategory')
+               $advertisings = Advertising::with('images', 'subCategory','location')
                     ->where('sub_category_id', $subcategoryId)->where('status', 'active')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
@@ -271,7 +272,7 @@ class Advertising_service
      public function getAllAdvertisings(Request $request)
      {
           try {
-               $advertisings = Advertising::with('images', 'category', 'subCategory', 'modal', 'submodal')
+               $advertisings = Advertising::with('images', 'category', 'subCategory', 'modal', 'submodal','location')
                     ->where('status', 'active')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
@@ -306,7 +307,7 @@ class Advertising_service
      public function getmodaladvertisings(Request $request, $modalId)
      {
           try {
-               $advertisings = Advertising::with('images', 'modal')
+               $advertisings = Advertising::with('images', 'modal','location')
                     ->where('modal_id', $modalId)->where('status', 'active')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
@@ -322,7 +323,7 @@ class Advertising_service
      public function getsubmodaladvertisings(Request $request, $submodalId)
      {
           try {
-               $advertisings = Advertising::with('images', 'submodal')
+               $advertisings = Advertising::with('images', 'submodal','location')
                     ->where('submodal_id', $submodalId)->where('status', 'active')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
@@ -344,7 +345,8 @@ class Advertising_service
                $subCategoryId = $request->input('sub_category_id');
                $modalId = $request->input('modal_id');
                $submodalId = $request->input('submodal_id');
-               $categoryAttributes = $request->input('category_attributes', []); // مصفوفة من السمات والقيّم
+               $categoryAttributes = $request->input('category_attributes', []);
+               $location = $request->input('location'); // موقع المستخدم (اختياري)
 
                // 1️⃣ لو فيه كلمة بحث، استخدم Scout لجلب الـ IDs
                if (!empty($query)) {
@@ -363,6 +365,7 @@ class Advertising_service
                     ->when($subCategoryId, fn($q) => $q->where('sub_category_id', $subCategoryId))
                     ->when($modalId, fn($q) => $q->where('modal_id', $modalId))
                     ->when($submodalId, fn($q) => $q->where('submodal_id', $submodalId))
+                    ->when($location, fn($q) => $q->where('location', 'like', "%{$location}%"))
                     ->when(!empty($categoryAttributes), function ($q) use ($categoryAttributes) {
                          foreach ($categoryAttributes as $attr) {
                               if (!isset($attr['attribute_id']) || !isset($attr['value'])) continue;

@@ -29,4 +29,5 @@ return [
     'North Sinai'  => 'North Sinai',
     'Sohag'        => 'Sohag',
     'Egypt'       => 'Egypt',
+    'message'       => 'Location saved successfully'
 ];

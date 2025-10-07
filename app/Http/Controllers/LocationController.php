@@ -2,139 +2,60 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocationRequest;
+use App\Models\Governorate;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {
-    public function userlocation(Request $request)
+    use \App\Traits\Httpresponse;
+    public function userlocation(LocationRequest $request)
     {
-        $request->validate([
-            'lat' => 'required|numeric|between:-90,90',
-            'lon' => 'required|numeric|between:-180,180',
-        ]);
-        try {
+       $data =  $request->validated();
 
-            $ip = app()->environment('local') ? '102.40.201.15' : $request->ip();
-            $lat = $request->input('lat');
-            $lon = $request->input('lon');
+        $user = Auth::user();
 
-            $userId = Auth::check() ? Auth::id() : null;
+        if( isset($data['country'] ,$data['city']) ){
+            $location = Location::updateOrCreate(
+                [
+                    'locationable_id' => $user?->id,
+                    'locationable_type' => get_class($user)
+                ],
 
+        [
+                'city' => $data['city'], 
+                'country' => $data['country'],
+                'lat' => Governorate::where('country', $data['country'])->first()?->lat,
+                'lng' => Governorate::where('city', $data['city'])->first()?->lng
+               ],
+            );
 
-            $cacheKey = 'user_location_' . ($userId ?? $ip);
-            if (Cache::has($cacheKey)) {
-                return response()->json(Cache::get($cacheKey));
-            }
-
-
-            if ($lat && $lon) {
-
-
-                $locationIQKey = env('LOCATIONIQ_API_KEY');
-                $locationResponse = Http::get("https://us1.locationiq.com/v1/reverse", [
-                    'key' => $locationIQKey,
-                    'lat' => $lat,
-                    'lon' => $lon,
-                    'format' => 'json'
-                ]);
-
-                if (!$locationResponse->successful()) {
-                    throw new \Exception('Failed to get location from API.');
-                }
-
-
-
-
-                if ($userId && $lat && $lon) {
-                    Userlocation::updateOrCreate(
-                        [
-                            'user_id'     => $userId,
-                        ],
-                        [
-                            'ip'          =>  $ip,
-                            'source'      => 'gps',
-                            'country'     => $locationData['country'] ?? null,
-                            'state'       => $locationData['state'] ?? null,
-                            'city'        => $locationData['city'] ?? null,
-                            'suburb'      => $locationData['suburb'] ?? null,
-                            'road'        => $locationData['road'] ?? null,
-                            'user_id'  =>  $userId,
-                        ]
-                    );
-                    $usergpslocation =  [
-                        'country'      => $locationData['country'] ?? null,
-                        'state'        => $locationData['state'] ?? null,
-                        'city'         => $locationData['city'] ?? null,
-                        'suburb'       => $locationData['suburb'] ?? null,
-                        'road'         => $locationData['road'] ?? null,
-                        'user_id'  =>  $userId ? $userId : 'guest',
-                    ];
-                    Cache::forever($cacheKey,  $usergpslocation);
-                    return response()->json($usergpslocation);
-                }
-            }
-
-
-            if (!$userId && $lat && $lon && isset($locationData)) {
-                $guestgpslocation = [
-                    'country'      => $locationData['country'] ?? null,
-                    'state'        => $locationData['state'] ?? null,
-                    'city'         => $locationData['city'] ?? null,
-                    'suburb'       => $locationData['suburb'] ?? null,
-                    'road'         => $locationData['road'] ?? null,
-                ];
-
-                return response()->json($guestgpslocation);
-            }
-
-
-
-
-            // IP Fallback
-            $res = Http::get("https://ipwho.is/{$ip}");
-
-            if ($res->failed()) {
-                return response()->json(['error' => 'Failed to get IP location'], 500);
-            }
-
-            $data = $res->json();
-
-
-            if ($userId) {
-
-                Userlocation::updateOrCreate(
-                    [
-                        'user_id'     => $userId,
-                    ],
-                    [
-                        'user_id'  =>  $userId,
-                        'source'   => 'ip',
-                        'country'  => $data['country'] ?? null,
-                        'state'    => $data['region'] ?? null,
-                        'city'     => $data['city'] ?? null,
-                    ]
-                );
-
-                $useriplocation =  [
-                    'country'     => $data['country'] ?? null,
-                    'state'       => $data['region'] ?? null,
-                    'city'        => $data['city'] ?? null,
-                    'user_id'  =>  $userId
-                ];
-                Cache::forever($cacheKey, $useriplocation);
-                return response()->json($useriplocation);
-            } else {
-                $guestiplocation = [
-                    'country'     => $data['country'] ?? null,
-                    'state'       => $data['region'] ?? null,
-                    'city'        => $data['city'] ?? null,
-
-                ];
-
-                return response()->json($guestiplocation);
-            }
-        } catch (\Throwable $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
         }
+        if( isset($data['lat'] ,$data['lng']) ){
+            $location = Location::updateOrCreate(
+                [
+                    'locationable_id' => $user?->id,
+                    'locationable_type' => get_class($user)
+                ],
+                   [
+                'city' => Governorate::where('lat', $data['lat'])->first()?->city,
+                'country' => Governorate::where('lat', $data['lat'])->first()?->country,
+                'lat' => $data['lat'],
+                'lng' => $data['lng']
+               ],
+          
+            );
+        }
+
+     return $this->response( true,  __('governorates.message'), 200, [
+            'city' => __('governorates.' . $location->city),
+            'country' => __('governorates.' . $location->country),
+            'lat' => $location->lat,
+            'lng' => $location->lng
+        ]);
     }
+
 }
+
