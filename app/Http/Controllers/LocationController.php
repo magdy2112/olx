@@ -12,116 +12,36 @@ use Illuminate\Support\Facades\Auth;
 class LocationController extends Controller
 {
     use \App\Traits\Httpresponse;
-    public function userlocation(LocationRequest $request)
+   
+    public function __construct(protected \App\Http\Services\Locationservice $locationservice)
     {
-        $data =  $request->validated();
-
-        $user = Auth::user();
-
-
-        if (isset($data['country'], $data['city'])) {
-            $gov = Governorate::where('country', $data['country'])
-                ->where('city', $data['city'])
-                ->first();
-            $location = Location::updateOrCreate(
-                [
-                    'locationable_id' => $user?->id,
-                    'locationable_type' => get_class($user)
-                ],
-
-                [
-                    'city' => $data['city'],
-                    'country' => $data['country'],
-                    'lat' => $gov?->lat,
-                    'lng' => $gov?->lng
-                ],
-            );
-        } elseif (isset($data['lat'], $data['lng'])) {
-            $location = Location::updateOrCreate(
-                [
-                    'locationable_id' => $user?->id,
-                    'locationable_type' => get_class($user)
-                ],
-                [
-                    'city' => Governorate::where('lat', $data['lat'])->first()?->city,
-                    'country' => Governorate::where('lat', $data['lat'])->first()?->country,
-                    'lat' => $data['lat'],
-                    'lng' => $data['lng']
-                ],
-
-            );
-        }
-
-        return $this->response(true,  __('governorates.message'), 200, [
-            'city' => __('governorates.' . $location->city) !== 'governorates.' . $location->city
-                ? __('governorates.' . $location->city)
-                : $location->city,
-            'country' => __('governorates.' . $location->country) !== 'governorates.' . $location->country
-                ? __('governorates.' . $location->country)
-                : $location->country,
-            'lat' => $location->lat,
-            'lng' => $location->lng
-        ]);
+             $this->locationservice = $locationservice;
     }
 
-    public function advertisinglocation(LocationRequest $request, Request $req)
+    public function advertisinglocation(LocationRequest $locationRequest)
     {
-
-        $data =  $request->validated();
-        $advertising = Advertising::find($req->advertising_id);
-
-        if (!$advertising) {
-            return $this->response(false, 404, __('advertising.not_found'));
-        }
+       
+        $data = $locationRequest->validated();
 
 
+          return $this->locationservice->advertisingLocation(
+               Advertising::find($data['advertising_id']),
+               $data['lat'],
+               $data['lng'],
+               $data['city'],
+               $data['country']
+          );
+    }
 
-        if (isset($data['country'], $data['city'])) {
-            $gov = Governorate::where('country', $data['country'])
-                ->where('city', $data['city'])
-                ->first();
-            $location = Location::updateOrCreate(
-                [
-                    'locationable_id' => $advertising?->id,
-                    'locationable_type' => get_class($advertising)
-                ],
-
-                [
-                    'city' => $data['city'],
-                    'country' => $data['country'],
-                    'lat' => $gov?->lat,
-                    'lng' => $gov?->lng
-                ],
+        public function userlocation(LocationRequest $locationRequest)
+    {
+        $data = $locationRequest->validated();
+            return $this->locationservice->userLocation(
+                 Auth::user(),
+                        $data['lat'],
+                        $data['lng'],
+                        $data['city'],
+                        $data['country']
             );
-        } elseif (isset($data['lat'], $data['lng'])) {
-            $gov = Governorate::where('lat', $data['lat'])
-                ->where('lng', $data['lng'])
-                ->first();
-
-            $location = Location::updateOrCreate(
-                [
-                    'locationable_id' => $advertising?->id,
-                    'locationable_type' => get_class($advertising)
-                ],
-                [
-                    'city' => $gov?->city,
-                    'country' => $gov?->country,
-                    'lat' => $data['lat'],
-                    'lng' => $data['lng']
-                ],
-
-            );
-        }
-
-        return $this->response(true, __('governorates.message'), 200, [
-            'city' => __('governorates.' . $location->city) !== 'governorates.' . $location->city
-                ? __('governorates.' . $location->city)
-                : $location->city,
-            'country' => __('governorates.' . $location->country) !== 'governorates.' . $location->country
-                ? __('governorates.' . $location->country)
-                : $location->country,
-            'lat' => $location->lat,
-            'lng' => $location->lng,
-        ]);
     }
 }

@@ -42,6 +42,10 @@ class Updateadvertising extends FormRequest
         'categoryattributes.*.value' => 'string|max:255',
         'images' => 'array|min:1|max:8',
         'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120',
+        'city' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+        'lat' => 'nullable|numeric',
+        'lng' => 'nullable|numeric',
         ];
     }
 }

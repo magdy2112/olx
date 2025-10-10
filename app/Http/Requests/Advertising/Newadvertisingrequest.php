@@ -51,7 +51,11 @@ public function prepareForValidation()
         'categoryattributes.*.value' => 'required|string|max:255',
         'images' => 'required|array|min:1|max:8',
         'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120',
-          
+        'country' => 'nullable|string|max:255|required_with:city',
+        'city' => 'nullable|string|max:255|required_with:country',
+        'lat' => 'nullable|numeric|required_with:lng',
+        'lng' => 'nullable|numeric|required_with:lat',
+
         ];
    
 

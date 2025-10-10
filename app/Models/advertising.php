@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Policies\AdvertisingPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 
-
+#[UsePolicy(AdvertisingPolicy::class)]
 class Advertising extends Model
 {
     use Searchable;
@@ -69,6 +71,5 @@ public function toSearchableArray()
         'submodal_id' => $this->submodal_id ?? null,
     ];
 }
-
 
 }

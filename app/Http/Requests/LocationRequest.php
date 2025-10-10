@@ -22,11 +22,11 @@ class LocationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lat'=>'numeric|max:255',
-            'lng'=>'numeric|max:255',
-            'city' => 'string|max:255|exists:governorates,city',
-            'country' => 'string|max:255|exists:governorates,country',
-            //  'governorate_id' => 'required|exists:governorates,id',
+            'lat'=>'required_without:city|required_with:country|numeric|exists:governorates,lat',
+            'lng'=>'required_without:city|required_with:country|numeric|exists:governorates,lng',
+            'city' => 'required_without:lat|required_with:lng|string|max:255|exists:governorates,city',
+            'country' => 'required_without:lat|required_with:lng|string|max:255|exists:governorates,country',
+
         ];
     }
 }

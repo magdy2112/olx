@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+
 use App\Http\Requests\Advertising\Newadvertisingrequest;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
@@ -13,11 +14,26 @@ use App\Http\Requests\Advertising\Updateadvertising;
 use Illuminate\Http\Request;
 use App\Http\Resources\AdvertisingResource;
 use App\Helper\SystemHelper;
+use App\Http\Requests\LocationRequest;
+use Illuminate\Support\Facades\Gate;
 
 class Advertising_service
 {
      use Httpresponse;
-     public function createNewAdvertising(Newadvertisingrequest $request, Image_service $image_service)
+
+     private function applyCityFilter($query, $user, $city)
+     {
+          return $query->whereHas('location', function ($q) use ($user, $city) {
+               if ($user && !empty($user->city)) {
+                    $q->where('city', $user->city);
+               } elseif (!empty($city)) {
+                    $q->where('city', $city);
+               } else {
+                    $q->whereNotNull('city');
+               }
+          })->orderBy('created_at', 'desc')->paginate(10);
+     }
+     public function createNewAdvertising(Newadvertisingrequest $request, Image_service $image_service, Locationservice $locationservice)
      {
 
 
@@ -25,6 +41,8 @@ class Advertising_service
           if ($response) {
                return $response;
           }
+
+          $savedFiles = [];
 
           try {
                $data = $request->validated();
@@ -78,6 +96,8 @@ class Advertising_service
                          ];
                     }
 
+                    $locationservice->advertisingLocation($advertising, $data['lat'], $data['lng'], $data['city'], $data['country']);
+
                     DB::table('advertising_categoryattribute')->insert($bulkInsertData);
 
 
@@ -102,8 +122,9 @@ class Advertising_service
           }
      }
 
-     public function updateadvertising(Updateadvertising $request, $id, Image_service $image_service)
+     public function updateadvertising(Updateadvertising $request, $id, Image_service $image_service, Locationservice $locationservice)
      {
+
           $advertisingData = $request->validated();
 
           $response = SystemHelper::systemUpdatingResponse();
@@ -128,6 +149,8 @@ class Advertising_service
                          throw new Exception('Advertising not found', 404);
                     }
 
+                    Gate::authorize('update', $advertising);
+
                     $advertising->update([
                          'title'           => $advertisingData['title'] ?? $advertising->title,
                          'description'     => $advertisingData['description'] ?? $advertising->description,
@@ -140,6 +163,9 @@ class Advertising_service
                          'status'          => $advertisingData['status'] ?? $advertising->status,
                     ]);
 
+                    if (isset($advertisingData['lat']) || isset($advertisingData['lng']) || isset($advertisingData['city']) || isset($advertisingData['country'])) {
+                         $locationservice->advertisingLocation($advertising, $advertisingData['lat'] ?? null, $advertisingData['lng'] ?? null, $advertisingData['city'] ?? null, $advertisingData['country'] ?? null);
+                    }
 
 
                     $savedFiles = $image_service->updateimage($advertising, $user, $advertisingData['images'] ?? []);
@@ -162,6 +188,7 @@ class Advertising_service
                     DB::table('advertising_categoryattribute')->where('advertising_id', $advertising->id)->delete();
                     // ثم إضافة الجديدة
                     DB::table('advertising_categoryattribute')->insert($bulkInsertData);
+
                     DB::commit();
 
                     return new AdvertisingResource($advertising->load('categoryattributes', 'images', 'location'));
@@ -192,7 +219,7 @@ class Advertising_service
 
           $advertising = Advertising::find($id);
 
-          if (!$advertising || $advertising->user_id !== $user->id) {
+          if (!$advertising || !Gate::allows('delete', $advertising)) {
                return $this->response(false, 403, __('message.forbidden'));
           }
 
@@ -216,7 +243,7 @@ class Advertising_service
           }
      }
 
-     public function getUserAdvertisings(Request $request)
+     public function getUserAdvertisings()
      {
           $user = Auth::user();
 
@@ -224,11 +251,15 @@ class Advertising_service
                return $this->response(false, 401, __('message.unauthorized'));
           }
           try {
-               $advertisings = Advertising::with('images', 'categoryattributes', 'location')
-                    ->where('user_id', $user->id)->where('status', 'active')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
+               $query = Advertising::with('images', 'categoryattributes', 'location')
+                    ->where('status', 'active')
+                    ->orderBy('created_at', 'desc');
 
+
+               if ($user->role !== 'admin') {
+                    $query->where('user_id', $user->id);
+               }
+               $advertisings = $query->paginate(10);
                return $this->response(true, 200, __('message.success'), [
                     'advertisings' => $advertisings,
                ]);
@@ -240,10 +271,18 @@ class Advertising_service
      public function getcategoryAdvertisings(Request $request, $categoryId)
      {
           try {
-               $advertisings = Advertising::with('images', 'category','location')
-                    ->where('category_id', $categoryId)->where('status', 'active')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
+               $user = Auth::user();
+
+               $request->validate([
+                    'city' => 'nullable|string|exists:governorates,city',
+               ]);
+
+               $city = $request->input('city');
+
+               $advertisings = Advertising::with('images', 'category', 'location')
+                    ->where('category_id', $categoryId)
+                    ->where('status', 'active');
+               $advertisings = $this->applyCityFilter($advertisings, $user, $city);
 
                return $this->response(true, 200, __('message.success'), [
                     'advertisings' => $advertisings,
@@ -256,10 +295,16 @@ class Advertising_service
      public function getsubcategoryAdvertisings(Request $request, $subcategoryId)
      {
           try {
-               $advertisings = Advertising::with('images', 'subCategory','location')
-                    ->where('sub_category_id', $subcategoryId)->where('status', 'active')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
+               $user = Auth::user();
+               $request->validate([
+                    'city' => 'nullable|string|exists:governorates,city',
+               ]);
+               $city = $request->input('city');
+               $advertisings = Advertising::with('images', 'subCategory', 'location')
+                    ->where('sub_category_id', $subcategoryId)
+                    ->where('status', 'active');
+               $advertisings = $this->applyCityFilter($advertisings, $user, $city);
+
 
                return $this->response(true, 200, __('message.success'), [
                     'advertisings' => $advertisings,
@@ -269,13 +314,18 @@ class Advertising_service
           }
      }
 
-     public function getAllAdvertisings(Request $request)
+     public function getAllAdvertisings(Request $request) 
      {
           try {
-               $advertisings = Advertising::with('images', 'category', 'subCategory', 'modal', 'submodal','location')
-                    ->where('status', 'active')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
+               $user = Auth::user();
+               $request->validate([
+                    'city' => 'nullable|string|exists:governorates,city',
+               ]);
+               $city = $request->input('city');
+
+               $advertisings = Advertising::with('images', 'category', 'subCategory', 'modal', 'submodal', 'location')
+                    ->where('status', 'active');
+               $advertisings = $this->applyCityFilter($advertisings, $user, $city);
 
                return $this->response(true, 200, __('message.success'), [
                     'advertisings' => $advertisings,
@@ -285,8 +335,12 @@ class Advertising_service
           }
      }
 
-     public function getadvertisingDetails(Request $request, $id)
+     public function getadvertisingDetails($id)
      {
+          $advertising = Advertising::find($id);
+          if (!$advertising) {
+               return $this->response(false, 404, __('message.not_found'));
+          }
           try {
                $advertising = Advertising::with('images', 'categoryattributes', 'category', 'subCategory', 'modal', 'submodal', 'location', 'user')
                     ->where('id', $id)->where('status', 'active')
@@ -307,10 +361,14 @@ class Advertising_service
      public function getmodaladvertisings(Request $request, $modalId)
      {
           try {
-               $advertisings = Advertising::with('images', 'modal','location')
-                    ->where('modal_id', $modalId)->where('status', 'active')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
+               $user = Auth::user();
+               $request->validate([
+                    'city' => 'nullable|string|exists:governorates,city',
+               ]);
+               $city = $request->input('city');
+               $advertisings = Advertising::with('images', 'modal', 'location')
+                    ->where('modal_id', $modalId)->where('status', 'active');
+               $advertisings = $this->applyCityFilter($advertisings, $user, $city);
 
                return $this->response(true, 200, __('message.success'), [
                     'advertisings' => $advertisings,
@@ -323,10 +381,14 @@ class Advertising_service
      public function getsubmodaladvertisings(Request $request, $submodalId)
      {
           try {
-               $advertisings = Advertising::with('images', 'submodal','location')
-                    ->where('submodal_id', $submodalId)->where('status', 'active')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(10);
+               $user = Auth::user();
+               $request->validate([
+                    'city' => 'nullable|string|exists:governorates,city',
+               ]);
+               $city = $request->input('city');
+               $advertisings = Advertising::with('images', 'submodal', 'location')
+                    ->where('submodal_id', $submodalId)->where('status', 'active');
+               $advertisings = $this->applyCityFilter($advertisings, $user, $city);
 
                return $this->response(true, 200, __('message.success'), [
                     'advertisings' => $advertisings,
@@ -365,7 +427,11 @@ class Advertising_service
                     ->when($subCategoryId, fn($q) => $q->where('sub_category_id', $subCategoryId))
                     ->when($modalId, fn($q) => $q->where('modal_id', $modalId))
                     ->when($submodalId, fn($q) => $q->where('submodal_id', $submodalId))
-                    ->when($location, fn($q) => $q->where('location', 'like', "%{$location}%"))
+                    ->when(
+                         $location,
+                         fn($q) =>
+                         $q->whereHas('location', fn($loc) => $loc->where('city', 'like', "%{$location}%"))
+                    )
                     ->when(!empty($categoryAttributes), function ($q) use ($categoryAttributes) {
                          foreach ($categoryAttributes as $attr) {
                               if (!isset($attr['attribute_id']) || !isset($attr['value'])) continue;
