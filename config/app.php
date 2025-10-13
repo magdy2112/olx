@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+
+    'firebase_project_id' => env('FIREBASE_PROJECT_ID', 'myolx-7c689'),
+
 ];

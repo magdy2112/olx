@@ -67,4 +67,10 @@ class User extends Authenticatable
 {
     return $this->morphOne(Location::class, 'locationable');
 }
+
+public function devices()
+{
+    return $this->hasMany(UserDevice::class);
+}
+
 }
