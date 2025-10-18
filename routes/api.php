@@ -18,6 +18,7 @@ require __DIR__ . '/Image.php';
 require __DIR__ . '/Advertising.php';
 require __DIR__ . '/Fav.php';
 require __DIR__ . '/fcm.php';
+require __DIR__ . '/paymob.php';
 
 
 

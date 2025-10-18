@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Submodal\Addsubmodalrequest;
 use App\Http\Requests\Submodal\Updatesubmodalrequest;
+
 use App\Jobs\Allsubmodal;
 use App\Jobs\Deletesubmodal;
 use App\Models\Category;
@@ -142,5 +143,8 @@ class SubmodalController extends Controller
         }
 
 }
+
+
+
 
 }

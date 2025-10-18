@@ -16,3 +16,5 @@ Route::controller(SubmodalController::class)->prefix('submodal')
 
             Route::delete('deletesubmodal/{id}', 'destroy');
       })->middleware('auth:sanctum')      ;
+
+     
