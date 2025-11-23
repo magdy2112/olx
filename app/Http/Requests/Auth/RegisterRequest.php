@@ -35,7 +35,7 @@ class RegisterRequest extends FormRequest
             'provider' => 'nullable',
             rule::in(['google', 'facebook', 'twitter', 'github', 'linkedin', 'email']),
             'role'=> rule::in(['admin', 'user', 'guest','prouser']),
-            
+            'phone'=>'required|string|max:20',
 
 
 

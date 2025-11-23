@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 
 
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\AuthController;
 
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
@@ -28,6 +29,12 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('/resetPassword', 'resetPassword')->middleware('throttle:auth');
   
 
+});
+
+
+Route::get('/test-log', function () {
+    Log::channel('auth')->info('Test log file creation');
+    return 'done';
 });
 
 

@@ -12,4 +12,6 @@ class Governorate extends Model
      {
          return $this->hasMany(Location::class);
      }
+
+
 }
