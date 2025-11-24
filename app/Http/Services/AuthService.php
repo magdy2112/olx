@@ -28,34 +28,31 @@ class AuthService
 
     public function Register(UserDto $dto)
     {
-
         try {
-            DB::beginTransaction();
 
-            $dto->password = Hash::make($dto->password);
-            // Create a new user with the validated credentials
-            $user = User::create($dto->toArray());
+            $user = null;
+            DB::transaction(function () use ($dto, &$user) {
 
-            $verificationUrl = URL::temporarySignedRoute(
-                'api.verification.verify', // اسم الـ Route الخاص بالتحقق
-                Carbon::now()->addMinutes(60), // مدة صلاحية الرابط
-                [
-                    'id' => $user->getKey(),
-                    'hash' => sha1($user->getEmailForVerification()),
-                ]
-            );
+                $dto->password = Hash::make($dto->password);
 
-            $user->notify(new VerifyEmailApi($verificationUrl));
-            DB::commit();
+                $user = User::create($dto->toArray());
 
-            // Return a success response with the created user
-            return $this->response(true, 200, 'user created successfully.', new UserResource($user));
+                $verificationUrl = URL::temporarySignedRoute(
+                    'api.verification.verify',
+                    now()->addMinutes(60),
+                    [
+                        'id' => $user->id,
+                        'hash' => sha1($user->email),
+                    ]
+                );
+
+                $user->notify(new VerifyEmailApi($verificationUrl));
+            });
+
+            return $this->response(true, 201, 'user created successfully.', new UserResource($user));
         } catch (\Exception $e) {
 
-            DB::rollBack();
-
             Log::channel('auth')->error(
-                
                 'Register Error: UserID(' . ($user->id ?? 'null') . ') - ' . $e->getMessage()
             );
 
@@ -232,10 +229,12 @@ class AuthService
 
     public function Login(AuthLoginrequest $request)
     {
+
+        // $user = null;
+        $credentials = $request->validated();
+        $user = User::where('email', $credentials['email'])->first();
         try {
-            $credentials = $request->validated();
             // Hash::check($request->password, $user->password)
-            $user = User::where('email', $credentials['email'])->first();
 
             if (! $user || ! Hash::check($credentials['password'], $user->password)) {
                 return $this->response(false, 401, 'Invalid input.');
@@ -273,9 +272,15 @@ class AuthService
         try {
             // Revoke the user's current token
             $token = $request->user()->currentAccessToken();
-            if ($token) {
-                $token->delete();
+            if (! $token) {
+                return $this->response(false, 401, 'error', 'No active token.');
             }
+
+            $token->delete();
+
+            // important: clear guard caching
+             auth()->forgetGuards(); // 
+
 
             // Return a success response
             return $this->response(true, 200, 'success', 'Logout successful.');

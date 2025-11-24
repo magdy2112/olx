@@ -79,11 +79,11 @@ trait Httpresponse
     public function response(Bool $success, Int $code, string $message, $data = [])
     {
         return response()->json([
-            'success' => $success,
-            'status' => $code,
-            'status_msg' =>  $this->codes[$code],
-            'message' => $message,
-            'data' => $data,
-        ]);
+        'success' => $success,
+        'status' => $code,
+        'status_msg' => $this->codes[$code],
+        'message' => $message,
+        'data' => $data,
+    ], $code);   
     }
 }

@@ -8,11 +8,11 @@ use App\Http\Controllers\AuthController;
 
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
-    Route::post('/register', 'Register')->middleware(['guest']);
+    Route::post('/register', 'Register')->middleware(['guest', 'throttle:auth']);
 
     Route::get('/verify-email', 'verifyEmail')
         ->name('api.verification.verify')
-    ->middleware(['signed']);  
+    ->middleware(['signed', 'throttle:auth']);  
     
     Route::post('/email/resend-verification', 'resendVerificationEmail')
         ->middleware('throttle:auth') 
@@ -32,9 +32,6 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
 });
 
 
-Route::get('/test-log', function () {
-    Log::channel('auth')->info('Test log file creation');
-    return 'done';
-});
+
 
 

@@ -32,10 +32,17 @@ class RegisterRequest extends FormRequest
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed',
             'password_confirmation' => 'required|string|',
-            'provider' => 'nullable',
-            rule::in(['google', 'facebook', 'twitter', 'github', 'linkedin', 'email']),
-            'role'=> rule::in(['admin', 'user', 'guest','prouser']),
-            'phone'=>'required|string|max:20',
+            'provider' => [
+                'nullable',
+                'string',
+                Rule::in(['google', 'facebook', 'twitter', 'github', 'linkedin', 'email']),
+            ],
+            'role' => [
+                'required',
+                'string',
+                Rule::in(['admin', 'user', 'guest', 'prouser']),
+            ],
+            'phone' => 'required|string|max:20',
 
 
 
