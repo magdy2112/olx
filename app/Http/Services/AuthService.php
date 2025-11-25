@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Http\Data_object_transfer\UserData;
 use App\Http\Data_object_transfer\UserDto;
 use App\Http\Requests\Auth\Forgetpasswordrequest;
 use App\Http\Requests\Auth\Loginrequest as AuthLoginrequest;
@@ -22,21 +23,23 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
+
 class AuthService
 {
     use \App\Traits\HttpResponse;
 
-    public function Register(UserDto $dto)
+    public function Register(UserData $userData)
     {
         try {
 
             $user = null;
-            DB::transaction(function () use ($dto, &$user) {
+            DB::transaction(function () use ($userData, &$user) {
 
-                $dto->password = Hash::make($dto->password);
+                $userData->password = Hash::make($userData->password);
 
-                $user = User::create($dto->toArray());
+                
 
+                $user = User::create( $userData->toArray());
                 $verificationUrl = URL::temporarySignedRoute(
                     'api.verification.verify',
                     now()->addMinutes(60),

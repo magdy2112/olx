@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\Loginrequest;
-
 use App\Http\Requests\Auth\ResendVerificationEmail;
 use App\Http\Requests\Auth\Resetpasswordrequest;
-
 use Illuminate\Http\Request;
 use App\Http\Services\AuthService;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\Forgetpasswordrequest;
-use App\Http\Data_object_transfer\UserDto;
+use App\Http\Data_object_transfer\UserData;
+
+
+
+
+
 use App\Traits\HttpResponse;
-
-
 class AuthController extends Controller
 {
     use HttpResponse;
@@ -25,16 +26,9 @@ class AuthController extends Controller
     //  تسجيل مستخدم جديد
     public function Register(RegisterRequest $request)
     {
-        $data = $request->validated();
-        $dto = new UserDto(
-            $data['name'],
-            $data['email'],
-            $data['password'],
-            $data['phone'],
-            $data['role'] ?? 'user',
-            $data['provider'] ?? null
-        );
-        return $this->authService->Register($dto);
+        $userData = UserData::fromArray($request->validated());
+
+        return $this->authService->Register($userData);
     }
 
     //  تفعيل الإيميل
@@ -46,7 +40,7 @@ class AuthController extends Controller
         return $this->authService->verifyEmail($request);
     }
 
-  
+
 
     /**
      * @param ResendVerificationEmail $request
