@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\AuthService;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\Forgetpasswordrequest;
-use App\Http\Data_object_transfer\UserDto;
+use App\Http\Data_object_transfer\UserData;
 use App\Traits\HttpResponse;
 class AuthController extends Controller
     
