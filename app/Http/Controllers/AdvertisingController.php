@@ -7,7 +7,7 @@ use App\Http\Services\Advertising_service;
 use App\Http\Services\Image_service;
 use App\Http\Services\Locationservice;
 use App\Http\Requests\Advertising\Updateadvertising;
-use App\Traits\Httpresponse;
+use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 
 

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-    use Httpresponse;
+    use HttpResponse;
 
 
     /**

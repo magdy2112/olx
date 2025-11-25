@@ -11,14 +11,14 @@ use App\Models\Category;
 use App\Models\Modal;
 use App\Models\Submodal;
 use Illuminate\Http\Request;
-use App\Traits\Httpresponse;
+use App\Traits\HttpResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 class SubmodalController extends Controller
 {
-      use Httpresponse;
+      use HttpResponse;
     public function allsubmodal()
     {
         if(!Gate::allows('admin')){

@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait Httpresponse
+trait HttpResponse
 {
 
 

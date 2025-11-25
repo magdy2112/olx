@@ -7,14 +7,14 @@ use App\Http\Requests\SubCategory\Updatecategoryrequest;
 use App\Jobs\Deletesubcategory;
 use App\Models\Category;
 use App\Models\SubCategory;
-use App\Traits\Httpresponse;
+use App\Traits\HttpResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
 
 class SubCategoryController extends Controller
 {
-    use Httpresponse;
+    use HttpResponse;
 
     public function allsubcategory()
     {

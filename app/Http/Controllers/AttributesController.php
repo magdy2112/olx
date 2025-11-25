@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 
 class AttributesController extends Controller
 {
-    use Httpresponse;
+    use HttpResponse;
 
     public function addattribute(Addattributerequest $request)
     {

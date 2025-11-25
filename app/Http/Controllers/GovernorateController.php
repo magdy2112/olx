@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Governorate;
-use App\Traits\Httpresponse;
+use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 
 class GovernorateController extends Controller
 {
-    use Httpresponse;
+    use HttpResponse;
     public function allgovernorates()
     {
 

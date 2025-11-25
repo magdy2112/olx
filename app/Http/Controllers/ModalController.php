@@ -9,14 +9,14 @@ use App\Models\Category;
 use App\Models\Modal;
 use App\Models\SubCategory;
 
-use App\Traits\Httpresponse;
+use App\Traits\HttpResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
 
 class ModalController extends Controller
 {
-     use Httpresponse;
+     use HttpResponse;
 
      public function allmodal()
      {

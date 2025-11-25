@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
-use App\Traits\Httpresponse;
+use App\Traits\HttpResponse;
 use Illuminate\Support\Facades\Storage;
 class ImageController extends Controller
 {
-      use Httpresponse;
+      use HttpResponse;
   
     
        public function destroy($id)

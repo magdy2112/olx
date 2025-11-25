@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {
-    use \App\Traits\Httpresponse;
+    use \App\Traits\HttpResponse;
    
     public function __construct(protected \App\Http\Services\Locationservice $locationservice)
     {
