@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\Addcategoryrequest;
 use App\Http\Requests\Category\Updatecategoryrequest;
+use App\Http\Resources\CategoryResource;
 use App\Jobs\Allsubmodal;
 use App\Jobs\Deletecategory;
 
@@ -13,6 +14,7 @@ use App\Traits\Httpresponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -24,12 +26,14 @@ class CategoryController extends Controller
      */
     public function allcategory()
     {
+       
         try {
-            $allcategory = Category::all();
+            $allcategory = Category::all()->toResourceCollection(CategoryResource::class);
             $data = Category::with('subcategories')->get();
 
             return $this->response(true, 200, 'success', ['allcategory'=>$allcategory, 'allcategorywithsubcategory' => $data]);
-        } catch (\Throwable $e) {
+        } catch (\Exception $e) {
+            Log::channel('category')->error('Error in allcategory: ' . $e->getMessage());
             return $this->response(false, 500, $e->getMessage());
         }
     }
@@ -39,7 +43,6 @@ class CategoryController extends Controller
 
 
         $data = $request->validated();
-     
         try {
 
 
@@ -53,7 +56,8 @@ class CategoryController extends Controller
             } else {
                 return $this->response(false, 401, 'Unauthorized');
             }
-        } catch (\Throwable $e) {
+        } catch (\Exception $e) {
+            Log::channel('category')->error('Error in addcategory: ' . $e->getMessage());
             return $this->response(false, 500, $e->getMessage());
         }
     }

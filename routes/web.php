@@ -17,6 +17,6 @@ Route::get('/auth/google/redirect', [AuthController::class, 'redirectToGoogle'])
 Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
 Route::get('/test-log', function () {
-    Log::channel('auth')->info('Test log file creation');
+    Log::channel('category')->info('Test log file creation');
     return 'done';
 });
