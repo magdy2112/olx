@@ -57,7 +57,7 @@ class SubCategory extends Model
     }
     public function attributes()
     {
-        return $this->hasMany(CategoryAttribute::class);
+           return $this->hasMany(CategoryAttribute::class, 'sub_category_id');
     }
    
 }

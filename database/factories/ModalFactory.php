@@ -21,7 +21,7 @@ class ModalFactory extends Factory
         $name = 'modal-' . uniqid();
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+         
             'sub_category_id' => SubCategory::inRandomOrder()->first()->id,
         ];
     }

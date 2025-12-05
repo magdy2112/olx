@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
         $name = 'cat-' . uniqid();
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+           
         ];
     }
 }

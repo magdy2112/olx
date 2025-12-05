@@ -21,7 +21,7 @@ class SubCategoryFactory extends Factory
         $name = 'subcat-' . uniqid();
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+          
             'category_id' => Category::inRandomOrder()->first()->id,
         ];
     }

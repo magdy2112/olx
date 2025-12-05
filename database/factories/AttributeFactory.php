@@ -20,7 +20,7 @@ class AttributeFactory extends Factory
         $name = 'att-' . uniqid();
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+            // 'slug' => Str::slug($name),
         ];
     }
 }

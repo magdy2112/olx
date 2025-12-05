@@ -21,7 +21,7 @@ class SubmodalFactory extends Factory
         $name = 'submodal-' . uniqid();
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+         
             'modal_id' => Modal::inRandomOrder()->first()->id,
         ];
     }

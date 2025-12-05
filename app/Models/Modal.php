@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Modal extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'slug', 'sub_category_id'];
+    protected $fillable = ['name',  'sub_category_id'];
 
     public function updateFinalStatus()
     {
