@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
                 Rule::in(['google', 'facebook', 'twitter', 'github', 'linkedin', 'email']),
             ],
             'role' => [
-                'required',
+                'nullable',
                 'string',
                 Rule::in(['admin', 'user', 'guest', 'prouser']),
             ],

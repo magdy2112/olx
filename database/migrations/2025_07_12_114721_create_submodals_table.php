@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('modal_id')->nullable()->constrained('modals');
+  
             $table->timestamps();
         });
     }

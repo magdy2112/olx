@@ -32,7 +32,8 @@ class CategoryController extends Controller
        
         try {
             $allcategory = Category::all()->toResourceCollection(CategoryResource::class);
-            $data = Category::with('subcategories')->get();
+            $data = Category::with('subcategories')
+            ->get()->toResourceCollection(CategoryResource::class);
             // use resource collection for subcategories and modals then use resource collection for modals inside category resource
 
             return $this->response(true, 200, 'success', ['allcategory'=>$allcategory, 'allcategorywithsubcategory' => $data]);
@@ -53,12 +54,13 @@ class CategoryController extends Controller
 
            
             $category = Category::create([
-                'name' => $data['name']
+                'name' => $data['name'],
+                'created_by' => Auth::user()->id,
             ]);
             if ($category) {
-                // cache::forget('allsubmodal_cache');
+               
             
-                return $this->response(true, 200, 'success', $category);
+                return $this->response(true, 200, 'success',  new CategoryResource($category->load('creator')));
             } else {
                 return $this->response(false, 401, 'Unauthorized');
             }
@@ -85,9 +87,11 @@ class CategoryController extends Controller
             if ($category) {
                 $category->update([
                     'name' => $data['name'],
+                     'created_by' => Auth::user()->id,
+                    
                 ]);
                 //  cache::forget('allsubmodal_cache');
-                return $this->response(true, 200, 'success', $category);
+                return $this->response(true, 200, 'success',  new CategoryResource($category->load('creator')));
             } else {
                 return $this->response(false, 401, 'Unauthorized');
             }
@@ -100,10 +104,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         
-        $updatingResponse = Systemupdate::systemUpdatingResponse();
-        if ($updatingResponse) {
-            return $updatingResponse;
-        }
+        Systemupdate::ensureSystemIsFree();
            
        
         $category = Category::find($id);

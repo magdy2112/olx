@@ -74,4 +74,9 @@ public function devices()
     return $this->hasMany(UserDevice::class);
 }
 
+public function categories()
+{
+    return $this->hasMany(Category::class, 'created_by');
+}
+
 }

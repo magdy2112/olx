@@ -140,6 +140,12 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
         ],
+            'subcategory' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/subcategory.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
 
     ],
 

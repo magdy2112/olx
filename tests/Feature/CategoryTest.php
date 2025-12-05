@@ -153,7 +153,7 @@ public function test_admin_can_dispatch_delete_job()
     Sanctum::actingAs($this->admin);
 
     Mockery::mock('alias:App\Helper\Systemupdate')
-        ->shouldReceive('systemUpdatingResponse')
+        ->shouldReceive('ensureSystemIsFree')
         ->andReturn(null);
 
     Queue::fake();

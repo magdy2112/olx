@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 class Systemupdate
 {
     use \App\Traits\HttpResponse;
-    public static function systemUpdatingResponse()
+    public static function ensureSystemIsFree()
     {
         $cacheKeys = [
             'destroy_subcategory',
@@ -19,16 +19,16 @@ class Systemupdate
 
         foreach ($cacheKeys as $key) {
             if (Cache::has($key)) {
-                return response()->json([
+                return abort(response()->json([
                     'success' => false,
                     'status' => 429,            
                     'message' => __('message.system_updating'),
                     'data' => []
-                ], 429);
+                ], 429));
             }
         }
 
-        return null;
+       
     }
 }
 

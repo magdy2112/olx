@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SubCategory\Addsubcategoryrequest;
 use App\Http\Requests\SubCategory\Updatecategoryrequest;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\SubcategoryResource;
 use App\Jobs\Deletesubcategory;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -11,6 +13,7 @@ use App\Traits\HttpResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class SubCategoryController extends Controller
 {
@@ -20,10 +23,11 @@ class SubCategoryController extends Controller
     {
         try {
 
-            $data = Category::with('subcategories')->get();
+            $data = SubCategory::all()->toResourceCollection(SubcategoryResource::class);
   
             return $this->response(true, 200, 'success', $data);
-        } catch (\Throwable $th) {
+        } catch (\Exception $th) {
+            Log::channel('subcategory')->error($th->getMessage());
             return $this->response(false, 500, $th->getMessage());
         }
     }
@@ -32,16 +36,19 @@ class SubCategoryController extends Controller
     {
 
         try {
-            $category = Category::where('id', $categoryid)->first();
-            $data = SubCategory::where('category_id', $categoryid)->get();
-            if($data->isEmpty()){
+           
+            $subcategory = SubCategory::where('category_id', $categoryid)
+            ->get()->toResourceCollection(SubcategoryResource::class);
+           
+            if($subcategory->isEmpty()){
                 return $this->response(false, 404, 'subcategory not found', null);
             }
             return $this->response(true, 200, 'success', [
-                'category' => $category,
-                'subcategory' => $data
+                'subcategory' => $subcategory,
+                
             ]);
-        } catch (\Throwable $th) {
+        } catch (\Exception $th) {
+            Log::channel('subcategory')->error($th->getMessage());
             return $this->response(false, 500, $th->getMessage());
         }
     }
@@ -52,6 +59,7 @@ class SubCategoryController extends Controller
 
     {
         $data = $request->validated();
+
         $exists = SubCategory::where('name', $data['name'])
             ->where('category_id', $data['category_id'])
             ->exists();
@@ -63,9 +71,10 @@ class SubCategoryController extends Controller
             $subcategory =  SubCategory::create([
                 'name' => $data['name'],
                 'category_id' => $data['category_id']
+                
+
             ]);
-            $subcategory->updateFinalStatus();
-             cache::forget('allsubmodal_cache');
+           
 
             return $this->response(true, 200, 'success', $subcategory);
         } catch (\Throwable $th) {

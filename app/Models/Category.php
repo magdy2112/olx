@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name','created_by'];
 
      protected function name(): Attribute
     {
@@ -22,7 +22,7 @@ class Category extends Model
     /**
      * Get the subcategories for the category.
      */
-    public function subCategories()
+    public function subcategories()
     {
         return $this->hasMany(SubCategory::class);
     }
@@ -38,6 +38,10 @@ class Category extends Model
     public function advertisings()
     {
         return $this->hasMany(Advertising::class);
+    }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     // public function attributes()
